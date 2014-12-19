@@ -5,10 +5,8 @@ body{
 }
 
 .card{
-	width: 24%;
-	margin-right: 10px;
 	margin-bottom: 10px;
-	min-height: 446px;
+	min-height: 490px;
 	border: 1px solid #eee;
 	border-radius: 20px;
 	text-decoration: none;
@@ -22,7 +20,14 @@ body{
 	img{
 		width: 100%;
 	}
-	@media screen and (max-width: 1024px){
-		width: 100%;
+	@media screen and (max-width: 1199px){
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+	@media screen and (min-width: 1024px){
+		width: 24%;
+	}
+	@media screen and (min-width: 1200px){
+		margin-right: 10px;
 	}
 }

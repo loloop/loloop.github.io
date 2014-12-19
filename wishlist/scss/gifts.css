@@ -2,10 +2,8 @@ body a {
   color: black; }
 
 .card {
-  width: 24%;
-  margin-right: 10px;
   margin-bottom: 10px;
-  min-height: 446px;
+  min-height: 490px;
   border: 1px solid #eee;
   border-radius: 20px;
   text-decoration: none;
@@ -16,8 +14,15 @@ body a {
     font-size: 2em; }
   .card img {
     width: 100%; }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1199px) {
     .card {
-      width: 100%; } }
+      margin-right: 0;
+      margin-bottom: 0; } }
+  @media screen and (min-width: 1024px) {
+    .card {
+      width: 24%; } }
+  @media screen and (min-width: 1200px) {
+    .card {
+      margin-right: 10px; } }
 
 /*# sourceMappingURL=gifts.css.map */
