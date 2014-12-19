@@ -1,1 +1,23 @@
-body a{color:black}.card{width:24%;margin-right:10px;margin-bottom:10px;min-height:446px;border:1px solid #eee;border-radius:20px;text-decoration:none;padding-top:10px}.card .autor{color:grey}.card h2{font-size:2em}.card img{width:100%}
+body a {
+  color: black; }
+
+.card {
+  width: 24%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  min-height: 446px;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  text-decoration: none;
+  padding-top: 10px; }
+  .card .autor {
+    color: grey; }
+  .card h2 {
+    font-size: 2em; }
+  .card img {
+    width: 100%; }
+  @media screen and (max-width: 1024px) {
+    .card {
+      width: 100%; } }
+
+/*# sourceMappingURL=gifts.css.map */
