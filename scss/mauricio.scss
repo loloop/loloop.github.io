@@ -26,5 +26,8 @@ footer {
 	position: fixed;
 	bottom: 0;
 	right: 10px;
+	@media screen and (max-device-width: 640px){
+		display: none;
+	}
 }
 

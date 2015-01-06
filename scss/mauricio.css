@@ -1,1 +1,2 @@
-body{text-align:center;background-image:url("../img/creampaper.png")}.container #mau-foto{background-image:url("../img/foto.png");background-position:center;background-repeat:no-repeat;height:250px;text-indent:-99999px}.container ul{list-style:none;margin:0;padding:0}footer{font-size:0.8em;position:fixed;bottom:0;right:10px}
+body{text-align:center;background-image:url("../img/creampaper.png")}.container #mau-foto{background-image:url("../img/foto.png");background-position:center;background-repeat:no-repeat;height:250px;text-indent:-99999px}.container ul{list-style:none;margin:0;padding:0}footer{font-size:0.8em;position:fixed;bottom:0;right:10px}@media screen and (max-device-width: 640px){footer{display:none}}
+/*# sourceMappingURL=mauricio.css.map */
