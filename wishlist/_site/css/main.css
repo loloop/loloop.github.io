@@ -1,28 +1,30 @@
 body a {
   color: black; }
+body ul {
+  list-style: none; }
 
-.card {
-  margin-bottom: 10px;
-  min-height: 490px;
+.page-heading {
+  margin-left: 10px; }
+
+.wish-post {
   border: 1px solid #eee;
   border-radius: 20px;
-  text-decoration: none;
-  padding-top: 10px; }
-  .card .autor {
+  margin-bottom: 10px;
+  min-height: 490px;
+  text-decoration: none; }
+  .wish-post .autor {
     color: grey; }
-  .card h2 {
+  .wish-post h2 {
     font-size: 2em; }
-  .card img {
+  .wish-post img {
     width: 100%; }
   @media screen and (max-width: 1199px) {
-    .card {
+    .wish-post {
       margin-right: 0;
       margin-bottom: 0; } }
   @media screen and (min-width: 1024px) {
-    .card {
+    .wish-post {
       width: 24%; } }
   @media screen and (min-width: 1200px) {
-    .card {
+    .wish-post {
       margin-right: 10px; } }
-
-/*# sourceMappingURL=gifts.css.map */
