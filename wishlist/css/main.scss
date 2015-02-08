@@ -1,0 +1,46 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+body{
+    a{
+        color: #1e1e1e;
+    }
+    ul{
+        list-style: none;
+    }
+}
+
+.page-heading{
+    margin-left: 10px;
+}
+
+.wish-post{
+    border: 1px solid #eee;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    min-height: 490px;
+    text-decoration: none;
+    .autor{
+        color: grey;
+    }
+    h2{
+        font-size: 2em;
+        margin: 0;
+        margin-top: 10px;
+    }
+    img{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    @media screen and (max-width: 1199px){
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+    @media screen and (min-width: 1024px){
+        width: 24%;
+    }
+    @media screen and (min-width: 1200px){
+        margin-right: 10px;
+    }
+}
