@@ -1,8 +1,8 @@
 # Site settings
 title: "wishlist"
 
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://loloop.github.io/wishlist" # the base hostname & protocol for your site
+baseurl: "/wishlist/" # the subpath of your site, e.g. /blog/
+url: "http://loloop.github.io/" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
