@@ -1,129 +1,21 @@
-<!DOCTYPE html>
-<html>
+---
+layout: default
+---
 
-  <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>wishlist</title>
-  <meta name="description" content="">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://loloop.github.io/wishlist/">
-  <link rel="alternate" type="application/rss+xml" title="wishlist" href="http://loloop.github.io/wishlist/feed.xml" />
-</head>
-
-
-  <body>
-
-    
-
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="home">
+<div class="home">
 
   <h1 class="page-heading">Livros</h1>
 
   <ul class="post-list">
-    
+    {% for livro in site.livros %}
       <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
         <h2>
-          <a class="post-link" href="http://www.buscape.com.br/meta_livros?isbn=3775730117#precos">Apple Design</a>
+          <a class="post-link" href="{{ livro.link }}">{{ livro.titulo }}</a>
         </h2>
-        <span class="text-muted">Friedrich von Borries, Ina Gratz, Sabine Schulze</span>
-        <img src="http://thumbs.buscape.com.br/livros/apple-design-friedrich-von-borries-ina-gra-tz-3775730117_200x200-PU521c1893_1.jpg">
+        <span class="text-muted">{{ livro.autor }}</span>
+        <img src="{{ livro.imagem }}">
       </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.buscape.com.br/meta_livros?isbn=0062283251#precos">Creativity - The Psychology of Discovery and Invention</a>
-        </h2>
-        <span class="text-muted">Mihaly Csikszentmihalyi</span>
-        <img src="http://thumbs.buscape.com.br/livros/creativity-the-psychology-of-discovery-and-invention-mihaly-csikszentmihalyi-0062283251_200x200-PU3bf9d365_1.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.buscape.com.br/meta_livros?isbn=0887309895#precos">Dealers of Lightning</a>
-        </h2>
-        <span class="text-muted">Michael A. Hiltzik</span>
-        <img src="http://thumbs.buscape.com.br/livros/dealers-of-lightning-michael-a-hiltzik-0887309895_200x200-PU40e4b76d_1.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.buscape.com.br/o-design-do-dia-a-dia-donald-a-norman-8532520839.html#precos">O Design do Dia-a-dia</a>
-        </h2>
-        <span class="text-muted">Donald A. Norman</span>
-        <img src="http://thumbs.buscape.com.br/livros/o-design-do-dia-a-dia-donald-a-norman-8532520839_200x200-PU6e7661f3_1.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.amazon.com/exec/obidos/ASIN/1476752699/&tag=bus-20">Fearless Genius</a>
-        </h2>
-        <span class="text-muted">Doug Menuez</span>
-        <img src="http://ecx.images-amazon.com/images/I/51ngqEUEI9L.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.buscape.com.br/illusion-of-life-disney-animation-thomas-frank-0786860707.html#precos">The Illusion of Life - Disney Animation</a>
-        </h2>
-        <span class="text-muted">Frank Thomas, Ollie Johnson</span>
-        <img src="http://thumbs.buscape.com.br/livros/illusion-of-life-disney-animation-thomas-frank-0786860707_200x200-PU404b7176_1.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.buscape.com.br/meta_livros?isbn=1591847060#precos">Jony Ive - The Genius Behind Apple's Greatest Products</a>
-        </h2>
-        <span class="text-muted">Leander Kahney</span>
-        <img src="http://thumbs.buscape.com.br/livros/jony-ive-the-genius-behind-apple-s-greatest-products-leander-kahney-1591847060_200x200-PU4517c142_1.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.buscape.com.br/meta_livros?isbn=3897904071#precos">Keep It Simple - The Early Design Years of Apple</a>
-        </h2>
-        <span class="text-muted">Hartmut Esslinger</span>
-        <img src="http://thumbs.buscape.com.br/livros/keep-it-simple-the-early-design-years-of-apple-hartmut-esslinger-3897904071_200x200-PU52d684c7_1.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.amazon.com/Reality-Broken-Games-Better-Change/dp/0143120611/ref=tmm_pap_swatch_0?_encoding=UTF8&sr=&qid=">Reality is Broken</a>
-        </h2>
-        <span class="text-muted">Jane McGonical</span>
-        <img src="http://ecx.images-amazon.com/images/I/710yuWCFMsL.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.buscape.com.br/steal-like-an-artist-10-things-nobody-told-you-about-being-creative-austin-kleon-0761169253.html">Steal Like An Artist</a>
-        </h2>
-        <span class="text-muted">Austin Kleon</span>
-        <img src="http://thumbs.buscape.com.br/livros/steal-like-an-artist-10-things-nobody-told-you-about-being-creative-austin-kleon-0761169253_200x200-PU40243dbd_1.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.buscape.com.br/steve-jobs-a-biografia-walter-isaacson-8535919716.html?pos=1#precos">Steve Jobs</a>
-        </h2>
-        <span class="text-muted">Walter Isaacson</span>
-        <img src="http://thumbs.buscape.com.br/livros/steve-jobs-a-biografia-walter-isaacson-8535919716_200x200-PU6e7b91a3_1.jpg">
-      </li>
-    
-      <li class="wish-post col-lg-3 col-sm-6 col-xs-12">
-        <h2>
-          <a class="post-link" href="http://www.buscape.com.br/meta_livros?isbn=0201379376&pos=2#precos">The Humane Interface</a>
-        </h2>
-        <span class="text-muted">Jef Raskin</span>
-        <img src="http://thumbs.buscape.com.br/livros/the-humane-interface-new-directions-for-designing-interactive-systems-jef-raskin-0201379376_200x200-PU3cce11d1_1.jpg">
-      </li>
-    
+    {% endfor %}
   </ul>
 
 </div>
@@ -191,11 +83,3 @@ thread massa no reddit http://www.reddit.com/r/gamedev/comments/2ospx6/i_read_ga
 https://designcode.io
 
 -->
-      </div>
-    </div>
-
-    
-
-  </body>
-
-</html>
