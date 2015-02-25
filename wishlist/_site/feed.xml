@@ -3,10 +3,10 @@
   <channel>
     <title>wishlist</title>
     <description></description>
-    <link>http://loloop.github.io//wishlist//</link>
-    <atom:link href="http://loloop.github.io//wishlist//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 07 Feb 2015 23:37:51 -0200</pubDate>
-    <lastBuildDate>Sat, 07 Feb 2015 23:37:51 -0200</lastBuildDate>
+    <link>http://loloop.github.io/wishlist/</link>
+    <atom:link href="http://loloop.github.io/wishlist/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 25 Feb 2015 12:44:53 -0300</pubDate>
+    <lastBuildDate>Wed, 25 Feb 2015 12:44:53 -0300</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
   </channel>
