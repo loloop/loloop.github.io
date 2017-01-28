@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik|Montserrrat');
+
+$veryBold: 700;
+$bold: 500;
+
+body{
+    font-family: 'Rubik', sans-serif;
+}
+
+h1, h2, h3{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: $veryBold;
+}
+
+h3{
+    &.subtitle{
+        font-weight: 500;
+    }
+}
+
+p {
+    font-size: 1.2rem;
+    &.big{
+        font-size: 1.7rem;
+        line-height: 2rem;
+        a {
+            font-size: 1.7rem;
+            line-height: 2rem;
+        }
+    }
+    &.very-small{
+        font-size: 0.8rem;
+        a{
+            font-size: 0.8rem;
+        }
+    }
+    a{
+        font-weight: $bold;
+        font-size: 1.2rem;
+        text-decoration: underline;
+    }
+}
+
+a {    
+    font-size: 1.7rem;
+    color: black;
+}
+
+.center{
+    text-align: center;
+}
