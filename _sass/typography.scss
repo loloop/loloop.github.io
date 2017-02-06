@@ -2,48 +2,70 @@
 
 $veryBold: 700;
 $bold: 500;
+$normalFont: 1.2rem;
+$verySmallFont: 0.8rem;
+$bigFont: 1.7rem;
+$bigFontLineHeight: 2rem;
+$slightlyBigFont: 2rem;
+$hugeFont: 4.5rem;
 
 body{
     font-family: 'Rubik', sans-serif;
+    color: $darkgray;
+}
+
+.montserrat{
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3{
-    font-family: 'Montserrat', sans-serif;
+    @extend .montserrat;
     font-weight: $veryBold;
+}
+
+h1{
+    &.huge{
+        font-size: $hugeFont;
+    }
+}
+
+h2{
+    a{
+        font-size: $slightlyBigFont; //h2 are 2rem by default
+    }
 }
 
 h3{
     &.subtitle{
-        font-weight: 500;
+        font-weight: $bold;
     }
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: $normalFont;
     &.big{
-        font-size: 1.7rem;
-        line-height: 2rem;
-        a {
-            font-size: 1.7rem;
-            line-height: 2rem;
+        font-size: $bigFont;
+        line-height: $bigFontLineHeight;
+        a { //Links inside a paragraph are styled to fit within the text
+            font-size: $bigFont;
+            line-height: $bigFontLineHeight;
         }
     }
     &.very-small{
-        font-size: 0.8rem;
+        font-size: $verySmallFont;
         a{
-            font-size: 0.8rem;
+            font-size: $verySmallFont;
         }
     }
     a{
         font-weight: $bold;
-        font-size: 1.2rem;
-        text-decoration: underline;
+        font-size: $normalFont;
+        text-decoration: none;
     }
 }
 
 a {    
-    font-size: 1.7rem;
-    color: black;
+    font-size: $bigFont;    
 }
 
 .center{

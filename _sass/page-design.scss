@@ -1,9 +1,10 @@
 .design{
+    padding-top: 30px;
     &-navigation{
-        margin-top: 50px;
+        margin-top: 20px;
         margin-bottom: 20px;
         a {
-            color: black;
+            color: $black;
         }
     }
 }

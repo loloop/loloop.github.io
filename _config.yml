@@ -32,3 +32,13 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+
+collections:
+  jogos:
+    output: true
+    permalink: /games/:path/
+  web:
+    output: true
+    permalink: /web/:path/
+  articles:
+    output: false

@@ -1,0 +1,34 @@
+$nav-width: 200px;
+
+.site{
+    &-content{
+        margin-left: $nav-width;
+    }
+    &-navigation{
+        img{
+            margin: 10px;            
+            height: 180px;
+            border-radius: 50%;
+        }
+        width: $nav-width;
+        border-right: 1px solid #eee;
+        position: fixed;
+        height: 100vh;
+        float: left;        
+        ul{
+            margin-top: 20px;
+        }
+        li{
+            list-style: none;
+        }  
+    }
+    @media(max-width: $small-phone){
+        &-content{
+            margin-left: 0;
+        }
+        &-navigation{
+            visibility: hidden;
+            background-color: deepskyblue;
+        }
+    }
+}

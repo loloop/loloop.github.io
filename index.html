@@ -1,0 +1,63 @@
+---
+layout: main
+---
+<div class="home">
+    <div class="container intro">
+        <h1 class="huge">Oi, eu sou o Mauricio</h1>
+        <h2>Trabalho na <a class="inverted" href="https://rowbots.com.br">Rowbots</a>, desenvolvendo o <a class="inverted" href="http://dedig.com.br">Dedig</a></h2>
+        <p>
+            Minha especialidade é no desenvolvimento de projetos com <a class="inverted" href="https://unity3d.com">Unity3D</a>, tenho grande apreço pelo ecossistema Apple (iOS, macOS, watchOS, tvOS) e também faço algumas brincadeiras na Web (como essa minha página aqui)
+        </p>        
+        <p>
+            Dá uma olhada nos meus projetos aí embaixo, tenho certeza que você vai gostar :)
+        </p>
+    </div>
+    <div class="divider-line"></div>
+    <div class="container">
+        <h2>Meus Jogos</h2>
+        <div class="row">                        
+            {% assign jogos = site.jogos | sort: "order" %}
+            {% for game in jogos %}
+                {% include home/card.html 
+                    image = game.thumbnail
+                    title = game.title
+                    description = game.description
+                    link = game.slug
+                    pageprefix = "games"
+                %}
+            {% endfor %}
+        </div>
+        <div class="row">
+  
+        </div>
+    </div>
+    <div class="divider-line"></div>
+    <div class="container">
+        <h2>Minha Web</h2>
+        <div class="row">
+            {% for web in site.web %}            
+                {% include home/card.html 
+                    image = web.thumbnail
+                    title = web.title                    
+                    description = web.description
+                    link = web.slug
+                    pageprefix = "web"
+                %} 
+            {% endfor %}
+        </div>
+    </div>
+    <div class="divider-line"></div>
+    <div class="container">
+        <h2>O que escrevi</h2>
+        <div class="row">
+            {% for article in site.articles %}            
+                {% include home/card.html 
+                    image=article.thumbnail
+                    title=article.title                   
+                    description=article.description
+                    link=article.link
+                %}
+            {% endfor %}            
+        </div>
+    </div>
+</div>
