@@ -1,7 +1,7 @@
 ---
 title: "Roger That!"
 thumbnail: "/img/index/roger.jpg"
-description: "Jogo desenvolvido na GlobalGameJam 2017. Multiplayer, realidade virtual, cross-platform. Em 48h? Vem dar uma olhada :)"
+description: "Jogo desenvolvido na GlobalGameJam 2017. Multiplayer, realidade virtual, cross-platform. Vem dar uma olhada :)"
 layout: main
 order: 0
 ---

@@ -27,6 +27,9 @@ h1{
     &.huge{
         font-size: $hugeFont;
     }
+    &.extra-huge{
+        font-size: $hugeFont * 2;
+    }
 }
 
 h2{
@@ -70,4 +73,8 @@ a {
 
 .center{
     text-align: center;
+}
+
+.off-center{
+    margin-left: 5%;
 }
