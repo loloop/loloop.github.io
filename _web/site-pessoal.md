@@ -3,7 +3,7 @@ title: Site Pessoal
 thumbnail: /img/index/pessoal.png
 description: Desenvolvido para expor meu portfolio, criado com Jekyll, hospedado pelo GitHub Pages. Quer entender melhor como o desenvolvi? Dá uma olhada aí
 layout: article
-header: "/img/index/colecao.jpg"
+header: "/img/site-pessoal/header.png"
 ---
 Iteração após iteração, o meu site pessoal surgiu da minha vontade de ter, em um lugar só, a coleção de todos os meus trabalhos, 
 apresentados de uma forma que não fosse apenas uma mera lista de pontos num currículo, mas sim coleção de artigos expondo seu processo
@@ -35,6 +35,8 @@ O site tá todo aberto lá no meu [GitHub](https://github.com/loloop/loloop.gith
 !["Foto da minha página antiga, fundo cinza, alguns poucos links azuis para projetos meus que não estão mais disponíveis na internet"](/img/site-pessoal/design-stage.png)
 
 
+Obrigatório dedicar um pedaço do artigo pra navegação, tanto comum quanto a mobile 
+
 - home e motivação pelas cores fortes (kero kero bonitooooo & personalidade)
 
 Procurava algo que, imagino eu, refletisse a minha personalidade. Acabei não reparando, mas o esquema de cores que escolhi pra página inicial do site é bem similar ao esquema de cores
@@ -45,3 +47,8 @@ de um grupo que eu gosto muito, e recomendo pra todos, o [Kero Kero Bonito]() (A
 
 O esquema de cores de uma página é baseado no esquema de cores do que o conteúdo dela (exceto por esta página aqui, pois amarelo no rosa é péssimo para se ler textos longos) representa. 
 Daí, conseguimos ver uma página como a do Roger That! como uma mistura do que eu ofereço com o que o [artista](the art of lucas mendonça) intencionou.
+
+# Créditos
+
+Ícone de contato na navegação: Contacts book by iconsphere from the Noun Project
+Ícone de portfolio na navegação: code by Joshua McDonald from the Noun Project

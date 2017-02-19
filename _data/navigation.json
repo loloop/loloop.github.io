@@ -1,0 +1,17 @@
+[
+    {
+        "text": "Portfolio",
+        "link": "/",
+        "image": "/img/portfolio.svg"
+    },
+    {
+        "text": "Contato",
+        "link": "/contato",
+        "image": "/img/contato.svg"
+    },
+    {
+        "text": "GitHub",
+        "link": "https://github.com/loloop",
+        "image": "/img/octocat.svg"
+    }
+]

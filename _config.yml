@@ -42,3 +42,8 @@ collections:
     permalink: /web/:path/
   articles:
     output: false
+
+defaults:
+  -
+    values:
+      layout: "main"

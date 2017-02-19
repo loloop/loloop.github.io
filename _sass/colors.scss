@@ -8,5 +8,9 @@ a{
     &.inverted{
         background-color: $white;
         color: $black;
-    }
+    }    
+}
+
+.darkgray{
+    color: $darkgray;
 }
