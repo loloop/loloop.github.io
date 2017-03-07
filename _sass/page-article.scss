@@ -8,5 +8,12 @@
         img {
             max-width: 100%;
         }
+        video, iframe{
+            width: 100%;
+        }
+
+        img, iframe{
+            margin: 0 auto;
+        }
     }
 }

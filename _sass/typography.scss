@@ -77,6 +77,10 @@ p {
 
 a {    
     font-size: $bigFont;    
+    &:hover{
+        color: deepskyblue;
+        text-decoration: none;
+    }
 }
 
 .center{
