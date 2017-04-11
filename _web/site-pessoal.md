@@ -27,26 +27,45 @@ contribuição, inclusive com o mesmo intuito de expandir e facilitar a manuten�
 O stack em si é bem simples, composto do: [Jekyll](http://jekyllrb.com), usando o [Sass](http://sass-lang.com) pra escrever os estilos, e o bom e velho markdown para escrever os textos.
 O site tá todo aberto lá no meu [GitHub](https://github.com/loloop/loloop.github.io). Pull requests são bem vindos :P
 
-
-
-
-- design & docs
+# design & docs
 
 !["Foto da minha página antiga, fundo cinza, alguns poucos links azuis para projetos meus que não estão mais disponíveis na internet"](/img/site-pessoal/design-stage.png)
 
+A primeira etapa do desenvolvimento deste site foi a criação de uma pequena guia de design ([disponível aqui](/design)), onde eu pude testar e experimentar o estilo que eu queria dar ao site antes de me comprometer a desenvolver os blocos que dariam o visual final para ele. Nesta etapa, eu procurei encontrar algum estilo em que eu fosse conseguir fazer com que cada página, caso eu quisesse, teria uma personalidade própria, mas ainda compartilharia elementos básicos como tipografia com as outras páginas, criando consistência entre elas.
 
-Obrigatório dedicar um pedaço do artigo pra navegação, tanto comum quanto a mobile 
+--- inserir uma foto das páginas coloridas, provavelmente um print da home, um print da página do roger that e um outro artigo, talvez o da conf
 
-- home e motivação pelas cores fortes (kero kero bonitooooo & personalidade)
-
-Procurava algo que, imagino eu, refletisse a minha personalidade. Acabei não reparando, mas o esquema de cores que escolhi pra página inicial do site é bem similar ao esquema de cores
-de um grupo que eu gosto muito, e recomendo pra todos, o [Kero Kero Bonito]() (Apesar do nome, eles não tem nada a ver com o Brasil, mas são muito bons, garanto!)
-
+[   Texto antigo: 
 
 - páginas internas
 
 O esquema de cores de uma página é baseado no esquema de cores do que o conteúdo dela (exceto por esta página aqui, pois amarelo no rosa é péssimo para se ler textos longos) representa. 
 Daí, conseguimos ver uma página como a do Roger That! como uma mistura do que eu ofereço com o que o [artista](the art of lucas mendonça) intencionou.
+
+]
+
+O esquema de cores básico padrão é o preto e branco, igual ao dessa página aqui. Na home (a lista de projetos), escolhi um esquema em que tento expor a minha visão pessoal da minha personalidade, com cores bastante fortes, mas que tem um quê de diversão. 
+
+OBS: Acabei não reparando inicialmente, mas ele é bem similar ao esquema de cores de um grupo que eu gosto muito, e recomendo pra todos, o [Kero Kero Bonito](http://kerokerobonito.com) (Apesar do nome, eles não tem nada a ver com o Brasil, mas são muito bons, garanto!)
+
+<div class="row">
+    <div class="col-md-6">
+        <img src="/img/site-pessoal/kkb.png" class="d-flex">
+    </div>
+    <div class="col-md-6">
+        <iframe width="560" height="234" src="https://www.youtube.com/embed/4aQBkCrpWOg" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+Quanto a navegação, procurei manter uma sidebar limpa mas que me desse a possibilidade de expandir e iterar sobre ela quando necessário no desktop, e no mobile, procurei resolver um problema que muito me incomoda no mundo mobile, que era remover os botões de navegação da parte de cima, porque ficam muito distantes dos dedos do usuário.
+
+--- inserir aquele heatmap da mão do usuário no celular
+--- não esquecer de incluir fonte
+
+Sendo assim, optei por deixá-la na parte inferior da tela, num lugar muito mais acessível, e procurei fazer com que ela tivesse um visual parecido com o da nossa querida [UITabBar](https://developer.apple.com/reference/uikit/uitabbar).
+
+--- inserir uma foto da ui tab bar (em qual app? Clock? Music? App Store?) vs tab bar desse site em mobile
+
 
 # Créditos
 

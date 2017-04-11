@@ -19,7 +19,7 @@ body {
     </div>
     <div class="divider-line"></div>
     <div class="container">
-        <h2>Meus Jogos</h2>
+        <h2>Meus Projetos</h2>
         <div class="row">                        
             {% assign jogos = site.jogos | sort: "order" %}
             {% for game in jogos %}
@@ -31,15 +31,6 @@ body {
                     pageprefix = "games"
                 %}
             {% endfor %}
-        </div>
-        <div class="row">
-  
-        </div>
-    </div>
-    <div class="divider-line"></div>
-    <div class="container">
-        <h2>Minha Web</h2>
-        <div class="row">
             {% for web in site.web %}            
                 {% include home/card.html 
                     image = web.thumbnail
@@ -49,12 +40,6 @@ body {
                     pageprefix = "web"
                 %} 
             {% endfor %}
-        </div>
-    </div>
-    <div class="divider-line"></div>
-    <div class="container">
-        <h2>O que escrevi</h2>
-        <div class="row">
             {% for article in site.articles %}            
                 {% include home/card.html 
                     image=article.thumbnail
