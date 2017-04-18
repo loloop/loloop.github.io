@@ -36,7 +36,7 @@ exclude:
 collections:
   jogos:
     output: true
-    permalink: /games/:path/
+    permalink: /jogos/:path/
   web:
     output: true
     permalink: /web/:path/

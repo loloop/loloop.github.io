@@ -18,10 +18,12 @@
         padding: 20px;
         ul{
             margin-top: 20px;
-            padding-left: 25%;
+            padding-left: 0;
+            margin-left: 0;  
+            text-align: center;          
         }
         li{
-            list-style: none;
+            list-style: none;            
         }  
         @media(max-width: $medium-screen){
             visibility: hidden;            

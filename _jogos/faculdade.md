@@ -1,7 +1,7 @@
 ---
 title: Na Faculdade
 thumbnail: /img/index/faculdade.png
-description: Mario Party educacional para tablets? Um jogo para Android, feito de forma totalmente nativa? Um first person antivirus? Minha faculdade foi um período de bastante experimentação
+description: 'Estes foram os maiores projetos que desenvolvi durante a faculdade'
 order: 7
 layout: article
 ---

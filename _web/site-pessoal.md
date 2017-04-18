@@ -1,7 +1,7 @@
 ---
 title: Site Pessoal
 thumbnail: /img/index/pessoal.png
-description: Desenvolvido para expor meu portfolio, criado com Jekyll, hospedado pelo GitHub Pages. Quer entender melhor como o desenvolvi? Dá uma olhada aí
+description: Desenvolvido para expor meu portfolio, criado com Jekyll, hospedado pelo GitHub Pages. Neste artigo exponho algumas das decisões tomadas durante o desenvolvimento deste site
 layout: article
 header: "/img/site-pessoal/header.png"
 ---
@@ -33,16 +33,20 @@ O site tá todo aberto lá no meu [GitHub](https://github.com/loloop/loloop.gith
 
 A primeira etapa do desenvolvimento deste site foi a criação de uma pequena guia de design ([disponível aqui](/design)), onde eu pude testar e experimentar o estilo que eu queria dar ao site antes de me comprometer a desenvolver os blocos que dariam o visual final para ele. Nesta etapa, eu procurei encontrar algum estilo em que eu fosse conseguir fazer com que cada página, caso eu quisesse, teria uma personalidade própria, mas ainda compartilharia elementos básicos como tipografia com as outras páginas, criando consistência entre elas.
 
---- inserir uma foto das páginas coloridas, provavelmente um print da home, um print da página do roger that e um outro artigo, talvez o da conf
+<div class="row">
+    <div class="col-md-4">
+        <img src="/img/site-pessoal/miniindex.png" class="d-flex">
+    </div>
+    <div class="col-md-4">
+        <img src="/img/site-pessoal/minisite.png" class="d-flex">
+    </div>
+    <div class="col-md-4">
+        <img src="/img/site-pessoal/miniroger.png" class="d-flex">
+    </div>
+</div>
 
-[   Texto antigo: 
 
-- páginas internas
-
-O esquema de cores de uma página é baseado no esquema de cores do que o conteúdo dela (exceto por esta página aqui, pois amarelo no rosa é péssimo para se ler textos longos) representa. 
-Daí, conseguimos ver uma página como a do Roger That! como uma mistura do que eu ofereço com o que o [artista](the art of lucas mendonça) intencionou.
-
-]
+Procuro basear o esquema de cores das páginas de acordo com o conteúdo que ela vai apresentar. Em páginas sem um tema específico ou em textos maiores, deixo com o "tema" básico, mas em outras, como na página do Roger That!, é muito interessante deixar a página demonstrar um pouco da personalidade da obra. (No caso do exemplo, a arte de Roger That! foi feita pelo [Lucas Mendonça](https://www.facebook.com/artoflucasmendonca/) e a página tenta refletir o estilo de arte que ele criou pro projeto)
 
 O esquema de cores básico padrão é o preto e branco, igual ao dessa página aqui. Na home (a lista de projetos), escolhi um esquema em que tento expor a minha visão pessoal da minha personalidade, com cores bastante fortes, mas que tem um quê de diversão. 
 
@@ -59,15 +63,25 @@ OBS: Acabei não reparando inicialmente, mas ele é bem similar ao esquema de co
 
 Quanto a navegação, procurei manter uma sidebar limpa mas que me desse a possibilidade de expandir e iterar sobre ela quando necessário no desktop, e no mobile, procurei resolver um problema que muito me incomoda no mundo mobile, que era remover os botões de navegação da parte de cima, porque ficam muito distantes dos dedos do usuário.
 
---- inserir aquele heatmap da mão do usuário no celular
---- não esquecer de incluir fonte
+!["Foto do conceito Thumb Zone, indicação de onde costumam ficar as mãos de um usuário num contexto de não acessiblildade"](/img/site-pessoal/thumb-zone.png)
+
+<span class="text-muted caption">Essa imagem veio de lá do <a href="https://www.smashingmagazine.com/2016/09/the-thumb-zone-designing-for-mobile-users/">Smashing Magazine</a></span>
 
 Sendo assim, optei por deixá-la na parte inferior da tela, num lugar muito mais acessível, e procurei fazer com que ela tivesse um visual parecido com o da nossa querida [UITabBar](https://developer.apple.com/reference/uikit/uitabbar).
 
---- inserir uma foto da ui tab bar (em qual app? Clock? Music? App Store?) vs tab bar desse site em mobile
+<div class="row">
+    <div class="col-md-6">
+        <img src="/img/site-pessoal/bottombar.png" class="d-flex">
+    </div>
+    <div class="col-md-6">
+        <img src="/img/site-pessoal/uitabbar.png" class="d-flex">      
+    </div>
+</div>
 
+<span class="text-muted caption">UITabBar na direita, no app de relógio do iOS 10, e essa página aqui, na esquerda</span>
 
 # Créditos
 
 Ícone de contato na navegação: Contacts book by iconsphere from the Noun Project
+
 Ícone de portfolio na navegação: code by Joshua McDonald from the Noun Project

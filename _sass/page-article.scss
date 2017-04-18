@@ -15,5 +15,13 @@
         img, iframe{
             margin: 0 auto;
         }
+        .caption {
+            display: block;
+            text-align: center;
+            font-size: 1rem;
+            a {
+                font-size: 1rem;
+            }
+        }
     }
 }
