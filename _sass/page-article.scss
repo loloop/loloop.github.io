@@ -1,0 +1,27 @@
+#article{
+    .content{
+        margin-left: 5%;
+        margin-right: 5%;
+        @media (max-width: $medium-screen) {
+            margin: 0;
+        }
+        img {
+            max-width: 100%;
+        }
+        video, iframe{
+            width: 100%;
+        }
+
+        img, iframe{
+            margin: 0 auto;
+        }
+        .caption {
+            display: block;
+            text-align: center;
+            font-size: 1rem;
+            a {
+                font-size: 1rem;
+            }
+        }
+    }
+}

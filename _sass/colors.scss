@@ -1,0 +1,16 @@
+$black: black;
+$white: white;
+$darkgray: #222;
+
+a{
+    background-color: $black;
+    color: $white;
+    &.inverted{
+        background-color: $white;
+        color: $black;
+    }    
+}
+
+.darkgray{
+    color: $darkgray;
+}

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik|Montserrrat');
+
+$veryBold: 700;
+$bold: 500;
+$normalFont: 1.2rem;
+$verySmallFont: 0.8rem;
+$bigFont: 1.7rem;
+$bigFontLineHeight: 2rem;
+$slightlyBigFont: 2rem;
+$hugeFont: 4.5rem;
+$hugerFont: 7rem;
+$minusculeFont: 0.7rem;
+
+body{
+    font-family: 'Rubik', sans-serif;
+    color: $darkgray;
+}
+
+.montserrat{
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3{
+    @extend .montserrat;
+    font-weight: $veryBold;
+}
+
+h1{
+    &.huge{
+        font-size: $hugeFont;
+        @media(max-width: $smaller-phone){
+            font-size: $hugeFont - 1.5;
+        }
+    }
+    &.extra-huge{
+        font-size: $hugerFont;
+        @media(max-width: $small-phone){
+            font-size: $hugeFont - 0.8;    
+        }
+    }
+}
+
+h2{
+    a{
+        font-size: $slightlyBigFont; //h2 are 2rem by default
+    }
+}
+
+h3{
+    &.subtitle{
+        font-weight: $bold;
+    }
+}
+
+p {
+    font-size: $normalFont;
+    &.big{
+        font-size: $bigFont;
+        line-height: $bigFontLineHeight;
+        a { //Links inside a paragraph are styled to fit within the text
+            font-size: $bigFont;
+            line-height: $bigFontLineHeight;
+        }
+    }
+    &.very-small{
+        font-size: $verySmallFont;
+        a{
+            font-size: $verySmallFont;
+        }
+    }
+    a{
+        font-weight: $bold;
+        font-size: $normalFont;
+        text-decoration: none;
+    }
+}
+
+a {    
+    font-size: $bigFont;    
+    &:hover{
+        color: deepskyblue;
+        text-decoration: none;
+    }
+}
+
+.center{
+    text-align: center;
+}
+
+@media(min-width: $medium-screen){
+    .off-center{
+        margin-left: 7%;
+    }
+}
+
+.minuscule {
+    font-size: $minusculeFont;
+}
