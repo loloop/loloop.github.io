@@ -14,7 +14,7 @@ Com isso, era de se esperar que o próprio também tivesse um artigo, detalhando
 **Aviso:** este é um documento em constante mutação, pois é de se esperar que ele evolua juntamente com o site. Tendo dito isto, começo contando
 sobre o meu ponto de partida.
 
-O chute inicial que o desenvolvimento desse site precisava era, não só a necessidade de atualizar conteíudo do meu site antigo (na imagem, aqui embaixo, tava bem triste),
+O chute inicial que o desenvolvimento desse site precisava era, não só a necessidade de atualizar conteúdo do meu site antigo (na imagem, aqui embaixo, tava bem triste),
 como também de se criar um espaço onde eu poderia, com uma certa facilidade, dar manutenção e expor os meus projetos pessoais futuros. Uma página HTML estática com alguns
 poucos links é um lugar péssimo pra se fazer isso, mas por outro lado, uma página com um stack legal, hospedado pelo próprio GitHub? Aí sim a gente gosta.
 
