@@ -71,10 +71,10 @@ Sendo assim, optei por deixá-la na parte inferior da tela, num lugar muito mais
 
 <div class="row">
     <div class="col-md-6">
-        <img src="/img/site-pessoal/bottombar.png" class="d-flex">
+        <img src="/img/site-pessoal/bottombar.PNG" class="d-flex">
     </div>
     <div class="col-md-6">
-        <img src="/img/site-pessoal/uitabbar.png" class="d-flex">      
+        <img src="/img/site-pessoal/uitabbar.PNG" class="d-flex">      
     </div>
 </div>
 
