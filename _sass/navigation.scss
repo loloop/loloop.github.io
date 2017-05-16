@@ -1,33 +1,36 @@
+nav {
+    width: 100%;
+}
+
 .site{
     &-navigation{
-        justify-content: center;
+        @media(max-width: $bootstrap-sm) {
+            display: none;
+        }
+        #title {
+            font-weight: 500;
+        }
+        display: flex;
+        justify-content: flex-start;
         background-color: $white;
-        img{
-            margin: 10px;            
-            height: 180px;
-            border-radius: 50%;
-        }        
-        border-right: 1px solid #eee;
-        position: fixed;
-        height: 100vh;
-        float: left;        
-        overflow-x: hidden;
-        z-index: 1000;        
-        bottom: 0;
-        left: 0;        
-        padding: 20px;
+        margin: 0;              
+        padding: 10px 10%;        
+        a, li {
+            align-self: center;
+            margin: 0 10px;
+        }
         ul{
-            margin-top: 20px;
+            display: flex;
             padding-left: 0;
             margin-left: 0;  
+            margin-bottom: 0;  
             text-align: center;          
         }
         li{
-            list-style: none;            
+            list-style: none;    
+            font-weight: 300;        
         }  
-        @media(max-width: $medium-screen){
-            visibility: hidden;            
-        }
+
         &-divisor{
             border-right: 1px solid #eee;
             margin-bottom: 1%;
@@ -50,10 +53,8 @@
             .clickable {
                 margin: 0 auto;
             }
-            @media(min-width: $medium-screen){            
-                visibility: hidden;         
-                height: 0;
-                width: 0;   
+            @media(min-width: $bootstrap-sm){            
+                display: none;   
             }
         }
     }

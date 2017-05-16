@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik|Montserrrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700|Rubik:300,500,700');
+
 
 $veryBold: 700;
 $bold: 500;
@@ -53,6 +54,7 @@ h3{
 }
 
 p {
+    font-weight: 300;
     font-size: $normalFont;
     &.big{
         font-size: $bigFont;

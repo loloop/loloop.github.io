@@ -31,7 +31,7 @@ O site tá todo aberto lá no meu [GitHub](https://github.com/loloop/loloop.gith
 
 !["Foto da minha página antiga, fundo cinza, alguns poucos links azuis para projetos meus que não estão mais disponíveis na internet"](/img/site-pessoal/design-stage.png)
 
-A primeira etapa do desenvolvimento deste site foi a criação de uma pequena guia de design ([disponível aqui](/design)), onde eu pude testar e experimentar o estilo que eu queria dar ao site antes de me comprometer a desenvolver os blocos que dariam o visual final para ele. Nesta etapa, eu procurei encontrar algum estilo em que eu fosse conseguir fazer com que cada página, caso eu quisesse, teria uma personalidade própria, mas ainda compartilharia elementos básicos como tipografia com as outras páginas, criando consistência entre elas.
+A primeira etapa do desenvolvimento deste site foi a criação de uma [pequena guia de design](/design), onde eu pude testar e experimentar o estilo que eu queria dar ao site antes de me comprometer a desenvolver os blocos que dariam o visual final para ele. Nesta etapa, eu procurei encontrar algum estilo em que eu fosse conseguir fazer com que cada página, caso eu quisesse, teria uma personalidade própria, mas ainda compartilharia elementos básicos como tipografia com as outras páginas, criando consistência entre elas.
 
 <div class="row">
     <div class="col-md-4">
@@ -80,7 +80,7 @@ Sendo assim, optei por deixá-la na parte inferior da tela, num lugar muito mais
 
 <span class="text-muted caption">UITabBar na direita, no app de relógio do iOS 10, e essa página aqui, na esquerda</span>
 
-# Créditos
+# créditos
 
 Ícone de contato na navegação: Contacts book by iconsphere from the Noun Project
 
