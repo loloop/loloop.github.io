@@ -1,9 +1,10 @@
 ---
 title: Site Pessoal
 thumbnail: /img/index/pessoal.png
-description: Desenvolvido para expor meu portfolio, criado com Jekyll, hospedado pelo GitHub Pages. Neste artigo exponho algumas das decisões tomadas durante o desenvolvimento deste site
+description: Desenvolvido para expor meus projetos, criado com Jekyll, hospedado pelo GitHub Pages. Expus aqui o processo de criação e desenvolvimento deste site
 layout: article
 header: "/img/site-pessoal/header.png"
+publish: true
 ---
 Iteração após iteração, o meu site pessoal surgiu da minha vontade de ter, em um lugar só, a coleção de todos os meus trabalhos, 
 apresentados de uma forma que não fosse apenas uma mera lista de pontos num currículo, mas sim coleção de artigos expondo seu processo
@@ -44,7 +45,7 @@ A primeira etapa do desenvolvimento deste site foi a criação de uma [pequena g
         <img src="/img/site-pessoal/miniroger.png" class="d-flex">
     </div>
 </div>
-
+<span class="text-muted caption">As imagens aqui são de uma versão antiga do site, que ainda tinha uma sidebar, mas o ponto do texto ainda é válido</span>
 
 Procuro basear o esquema de cores das páginas de acordo com o conteúdo que ela vai apresentar. Em páginas sem um tema específico ou em textos maiores, deixo com o "tema" básico, mas em outras, como na página do Roger That!, é muito interessante deixar a página demonstrar um pouco da personalidade da obra. (No caso do exemplo, a arte de Roger That! foi feita pelo [Lucas Mendonça](https://www.facebook.com/artoflucasmendonca/) e a página tenta refletir o estilo de arte que ele criou pro projeto)
 
@@ -61,13 +62,14 @@ OBS: Acabei não reparando inicialmente, mas ele é bem similar ao esquema de co
     </div>
 </div>
 
-Quanto a navegação, procurei manter uma sidebar limpa mas que me desse a possibilidade de expandir e iterar sobre ela quando necessário no desktop, e no mobile, procurei resolver um problema que muito me incomoda no mundo mobile, que era remover os botões de navegação da parte de cima, porque ficam muito distantes dos dedos do usuário.
+Quanto a navegação, procurei manter uma ~~sidebar limpa mas que me desse a possibilidade de expandir e iterar sobre ela quando necessário no desktop~~<sup>1</sup>, e no mobile, procurei resolver um problema que muito me incomoda no mundo mobile, que era remover os botões de navegação da parte de cima, porque ficam muito distantes dos dedos do usuário.
 
 !["Foto do conceito Thumb Zone, indicação de onde costumam ficar as mãos de um usuário num contexto de não acessiblildade"](/img/site-pessoal/thumb-zone.png)
 
 <span class="text-muted caption">Essa imagem veio de lá do <a href="https://www.smashingmagazine.com/2016/09/the-thumb-zone-designing-for-mobile-users/">Smashing Magazine</a></span>
 
 Sendo assim, optei por deixá-la na parte inferior da tela, num lugar muito mais acessível, e procurei fazer com que ela tivesse um visual parecido com o da nossa querida [UITabBar](https://developer.apple.com/reference/uikit/uitabbar).
+
 
 <div class="row">
     <div class="col-md-6">
@@ -82,6 +84,10 @@ Sendo assim, optei por deixá-la na parte inferior da tela, num lugar muito mais
 
 # créditos
 
-Ícone de contato na navegação: Contacts book by iconsphere from the Noun Project
+Ícone de contato na navegação: Contacts book by iconsphere from the Noun Project.
+Ícone de portfolio na navegação: code by Joshua McDonald from the Noun Project.
+Ícone do GitHub na navegação pertence [ao GitHub](https://github.com/logos)
 
-Ícone de portfolio na navegação: code by Joshua McDonald from the Noun Project
+#### Footnotes 
+
+<sup>1</sup> - Um belo dia eu me incomodei com a sidebar por alguns motivos (ter a minha foto, ocupar espaço demais, atrapalhar na leitura de um artigo) e optei por tirar ela, e no lugar coloquei a navegação horizontal ao topo da página. É possível expandir sobre ela tão bem quanto a sidebar nesse caso de uso aqui

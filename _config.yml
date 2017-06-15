@@ -28,14 +28,9 @@ exclude:
   - Gemfile.lock
 
 collections:
-  jogos:
+  projetos:
     output: true
-    permalink: /jogos/:path/
-  web:
-    output: true
-    permalink: /web/:path/
-  articles:
-    output: false
+    permalink: /projetos/:path/
 
 defaults:
   -

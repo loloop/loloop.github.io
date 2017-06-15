@@ -1,5 +1,10 @@
 nav {
     width: 100%;
+    .desktop {
+        @media(max-width: $bootstrap-sm) {
+            display: none;
+        }
+    }
 }
 
 .site{

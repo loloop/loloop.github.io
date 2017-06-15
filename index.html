@@ -19,43 +19,7 @@ a.inverted:hover{
         <h1 class="huge">Oi, eu sou o Mauricio</h1>
         <h2>Trabalho na <a class="inverted" href="https://rowbots.com.br">Rowbots</a>, desenvolvendo o <a class="inverted" href="http://dedig.com.br">Dedig</a></h2>
         <p>
-            Minha especialidade é no desenvolvimento de projetos com <a class="inverted" href="https://unity3d.com">Unity3D</a>, gosto muito do ecossistema Apple (iOS, macOS, watchOS, tvOS) e também faço algumas brincadeiras na Web (como essa minha página aqui)
-        </p>        
-        <p>
-            Dá uma olhada nos meus projetos, tenho certeza que você vai gostar :)
+            Me especializo no desenvolvimento de projetos com <a class="inverted" href="https://unity3d.com">Unity3D</a>, sou fã do ecossistema Apple (iOS, macOS, watchOS, tvOS) e de vez em quando brinco com Web
         </p>
-    </div>
-    <div class="divider-line"></div>
-    <div class="container">
-        <h2>Meus Projetos</h2>
-        <div class="row">                        
-            {% assign jogos = site.jogos | sort: "order" %}
-            {% for game in jogos %}
-                {% include home/card.html 
-                    image = game.thumbnail
-                    title = game.title
-                    description = game.description
-                    link = game.slug
-                    pageprefix = "jogos"
-                %}
-            {% endfor %}
-            {% for web in site.web %}            
-                {% include home/card.html 
-                    image = web.thumbnail
-                    title = web.title                    
-                    description = web.description
-                    link = web.slug
-                    pageprefix = "web"
-                %} 
-            {% endfor %}
-            {% for article in site.articles %}            
-                {% include home/card.html 
-                    image=article.thumbnail
-                    title=article.title                   
-                    description=article.description
-                    link=article.link
-                %}
-            {% endfor %}            
-        </div>
     </div>
 </div>

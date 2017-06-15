@@ -2,8 +2,9 @@
 title: "Roger That!"
 thumbnail: "/img/index/roger.jpg"
 header: "/img/roger/roger.jpg"
-description: "Jogo desenvolvido na GlobalGameJam 2017. Multiplayer, realidade virtual, cross-platform. Vem dar uma olhada :)"
+description: "Jogo desenvolvido na GlobalGameJam 2017. Multiplayer, realidade virtual, cross-platform."
 layout: article
+link: http://globalgamejam.org/2017/games/roger
 order: 0
 ---
 <style>
@@ -24,7 +25,7 @@ order: 0
         background-size: cover;
     }
 </style>
-
+{% comment %}
 # Teste
 
 Esta é uma página que eu ainda não escrevi o texto mas fica bem bacana no print :)
@@ -38,3 +39,6 @@ Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is ad
 Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.
 
 Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.
+{% endcomment %}
+
+Oi, tudo bem? Eu ainda não terminei de escrever o texto dessa página :)
