@@ -24,4 +24,7 @@
             }
         }
     }
+    @media(max-width: $bootstrap-sm){
+        margin-bottom: 50px;
+    }
 }

@@ -2,7 +2,7 @@
 title: Na Faculdade
 thumbnail: /img/index/faculdade.png
 description: 'Estes foram os maiores projetos que desenvolvi durante a faculdade'
-order: 7
+publish: true
 layout: article
 ---
 

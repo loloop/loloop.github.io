@@ -1,0 +1,11 @@
+<div class="proj-card">    
+    <div class="image">
+        <img src="{{include.image}}">    
+    </div>
+    <div class="inside">
+        <h3>{{include.title}}</h3>
+        <p>{{include.description}}</p>
+        {% if include.outerLink %}<a href="{{include.outerLink}}">Visitar projeto</a>{% endif %}
+        {% if include.publish %}<a href="{{include.link}}">Ler sobre</a>{% endif %}
+    </div>
+</div>

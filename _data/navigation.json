@@ -1,7 +1,12 @@
-[
+[   
     {
-        "text": "Portfolio",
-        "link": "/",
+        "text": "Home",
+        "link":"/",
+        "image":"/img/home.svg"
+    },
+    {
+        "text": "Projetos",
+        "link": "/projetos",
         "image": "/img/portfolio.svg"
     },
     {

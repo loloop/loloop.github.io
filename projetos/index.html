@@ -1,0 +1,19 @@
+---
+layout: article
+title: Meus Projetos
+---
+<div class="container projetos">
+    <div class="row">
+        {% for proj in site.projetos %}
+            {% include projetos/proj-card.html
+                image = proj.thumbnail
+                title = proj.title
+                description = proj.description
+                link = proj.slug
+                outerLink = proj.link
+                publish = proj.publish
+            %}
+            {% unless forloop.last %} <div class="divider-line"></div> {% endunless %}
+        {% endfor %}       
+    </div>
+</div>

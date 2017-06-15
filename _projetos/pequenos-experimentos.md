@@ -5,6 +5,7 @@ bigpicture: /img/mobile/big.jpg
 description: Pequenos experimentos e exercícios relacionados ao desenvolvimento de jogos
 layout: article
 order: 5
+publish: true
 ---
 
 Todos os meus pequenos experimentos no mundo do desenvolvimento, terminados ou não, estão disponíveis no meu [GitHub](https://github.com/loloop). Esta página deve viver sendo atualizada a medida que eu desenvolvo mais coisas :D
