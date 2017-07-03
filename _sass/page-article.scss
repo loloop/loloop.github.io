@@ -26,5 +26,19 @@
     }
     @media(max-width: $bootstrap-sm){
         margin-bottom: 50px;
+    }    
+}
+
+/* disable navigation for printing */
+@media only print {
+    nav {
+        display: none;
     }
+    .pdf-button {
+        display: none;
+    }
+}
+.pdf-button {
+    float: right;
+    padding: 0 5px;
 }
