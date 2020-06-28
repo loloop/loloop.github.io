@@ -1,4 +1,4 @@
-<nav class="desktop">
+<nav>
     <div class="site-navigation">
     <a href="/" class="inverted" id="title">MC</a>
     <ul>
@@ -10,22 +10,3 @@
     </ul>
     </div>
 </nav> 
-<nav class="container site-navigation-mobile">
-    <div class="row">
-    {% for item in site.data.navigation %}
-    <div class="col">        
-        <a href="{{item.link}}">
-            <div class="row">
-                <img class="clickable" src="{{item.image}}">
-            </div>
-            <div class="row title">
-                <span class="minuscule center darkgray clickable">{{item.text}}</span>
-            </div>
-        </a>
-    </div>
-    {% unless forloop.last %}
-    <div class="site-navigation-divisor"></div>
-    {% endunless %}
-    {% endfor %}
-    </div>
-</nav>

@@ -1,22 +1,29 @@
+{
+    "en": [
+        {
+            "text": "Apple Platforms",
+            "link": "/apple",
+            "image": "/img/portfolio.svg"
+        },
+        {
+            "text": "Misc",
+            "link": "/cv",
+            "image": "/img/contato.svg"
+        }
+    ],
+    "pt": [
+        {
+            "text": "Apple Platforms",
+            "link": "/blog",
+            "image": "/img/portfolio.svg"
+        },
+        {
+            "text": "Misc",
+            "link": "/cv",
+            "image": "/img/contato.svg"
+        }
+    ]
+}
 [   
-    {
-        "text": "Home",
-        "link":"/",
-        "image":"/img/home.svg"
-    },
-    {
-        "text": "Projetos",
-        "link": "/projetos",
-        "image": "/img/portfolio.svg"
-    },
-    {
-        "text": "Contato",
-        "link": "/contato",
-        "image": "/img/contato.svg"
-    },
-    {
-        "text": "GitHub",
-        "link": "https://github.com/loloop",
-        "image": "/img/octocat.svg"
-    }
+
 ]

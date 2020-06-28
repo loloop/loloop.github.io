@@ -20,6 +20,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 
 gems:
   - jekyll-feed
@@ -31,6 +32,12 @@ collections:
   projetos:
     output: true
     permalink: /projetos/:path/
+  articles:
+    output: true
+    permalink: /post/:path/
+  articles-en:
+    output: true
+    permalink: /en/post/:path/
 
 defaults:
   -

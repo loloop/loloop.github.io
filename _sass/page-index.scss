@@ -33,3 +33,14 @@
         }
     }
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .content {
+        max-width: 1000px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
