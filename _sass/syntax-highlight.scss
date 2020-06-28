@@ -6,6 +6,24 @@
     color: #75715e;
     font-style: italic;
   }
+
+  pre {
+    overflow-x: auto;
+  }
+
+  @media (max-width: $medium-screen) {
+    pre {      
+      padding: 0 10px;
+      code {
+        font-size: 10px;
+      }
+    }
+
+    width: 100vw;
+    padding: 0;
+    border-radius: 0px;
+    margin-left: -10px;
+  }
 }
 
 /* Unmodified Monokai below */

@@ -55,4 +55,8 @@ article {
     iframe {
         align-self: center;
     }
+
+    @media (max-width: $medium-screen) {
+        margin-top: 50px;
+    }
 }
