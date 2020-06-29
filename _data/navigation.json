@@ -2,12 +2,12 @@
     "placeholders": [
         {
             "text": "artigos",
-            "link": "/",
+            "link": "/"
         },
         {
             "text": "contato",
-            "link": "/contato",
-        },
+            "link": "/contato"
+        }
     ],
     "en": [
         {
