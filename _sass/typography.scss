@@ -3,6 +3,7 @@
 
 $veryBold: 700;
 $bold: 500;
+$normal:300;
 $normalFont: 1.2rem;
 $verySmallFont: 0.8rem;
 $bigFont: 1.7rem;
@@ -11,6 +12,7 @@ $slightlyBigFont: 2rem;
 $hugeFont: 4.5rem;
 $hugerFont: 7rem;
 $minusculeFont: 0.7rem;
+$h1Font: 3rem;
 
 body{
     font-family: 'Rubik', 'Helvetica', sans-serif;
@@ -27,6 +29,7 @@ h1, h2, h3{
 }
 
 h1{
+    font-size: $h1Font;
     &.huge{
         font-size: $hugeFont;
         @media(max-width: $smaller-phone){
@@ -78,14 +81,28 @@ p {
         font-weight: $bold;
         font-size: $normalFont;
         text-decoration: none;
+        padding-left: 3px;
+        padding-right: 3px;
+        border-radius: 5px;
     }
 }
 
-a {    
+a {  
+    background-color: $black;
+    color: $white;  
     font-size: $bigFont;    
+    text-decoration: none;
     &:hover{
-        color: deepskyblue;
-        text-decoration: none;
+        color: $lightblue;
+    }
+
+    &.inverted{
+        background-color: $white;
+        color: $black;
+    }
+
+    &.light {
+        font-weight: 300;
     }
 }
 

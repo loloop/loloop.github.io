@@ -8,175 +8,55 @@
 <meta name="author" content="Mauricio Cardozo">
 <meta property="og:title" content="Mauricio Cardozo">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://localhost:4000">
-<meta property="og:image" content="http://mauriciocardozo.me/facebook-cover.jpg">
+<meta property="og:url" content="http://0.0.0.0:4000">
+<meta property="og:image" content="http://mauriciocardozo.me/img/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="720">
 <meta property="og:image:height" content="368">
 <meta property="og:description" content="">        
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>        
-        <div class="container-fluid">
-            <div class="row" style="height: 100vh;">
-                <nav class="">
+        <nav>
     <div class="site-navigation">
     <a href="/" class="inverted" id="title">MC</a>
     <ul>
         
             <li>
-                <a class="inverted" href="/projetos">Projetos</a>
+                <a class="inverted" href="/">artigos</a>
             </li>
         
             <li>
-                <a class="inverted" href="/blog">Blog</a>
-            </li>
-        
-            <li>
-                <a class="inverted" href="/contato">Contato</a>
-            </li>
-        
-            <li>
-                <a class="inverted" href="https://github.com/loloop">GitHub</a>
+                <a class="inverted" href="/contato">contato</a>
             </li>
         
     </ul>
     </div>
-</nav> 
-<nav class="container site-navigation-mobile">
-    <div class="row">
-    
-    <div class="col">        
-        <a href="/projetos">
-            <div class="row">
-                <img class="clickable" src="/img/portfolio.svg">
-            </div>
-            <div class="row title">
-                <span class="minuscule center darkgray clickable">Projetos</span>
-            </div>
-        </a>
-    </div>
-    
-    <div class="site-navigation-divisor"></div>
-    
-    
-    <div class="col">        
-        <a href="/blog">
-            <div class="row">
-                <img class="clickable" src="/img/portfolio.svg">
-            </div>
-            <div class="row title">
-                <span class="minuscule center darkgray clickable">Blog</span>
-            </div>
-        </a>
-    </div>
-    
-    <div class="site-navigation-divisor"></div>
-    
-    
-    <div class="col">        
-        <a href="/contato">
-            <div class="row">
-                <img class="clickable" src="/img/contato.svg">
-            </div>
-            <div class="row title">
-                <span class="minuscule center darkgray clickable">Contato</span>
-            </div>
-        </a>
-    </div>
-    
-    <div class="site-navigation-divisor"></div>
-    
-    
-    <div class="col">        
-        <a href="https://github.com/loloop">
-            <div class="row">
-                <img class="clickable" src="/img/octocat.svg">
-            </div>
-            <div class="row title">
-                <span class="minuscule center darkgray clickable">GitHub</span>
-            </div>
-        </a>
-    </div>
-    
-    
-    </div>
-</nav>  
-                <main class="col-md-12 col-lg-12 col-sm-12" id="article" style='flex-grow: 1;'>
-                    <div class="row content">              
-                        <div class="col">          
-                            <style>
-/* page-specific styles */
-body, .site-navigation {
-    background-color: #EA3991;
-}
-a.inverted {
-    background-color: #EA3991;
-    color: white;
-}
-a.inverted:hover{
-    color: yellow;
-}
-</style>
-<div class="home">
-    <div class="container intro">
-        <h1 class="huge">Oi, eu sou o Mauricio</h1>
-        <h2>Trabalho na <a class="inverted" href="https://rowbots.com.br">Rowbots</a>, desenvolvendo o <a class="inverted" href="http://dedig.com.br">Dedig</a></h2>
-        <p>
-            Me especializo no desenvolvimento de projetos com <a class="inverted" href="https://unity3d.com">Unity3D</a>, sou fã do ecossistema Apple (iOS, macOS, watchOS, tvOS) e de vez em quando brinco com Web
-        </p>
-    </div>
-    <p>Remover esse monte de projetos da home, jogar eles numa página separada só para eles, jogar os posts escritos no blog, colocar
-        esse container que tem a minha intro como a única coisa da home e reduzir a dependência com o Bootstrap
-    </p>
-    <!--<div class="divider-line"></div>
-    <div class="container">
-        <h2>Meus Projetos</h2>
-        <div class="row">                        
-            
-            
-                <div class="col-md-4 col-sm-6 home-card">
-    <a href="/jogos/pequenos-experimentos"><img src="/img/index/mobile.png"></a>
-    <h4>Pequenos Experimentos</h4>
-    <p>Pequenos experimentos e exercícios relacionados ao desenvolvimento de jogos</p>
-    <a href="/jogos/pequenos-experimentos">Ler sobre</a>
+</nav>   
+        <main>
+            <div class="content">
+                <div class="intro">
+    <h1 class="huge">Oi, eu sou o Mauricio</h1>
+    <h2>Esse é o meu blog sobre tecnologias Apple e mais algumas outras coisas :)</h2>
 </div>
-            
-                <div class="col-md-4 col-sm-6 home-card">
-    <a href="/jogos/faculdade"><img src="/img/index/faculdade.png"></a>
-    <h4>Na Faculdade</h4>
-    <p>Estes foram os maiores projetos que desenvolvi durante a faculdade</p>
-    <a href="/jogos/faculdade">Ler sobre</a>
+
+
+
+
+
+<div>
+    <h2>
+        <a href="/post/unity3d-and-apple/" class="inverted">
+            Unity3D e o mundo Apple
+        </a>
+    </h2>
+<p><p>Este artigo é uma cópia do meu artigo publicado para o equinociOS 2016, uma reunião de artigos criados durante o equinócio feitos pela comunidade Apple no Brasil.</p>
+
+</p>
 </div>
-            
-                        
-                <div class="col-md-4 col-sm-6 home-card">
-    <a href="/web/site-pessoal"><img src="/img/index/pessoal.png"></a>
-    <h4>Site Pessoal</h4>
-    <p>Desenvolvido para expor meu portfolio, criado com Jekyll, hospedado pelo GitHub Pages. Neste artigo exponho algumas das decisões tomadas durante o desenvolvimento deste site</p>
-    <a href="/web/site-pessoal">Ler sobre</a>
-</div> 
-            
-                        
-                <div class="col-md-4 col-sm-6 home-card">
-    <a href="//equinocios.com/gamedev/2016/03/11/Unity3DeoMundoApple/"><img src="/img/index/equinocios.jpg"></a>
-    <h4>Unity3D e o Mundo Apple</h4>
-    <p>Escrevi sobre as integrações básicas da Unity3D com o SDK e as features do iPhone feito para o <a class="inverted" href="http://equinocios.com">equinociOS 2016</a></p>
-    <a href="//equinocios.com/gamedev/2016/03/11/Unity3DeoMundoApple/">Ler sobre</a>
-</div>
-                        
-        </div>
-    </div>-->
-</div>      
-                        </div>                  
-                    </div>
-                </main>
+
+      
             </div>
-        </div>
-     
+        </main>     
     </body>
 </html>

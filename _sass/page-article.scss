@@ -42,3 +42,21 @@
     float: right;
     padding: 0 5px;
 }
+
+article {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    img {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    iframe {
+        align-self: center;
+    }
+
+    @media (max-width: $medium-screen) {
+        margin-top: 50px;
+    }
+}

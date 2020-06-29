@@ -1,0 +1,17 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40vh;
+    
+    .content {
+        max-width: 1000px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        @media (max-width: $medium-screen) {
+            width: 95vw;
+            padding: 0;
+        }
+    }
+}

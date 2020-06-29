@@ -4,18 +4,11 @@
         {% include head.html %}
     </head>
     <body>        
-        <div class="container-fluid">
-            <div class="row" style="height: 100vh;">
-                {% include navigation.html %}  
-                <main class="col-md-12 col-lg-12 col-sm-12" id="article" style='flex-grow: 1;'>
-                    <div class="row content">              
-                        <div class="col">          
-                            {{content}}      
-                        </div>                  
-                    </div>
-                </main>
+        {% include navigation.html %}  
+        <main>
+            <div class="content">
+                {{content}}      
             </div>
-        </div>
-     
+        </main>     
     </body>
 </html>
