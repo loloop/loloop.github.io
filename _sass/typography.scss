@@ -32,8 +32,8 @@ h1{
     font-size: $h1Font;
     &.huge{
         font-size: $hugeFont;
-        @media(max-width: $smaller-phone){
-            font-size: $hugeFont - 1.5;
+        @media(max-width: $bootstrap-sm){
+            font-size: $hugeFont - 1;
         }
     }
     &.extra-huge{
