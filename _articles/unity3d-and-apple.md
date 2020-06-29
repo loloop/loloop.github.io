@@ -5,7 +5,6 @@ thumbnail:
 description: 'description'
 publish: true
 header: 
-layout: article-v2
 date: 2016-03-11 00:00:00
 ---
 
@@ -58,7 +57,7 @@ As outras configurações básicas de cada projeto estão no `Edit > Project Set
 
 Vou começar falando da parte ruim do sistema de UI da Unity, que é o fato dela não saber lidar muito bem com os layouts aparelhos de dpi diferentes e resoluções parecidas, infelizmente nos forçando a fazer algo parecido com isso:
 
-~~~ csharp
+{% highlight csharp %}
 
 //O Device.generation retorna um enum com a versão específica do device
 //então também é possível utilizar ele para saber se o usuário tem um iPad Pro ou um iPad Air, por exemplo
@@ -70,7 +69,7 @@ if(UnityEngine.iOS.Device.generation.ToString().Contains("iPhone")){
 	//Carrega a UI específica do iPad
 }
 
-~~~
+{% endhighlight %}
 
 <!-- http://docs.unity3d.com/ScriptReference/iOS.DeviceGeneration.html -->
 
@@ -110,39 +109,39 @@ Infelizmente a Unity não tem nada para detecção de swipe, então nesse caso n
 
 O uso do TouchKit é bem simples para detectar swiping:
 
-~~~ csharp
+{% highlight csharp %}
 
-        void Start () {    
-            //É possível limitar as direções do swipe que o TK vai detectar
-            TKSwipeRecognizer recognizer = new TKSwipeRecognizer(TKSwipeDirection.All); 
+void Start () {    
+    //É possível limitar as direções do swipe que o TK vai detectar
+    TKSwipeRecognizer recognizer = new TKSwipeRecognizer(TKSwipeDirection.All); 
+    
+    recognizer.gestureRecognizedEvent += (r) => {
+            //Ação desejada no swipe vem aqui
+            swipeText.text = r.completedSwipeDirection.ToString();
+            Color color = Color.black;
+            switch (r.completedSwipeDirection){
+                case TKSwipeDirection.Down:
+                    color = Color.green;
+                    break;
+                case TKSwipeDirection.Up:
+                    color = Color.blue;
+                    break;
+                case TKSwipeDirection.Left:
+                    color = Color.magenta;
+                    break;
+                case TKSwipeDirection.Right:
+                    color = Color.yellow;
+                    break;
+                default:
+                    break;
+            }
+            background.color = color;
+    }; 
             
-            recognizer.gestureRecognizedEvent += (r) => {
-                    //Ação desejada no swipe vem aqui
-                    swipeText.text = r.completedSwipeDirection.ToString();
-                    Color color = Color.black;
-                    switch (r.completedSwipeDirection){
-                        case TKSwipeDirection.Down:
-                            color = Color.green;
-                            break;
-                        case TKSwipeDirection.Up:
-                            color = Color.blue;
-                            break;
-                        case TKSwipeDirection.Left:
-                            color = Color.magenta;
-                            break;
-                        case TKSwipeDirection.Right:
-                            color = Color.yellow;
-                            break;
-                        default:
-                            break;
-                    }
-                    background.color = color;
-            }; 
-                  
-            TouchKit.addGestureRecognizer(recognizer);
-        }
+    TouchKit.addGestureRecognizer(recognizer);
+}
 
-~~~
+{% endhighlight %}
 
 O `TKSwipeRecognizer` retorna valores bem completos sobre o swipe, com posição de início, posição final, direção e velocidade do swipe, de forma bem fácil de tratar no código. Além do Swipe, o TouchKit também traz informações sobre pinch, tap, long press, pan e até toques normais, caso necessário.
 
@@ -150,16 +149,16 @@ O `TKSwipeRecognizer` retorna valores bem completos sobre o swipe, com posição
 
 O input de aceleração é reportado como um `Vector3` que representa a aceleração em valores de força G que o device está recebendo. É possível capturar e utilizar estes dados de forma bem simples, com o `Input.acceleration`: 
 
-~~~ csharp
+{% highlight csharp %}
 
-        IEnumerator NonSmoothedAccelerate(){
-            while(true){
-                transform.localPosition = Input.acceleration * strength;
-                yield return new WaitForEndOfFrame();                
-            }
-        }
+IEnumerator NonSmoothedAccelerate(){
+    while(true){
+        transform.localPosition = Input.acceleration * strength;
+        yield return new WaitForEndOfFrame();                
+    }
+}
 
-~~~
+{% endhighlight %}
 
 O problema de usar o valor direto assim é esse aqui:
 
@@ -168,23 +167,23 @@ O problema de usar o valor direto assim é esse aqui:
 
 Você muito provavelmente vai querer suavizar estes valores pro jogador não achar que ele tem alguma tremedeira ou coisa do tipo, e é bem simples, é só usar o `SmoothDamp` do próprio `Vector3` que a gente pode definir o valor que vai ser suavizado, a "força" com que ele vai ser suavizado, e o delay da suavização, fazendo algo parecido com o seguinte código:
 
-~~~ csharp
+{% highlight csharp %}
 
-        IEnumerator Accelerate(){
-            Vector3 lastFramePosition = transform.localPosition;
-            Vector3 velocity = Vector3.zero;            
-            while(true){
-                baseline = Input.acceleration;
-                //Inputs do sensor devem ser "limpos", senão ele fica pulando loucamente por aí              
-                Vector3 accelData = Vector3.SmoothDamp(lastFramePosition, baseline, ref velocity, 0.1f); 
-                Vector2 ad = (Vector2) accelData;  
-                transform.Translate(ad * strength * Time.deltaTime);
-                lastFramePosition = transform.localPosition;            
-                yield return new WaitForEndOfFrame();                
-            }
-        }
+IEnumerator Accelerate(){
+    Vector3 lastFramePosition = transform.localPosition;
+    Vector3 velocity = Vector3.zero;            
+    while(true){
+        baseline = Input.acceleration;
+        //Inputs do sensor devem ser "limpos", senão ele fica pulando loucamente por aí              
+        Vector3 accelData = Vector3.SmoothDamp(lastFramePosition, baseline, ref velocity, 0.1f); 
+        Vector2 ad = (Vector2) accelData;  
+        transform.Translate(ad * strength * Time.deltaTime);
+        lastFramePosition = transform.localPosition;            
+        yield return new WaitForEndOfFrame();                
+    }
+}
 
-~~~
+{% endhighlight %}
 
 <iframe src='https://gfycat.com/ifr/SarcasticDismalEidolonhelvum' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
 <span class="caption text-muted">`Input.acceleration` com suavização</span>
@@ -194,11 +193,13 @@ Você muito provavelmente vai querer suavizar estes valores pro jogador não ach
 
 Não dá pra ter muito controle da vibração do device mas é bem fácil de fazer ele vibrar, caso o device tenha como fazer isso. (Não adianta tentar num iPad, por exemplo :p )
 
-~~~ csharp
+{% highlight csharp %}
+
 void Vibrar(){
 	Handheld.Vibrate();
 }
-~~~
+
+{% endhighlight %}
 
 
 ### Integração com o mundo nativo
@@ -209,21 +210,21 @@ A Unity permite que o código C# interaja com várias linguagens de programaçã
 
 As APIs da Unity já provem um nível bem básico de integração com o GameCenter, utilizando a classe [Social](http://docs.unity3d.com/ScriptReference/Social.html), que possui as funcionalidades básicas de autenticação, leaderboards e achievements.
 
-~~~ csharp
+{% highlight csharp %}
 
-        void Start () {
-            Social.localUser.Authenticate(SocialUserLogin);
-        }
-        
-        void SocialUserLogin(bool success){
-            if(success){
-                Debug.Log("do stuff with logged user here");
-            } else {                
-                Debug.Log("disable gamecenter features until player logs in");
-            }
-        }
+void Start () {
+    Social.localUser.Authenticate(SocialUserLogin);
+}
 
-~~~
+void SocialUserLogin(bool success){
+    if(success){
+        Debug.Log("do stuff with logged user here");
+    } else {                
+        Debug.Log("disable gamecenter features until player logs in");
+    }
+}
+
+{% endhighlight %}
 
 
 #### Low Power Mode
@@ -232,15 +233,15 @@ Com a interoperabilidade de código, podemos fazer coisas interessantes, como re
 
 Esse exemplo é bem simples, e mostra como é fácil misturar o Objective C com o C#. Em um arquivo .mm, tenho o seguinte código: 
 
-~~~ objc
+{% highlight objc %}
 extern "C" bool getLowPowerMode(){
     return [[NSProcessInfo processInfo] isLowPowerModeEnabled];
 }
-~~~ 
+{% endhighlight %}
 
 E eu acesso esse código na minha classe pelo namespace `System.Runtime.InteropServices`, apenas declarando o nome e o retorno do método no corpo da classe:
 
-~~~ csharp
+{% highlight csharp %}
 using System.Runtime.InteropServices;
 
 namespace CocoaHeadsBR{   
@@ -254,15 +255,17 @@ namespace CocoaHeadsBR{
         }
     }
 }
-~~~
+{% endhighlight %}
 
 E aí, preferencialmente no startup do nosso jogo, modificamos o framerate alvo do jogo, que será menor caso o Low Power Mode esteja ativo:
 
-~~~ csharp
+{% highlight csharp %}
+
 void Start(){
 	Application.targetFrameRate = DeviceManager.isLowPowerActive? 30: 60;
 }
-~~~
+
+{% endhighlight %}
 
 
 #### Câmera
@@ -275,49 +278,55 @@ Na minha cena tenho algumas texturas que eu quero que sejam fotos que eu vou tir
 
 Para capturar a imagem, as ações dos botões na tela são estas:
 
-~~~ csharp
-        public GameObject cameraOverlay;
-        public RawImage camImage; 
-        
-        WebCamTexture wct;
-        
-        void Awake(){
-            wct = new WebCamTexture();                                               
-        }     
+{% highlight csharp %}
 
-        public void StartCamera(){
-            camImage.texture = wct;            
-            camImage.material.mainTexture = wct;            
-            wct.Play(); //Começa a modificar a RawImage que aparecerá como overlay na tela
-            cameraOverlay.SetActive(true); //Abre o overlay
-        }
-        
-        public void CaptureImage(){
-            cameraOverlay.SetActive(false); //Fecha o overlay
-            wct.Stop(); //Para o RawImage no último frame capturado
-            CameraSceneManager.sharedInstance.PostPictureIntoStandard(camImage.texture);     
-        }
-~~~
+public GameObject cameraOverlay;
+public RawImage camImage; 
+
+WebCamTexture wct;
+
+void Awake(){
+    wct = new WebCamTexture();                                               
+}     
+
+public void StartCamera(){
+    camImage.texture = wct;            
+    camImage.material.mainTexture = wct;            
+    wct.Play(); //Começa a modificar a RawImage que aparecerá como overlay na tela
+    cameraOverlay.SetActive(true); //Abre o overlay
+}
+
+public void CaptureImage(){
+    cameraOverlay.SetActive(false); //Fecha o overlay
+    wct.Stop(); //Para o RawImage no último frame capturado
+    CameraSceneManager.sharedInstance.PostPictureIntoStandard(camImage.texture);     
+}
+
+{% endhighlight %}
 
 Para colocar a imagem dentro do jogo, na textura, o `CameraSceneManager` faz isto:
 
-~~~ csharp
-        public void PostPictureIntoStandard(Texture photo){
-            foreach(Standard s in standards){
-                s.ApplyPhoto(photo);    
-            }
-        }        
-~~~
+{% highlight csharp %}
+
+public void PostPictureIntoStandard(Texture photo){
+    foreach(Standard s in standards){
+        s.ApplyPhoto(photo);    
+    }
+}        
+
+{% endhighlight %}
 
 E cada um dos estandartes na cena só faz isso:
 
-~~~ csharp
-        public MeshRenderer meshToApplyPhoto; //Esse MeshRenderer é colocado direto no Inspector da Unity
-        
-        public void ApplyPhoto(Texture photo){
-            meshToApplyPhoto.material.mainTexture = photo;
-        }
-~~~
+{% highlight csharp %}
+
+public MeshRenderer meshToApplyPhoto; //Esse MeshRenderer é colocado direto no Inspector da Unity
+
+public void ApplyPhoto(Texture photo){
+    meshToApplyPhoto.material.mainTexture = photo;
+}
+
+{% endhighlight %}
 
 Fazer funcionar direito é outra história. A texture que a Unity retornou no `WebCamTexture` está invertida, mas como com o exemplo da aceleração, é possível brincar o suficiente com esses settings para deixar o input da câmera bem legalzinho :)
 

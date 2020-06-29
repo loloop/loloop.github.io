@@ -2,9 +2,8 @@
 title: Criando um Menu Bar App no seu app Catalyst
 thumbnail: 
 description: 'description'
-publish: true
+publish: false
 header: 
-layout: article-v2
 date: '2008-09-15 14:40:45'
 ---
 

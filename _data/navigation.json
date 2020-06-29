@@ -1,4 +1,14 @@
 {
+    "placeholders": [
+        {
+            "text": "artigos",
+            "link": "/",
+        },
+        {
+            "text": "contato",
+            "link": "/contato",
+        },
+    ],
     "en": [
         {
             "text": "Apple Platforms",

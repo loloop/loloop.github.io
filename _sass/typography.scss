@@ -3,6 +3,7 @@
 
 $veryBold: 700;
 $bold: 500;
+$normal:300;
 $normalFont: 1.2rem;
 $verySmallFont: 0.8rem;
 $bigFont: 1.7rem;
@@ -98,7 +99,11 @@ a {
     &.inverted{
         background-color: $white;
         color: $black;
-    }    
+    }
+
+    &.light {
+        font-weight: 300;
+    }
 }
 
 .center{
