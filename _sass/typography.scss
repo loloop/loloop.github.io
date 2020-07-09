@@ -16,7 +16,7 @@ $h1Font: 3rem;
 
 body{
     font-family: 'Rubik', 'Helvetica', sans-serif;
-    color: $darkgray;
+    @include color('text');
 }
 
 .montserrat{
@@ -88,17 +88,17 @@ p {
 }
 
 a {  
-    background-color: $black;
-    color: $white;  
+    @include bgcolor('link-bg');
+    @include color('link-text');
     font-size: $bigFont;    
     text-decoration: none;
     &:hover{
-        color: $lightblue;
+        @include color('link-highlight');
     }
 
     &.inverted{
-        background-color: $white;
-        color: $black;
+        @include bgcolor('link-inverted-bg');
+        @include color('link-inverted-text');
     }
 
     &.light {

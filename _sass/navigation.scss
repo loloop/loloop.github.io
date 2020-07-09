@@ -1,6 +1,3 @@
-nav {
-    width: 100%;
-}
 
 .site{
     &-navigation{
@@ -9,7 +6,7 @@ nav {
         }
         display: flex;
         justify-content: flex-start;
-        background-color: $white;
+        @include bgcolor('navigation-bg');
         margin: 0;              
         padding: 10px 10%;        
         a, li {
@@ -38,7 +35,7 @@ nav {
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: $white;
+            @include bgcolor('navigation-bg');
             padding-top: 5px;    
             border-top: 1px solid #eee;                                       
             img {                          
