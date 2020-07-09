@@ -1,3 +1,11 @@
+nav {
+    width: 100%;
+}
+
+body {
+    @include bgcolor('background');
+}
+
 main {
     display: flex;
     flex-direction: column;

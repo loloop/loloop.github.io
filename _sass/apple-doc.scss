@@ -1,0 +1,60 @@
+.appledoc {
+    display: flex;
+    @include bgcolor('appledoc-bg');
+    border-radius: 20px;
+    padding: 20px;
+    padding-top: 40px;
+    justify-content: center;
+
+    @media(max-width: $medium-ish){
+        flex-direction: column;
+        padding-top: 20px;
+        padding-bottom: 0;
+    }    
+
+    .left-col {
+        @include color('text');
+        font-size: 24px;
+        line-height: 1.16667;
+        font-weight: 600;
+        letter-spacing: .009em;
+        font-family: -apple-system, 'SF Pro Display','SF Pro Icons','Helvetica Neue','Helvetica','Arial',sans-serif;
+        max-width: 30%;
+
+        @media(max-width: $medium-ish){
+            max-width: 100%;
+            margin-bottom: 20px;
+        }    
+    }
+    .right-col {
+        .var {
+            display: flex;
+            flex-direction: column;
+            @include color('appledoc-code');
+            font-family: ui-monospace, 'SF Mono', 'SFMono-Regular', 'Meno', monospace;
+            font-size: 1em;
+            margin-bottom: 20px;
+            font-weight: 400;
+
+            code {
+                font-family: ui-monospace, 'SF Mono', 'SFMono-Regular', 'Meno', monospace;
+            }
+
+            .blue {
+                @include bgcolor('appledoc-bg');
+                @include color('appledoc-highlight');
+                font-size: 1em;
+            }
+
+            .description {
+                margin-top: 5px;
+                margin-left: 2.45294rem;
+                @include color('text');
+                font-weight: 400;
+                font-size: 17px;
+                font-family: -apple-system, 'SF Pro Display','SF Pro Icons','Helvetica Neue','Helvetica','Arial',sans-serif;
+            }
+        }
+
+    }
+}

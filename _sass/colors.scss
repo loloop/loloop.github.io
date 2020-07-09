@@ -1,10 +1,70 @@
-$black: black;
-$white: white;
-$darkgray: #222;
-$deeppink: #EA3991;
-$lightblue: deepskyblue;
-$lightgray: #E6E6E6;
+$lightColors: (
+    //page
+    background: white,
+    accent: #EA3991,
+    // type
+    text: #222,
 
-.darkgray{
-    color: $darkgray;
+    // links
+    link-bg: black,
+    link-text: white,
+    link-inverted-bg: white,
+    link-inverted-text: black,
+    link-highlight: deepskyblue,
+
+    //navigation
+    navigation-bg: white,
+
+    // appledoc
+    appledoc-text: black,
+    appledoc-bg: #fafafa,
+    appledoc-code: #666,
+    appledoc-highlight: #0070c9,
+);
+
+$background: #0c0c18;
+
+$darkColors: (
+    //page
+    background: $background,
+    accent: #EA3991,
+
+    // type
+    text: white,
+
+    // links
+    link-bg: white,
+    link-text: $background,
+    link-inverted-bg: $background,
+    link-inverted-text: white,
+    link-highlight: deepskyblue,
+
+    // navigation
+    navigation-bg: $background,
+
+    // appledoc
+    appledoc-text: white,
+    appledoc-bg: rgb(32,37,44),
+    appledoc-code: rgb(154,157,160),
+    appledoc-highlight: rgb(65,156,255),
+);
+
+// mixins
+
+@mixin color($key) {
+    $lightColor: map-get($map: $lightColors, $key: $key);
+    $darkColor: map-get($map: $darkColors, $key: $key);
+    color: $lightColor;
+    @media (prefers-color-scheme: dark) {
+        color: $darkColor;
+    }
+}
+
+@mixin bgcolor($key) {
+    $lightColor: map-get($map: $lightColors, $key: $key);
+    $darkColor: map-get($map: $darkColors, $key: $key);
+    background-color: $lightColor;
+    @media (prefers-color-scheme: dark) {
+        background-color: $darkColor;
+    }
 }
