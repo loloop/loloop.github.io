@@ -59,4 +59,12 @@ article {
     @media (max-width: $medium-screen) {
         margin-top: 50px;
     }
+
+    @media (min-width: $medium-ish) {
+        svg {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+    }
 }

@@ -1,18 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700|Rubik:300,500,700');
 
-
-$veryBold: 700;
-$bold: 500;
+// weight
 $normal:300;
-$normalFont: 1.2rem;
+$bold: 500;
+$veryBold: 700;
+
+// size
+$minusculeFont: 0.7rem;
 $verySmallFont: 0.8rem;
+$smallFont: 1rem;
+$normalFont: 1.2rem;
 $bigFont: 1.7rem;
-$bigFontLineHeight: 2rem;
 $slightlyBigFont: 2rem;
 $hugeFont: 4.5rem;
 $hugerFont: 7rem;
-$minusculeFont: 0.7rem;
 $h1Font: 3rem;
+
+// line height
+$bigFontLineHeight: 2rem;
 
 body{
     font-family: 'Rubik', 'Helvetica', sans-serif;
@@ -61,6 +66,8 @@ h3{
 }
 
 p {
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-weight: 300;
     font-size: $normalFont;
     &.big{
@@ -108,6 +115,21 @@ a {
 
 .center{
     text-align: center;
+}
+
+.muted {
+    font-size: $smallFont;
+    font-style: italic;
+    @include color('text-muted');
+    a {
+        font-style: normal;
+        font-size: $smallFont;
+    }
+}
+
+.caption {
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 @media(min-width: $medium-screen){
