@@ -2,18 +2,19 @@
 title: Arquitetura baseada em eventos para SpriteKit
 thumbnail: 
 description: 'description'
-publish: false
+publish: true
 header: /img/spritekit/logo.png
 layout: article
 date: 2020-07-19 00:00:00
 ---
+
+Este artigo é um pedaço do que apresentei na [talk que dei no CocoaHeads ES em Vitória](https://www.youtube.com/watch?v=69lGgGLGoJQ), realizado na Brooder, em novembro de 2019, "Criando o seu primeiro jogo com SpriteKit". Lá, falo um pouco mais sobre os objetos, funcionalidades e lifecycle do SpriteKit em si, além de introduzir a arquitetura baseada em eventos.
+
 {% assign img = "/img/spritekit" %}
 
-Este artigo é um pedaço do que apresentei na [talk que dei no CocoaHeads ES em vitória](https://www.youtube.com/watch?v=69lGgGLGoJQ), realizado na Brooder, em novembro de 2019, "Criando o seu primeiro jogo com SpriteKit". Lá, falo um pouco mais sobre os objetos, funcionalidades e lifecycle do SpriteKit em si, além de introduzir a arquitetura baseada em eventos.
+O SpriteKit é um framework desenvolvido pela Apple para a criação de jogos de alta performance em 2D. Como ex-desenvolvedor de jogos, este framework me atraiu naturalmente assim que comecei a estudar Swift e desenvolver apps, mas como desenvolvia com a Unity, que é bastante opinativa em sua arquitetura, fiquei um pouco perdido ao tentar criar experiências com ele. A talk que fiz e por consequência este artigo são o resultado de uma tentativa de deixar o desenvolvimento com SpriteKit mais estruturado para facilitar o seu entendimento.
 
-O SpriteKit é um framework desenvolvido pela Apple para a criação de jogos de alta performance em 2D. Como apaixonado e ex-desenvolvedor de jogos, este framework me atraiu naturalmente assim que comecei a estudar Swift e desenvolver apps, mas como desenvolvia com a Unity, que é bastante opinativa em sua arquitetura, fiquei um pouco perdido ao tentar criar experiências com ele. A talk que fiz e por consequência este artigo são o resultado de uma tentativa de deixar o desenvolvimento com SpriteKit mais estruturado, para facilitar o seu entendimento.
-
-O jogo de exemplo que desenvolvi para expor esta arquitetura é um infinite runner bem simples, que conta com todos os elementos básicos que se espera de um jogo: uma personagem que tem movimentos, ações, animações, pontos de vida, sons, que existe em um ambiente, que também é animado, reage a personagem e tenta acabar com a existência dela, e claro, com uma boa trilha sonora de fundo também.
+O jogo de exemplo que desenvolvi para expor esta arquitetura é um infinite runner bem simples, que conta com todos os elementos básicos que se espera de um jogo: uma personagem que tem movimentos, ações, animações, pontos de vida, sons, que existe em um ambiente animado com inimigos que reagem a personagem e tentam acabar com a existência dela, e claro, com uma boa trilha sonora de fundo também.
 
 ![]({{img}}/game.jpeg)
 <p class="center muted caption">Toda a arte deste jogo é composta de assets de domínio público, criados pelo ótimo <a href="https://kenney.nl">Kenney</a></p>
@@ -68,23 +69,23 @@ protocol EventHandler: AnyObject {
 Agora que temos uma base, podemos começar a criar nossos objetos, eventos e a interação que pode acontecer entre eles. Para começar, estabeleço toda a criação dos nós de UI, da fase e do personagem no começo do ciclo de vida de minha `SKScene`
 
 {% highlight swift %}    
-    override func didMove(to view: SKView) {
-        setupHandlers()
-        setupSpeed()
-    }
+override func didMove(to view: SKView) {
+    setupHandlers()
+    setupSpeed()
+}
 
-    func setupHandlers() {
-        let sknodes = [
-            UIController(),
-            LevelController(),
-            PlayerController()
-        ]
-        sknodes.forEach(addChild)
-    }
+func setupHandlers() {
+    let sknodes = [
+        UIController(),
+        LevelController(),
+        PlayerController()
+    ]
+    sknodes.forEach(addChild)
+}
 
-    func setupSpeed() {
-        handle(event: SpeedEvent(speed: 30))
-    }
+func setupSpeed() {
+    handle(event: SpeedEvent(speed: 30))
+}
 {% endhighlight %}
 
 Cada evento que será passado pelo sistema é um objeto completo que pode apenas indicar alguma coisa que aconteceu, ou carregar dados adicionais sobre o evento em si, como o `SpeedEvent`, que define a velocidade do jogo, e cada objeto meu lida com ele da forma que desejar:
@@ -99,33 +100,33 @@ final class SpeedEvent: Event {
 }
 
 // VisibleFloor.swift 
-    override func handle(event: Event) {
-        if let event = event as? SpeedEvent {
-            floorSpeed = event.speed
-            removeAllActions()
-            animateTiles()
-        }
+override func handle(event: Event) {
+    if let event = event as? SpeedEvent {
+        floorSpeed = event.speed
+        removeAllActions()
+        animateTiles()
     }
+}
 
 // EnemyController.swift
-    override func handle(event: Event) {
-        if let event = event as? SpeedEvent {
-            floorSpeed = event.speed
-            removeAllActions()
-            animateEnemies()
-        }
+override func handle(event: Event) {
+    if let event = event as? SpeedEvent {
+        floorSpeed = event.speed
+        removeAllActions()
+        animateEnemies()
     }
+}
 {% endhighlight %}
 
 Para lidar com eventos que apenas indicam algum acontecimento no sistema, podemos simplificar o processo:
 
 {% highlight swift %}
 // AudioController.swift
-    override func handle(event: Event) {
-        if event is DeathEvent {
-            playDeathSound()
-        }
+override func handle(event: Event) {
+    if event is DeathEvent {
+        playDeathSound()
     }
+}
 {% endhighlight %}
 
 E por fim, para mostrar a facilidade de se criar objetos que interagem com o sistema como um todo e causam efeitos na cadeia, mesmo que não sejam SKNodes, para adicionar suporte aos controles de Xbox One e PlayStation 4 no nosso jogo, podemos simplesmente adicionar uma classe como esta: 
