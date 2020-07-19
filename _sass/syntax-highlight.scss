@@ -2,10 +2,35 @@
   border-radius: 10px;
   padding: 10px;
 
+  // Plain text colors
+  @include bgcolor('sh-background');
+  @include color('sh-plaintext');
+
   .cm { // Commentary
-    color: #75715e;
-    font-style: italic;
+    @include color('sh-comments');
   }
+
+  .c1 { // Commentary
+    @include color('sh-comments');
+  }
+
+  .kd, .k, .kc { // keywords
+    @include color('sh-keywords');
+    font-weight: bold;
+  }
+
+  .nf, .nv { // Other declarations
+    @include color('sh-otherdeclarations');
+  }
+
+  .kt { // Type declarations
+    @include color('sh-typedeclarations');
+  }
+
+  .n { // Project Instance Variables and Globals
+    @include color('sh-instancevariables');
+  }
+
 
   pre {
     overflow-x: auto;
@@ -34,10 +59,6 @@
   font-style: italic;
 }
 
-.highlight .c1 {
-  color: #b9b394;
-  font-style: italic;
-}
 .highlight .cp {
   color: #75715e;
   font-weight: bold;
@@ -84,15 +105,7 @@
 .highlight .gu {
   color: #aaaaaa;
 }
-.highlight .k, .highlight .kv {
-  color: #66d9ef;
-  font-weight: bold;
-}
-.highlight .kc {
-  color: #66d9ef;
-  font-weight: bold;
-}
-.highlight .kd {
+.highlight .kv {
   color: #66d9ef;
   font-weight: bold;
 }
@@ -101,10 +114,6 @@
   font-weight: bold;
 }
 .highlight .kr {
-  color: #66d9ef;
-  font-weight: bold;
-}
-.highlight .kt {
   color: #66d9ef;
   font-weight: bold;
 }
@@ -189,10 +198,6 @@
   color: #a6e22e;
   font-weight: bold;
 }
-.highlight .nf {
-  color: #a6e22e;
-  font-weight: bold;
-}
 .highlight .no {
   color: #66d9ef;
 }
@@ -217,9 +222,6 @@
 .highlight .vi {
   color: #f8f8f2;
 }
-.highlight .nv {
-  color: #f8f8f2;
-}
 .highlight .w {
   color: #f8f8f2;
 }
@@ -229,8 +231,4 @@
 }
 .highlight .nt {
   color: #f92672;
-}
-.highlight {
-  color: #f8f8f2;
-  background-color: #49483e;
 }

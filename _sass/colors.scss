@@ -21,6 +21,15 @@ $lightColors: (
     appledoc-bg: #fafafa,
     appledoc-code: #666,
     appledoc-highlight: #0070c9,
+
+    // syntax-highlight:
+    sh-background: #1F1F24,
+    sh-comments: #6C7986,
+    sh-plaintext: rgba(255,255,255,0.85),
+    sh-keywords: #FC5FA3,
+    sh-otherdeclarations: #41A1C0,
+    sh-typedeclarations: #5DD8FF,
+    sh-instancevariables: #67B7A4,
 );
 
 $background: #0c0c18;
@@ -49,6 +58,15 @@ $darkColors: (
     appledoc-bg: rgb(32,37,44),
     appledoc-code: rgb(154,157,160),
     appledoc-highlight: rgb(65,156,255),
+
+    // syntax-highlight:
+    sh-background: #1F1F24,
+    sh-comments: #6C7986,
+    sh-plaintext: rgba(255,255,255,0.85),
+    sh-keywords: #FC5FA3,
+    sh-otherdeclarations: #41A1C0,
+    sh-typedeclarations: #5DD8FF,
+    sh-instancevariables: #67B7A4,
 );
 
 // mixins
