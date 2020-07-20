@@ -24,7 +24,11 @@
         @media(max-width: $medium-ish){
             max-width: 100%;
             margin-bottom: 20px;
-        }    
+        }
+        
+        @media(min-width: $medium-ish){
+            margin-right: 20px;
+        }
     }
     .right-col {
         .var {
