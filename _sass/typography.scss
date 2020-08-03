@@ -125,9 +125,15 @@ a {
         font-style: normal;
         font-size: $smallFont;
     }
+    strong {
+        font-weight: $bold;
+    }
 }
 
 .caption {
+    width: 100%;
+    display: block;
+    text-align: center;
     margin-top: 0;
     margin-bottom: 10px;
 }
