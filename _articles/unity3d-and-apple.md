@@ -32,7 +32,7 @@ Não se esqueça de marcar pro Download Assistant baixar o Build Support para as
 ### O Unity Remote
 
 ![Unity Remote 4 na App Store]({{ site.baseurl }}/img/loloop/UnityRemote4.png)
-<span class="caption text-muted">[Download do UnityRemote na App Store](https://itunes.apple.com/us/app/unity-remote-4/id871767552?mt=8)</span>
+<span class="caption muted">[Download do UnityRemote na App Store](https://itunes.apple.com/us/app/unity-remote-4/id871767552?mt=8)</span>
  
 Testar builds em aparelhos iOS com a Unity é um processo demorado e chato. Para aqueles testes onde queremos apenas o input do celular, o Remote é uma 
 ótima ferramenta de auxílio no desenvolvimento. Ele pode utilizar os sensores do seu celular, como acelerômetro e etc, mas não roda o jogo no hardware dele, apenas renderizando o jogo no Editor no computador, e enviando o vídeo pelo USB e captando os inputs feitos no device. Um downside é que não dá pra capturar a câmera do device com o remote.
@@ -96,14 +96,14 @@ A classe `Input` controla todo tipo de input feito no jogo na Unity3D, desde o a
 #### Multitouch
 
 <iframe src='https://gfycat.com/ifr/RealCluelessDrongo' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
-<span class="caption text-muted">Testando com o UnityRemote no computador</span>
+<span class="caption muted">Testando com o UnityRemote no computador</span>
 
 O `Input` possui suporte fácil ao multitouch, com a propriedade `Input.touches`, que nada mais é do que um array de [toques](http://docs.unity3d.com/ScriptReference/Touch.html), com a posição, delta de movimento e tempo, posição, pressão no caso de aparelhos como o 6S e até se ele veio do dedo do usuário ou de uma [Apple Pencil](http://docs.unity3d.com/ScriptReference/Touch-type.html).
 
 #### Swiping
 
 <iframe src='https://gfycat.com/ifr/OpulentSeparateArizonaalligatorlizard' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
-<span class="caption text-muted">Gravei da tela do iPhone pra mostrar como é fácil usar o UnityRemote</span>
+<span class="caption muted">Gravei da tela do iPhone pra mostrar como é fácil usar o UnityRemote</span>
 
 Infelizmente a Unity não tem nada para detecção de swipe, então nesse caso nós temos uma alternativa bem legal: Usar uma lib externa, o [TouchKit](https://github.com/prime31/TouchKit).
 
@@ -163,7 +163,7 @@ IEnumerator NonSmoothedAccelerate(){
 O problema de usar o valor direto assim é esse aqui:
 
 <iframe src='https://gfycat.com/ifr/ShockedAthleticAlligatorsnappingturtle' frameborder='0' scrolling='no' width='600' height='340' allowfullscreen ></iframe>
-<span class="caption text-muted">`Input.acceleration`do jeito que ele realmente é</span>
+<span class="caption muted">`Input.acceleration`do jeito que ele realmente é</span>
 
 Você muito provavelmente vai querer suavizar estes valores pro jogador não achar que ele tem alguma tremedeira ou coisa do tipo, e é bem simples, é só usar o `SmoothDamp` do próprio `Vector3` que a gente pode definir o valor que vai ser suavizado, a "força" com que ele vai ser suavizado, e o delay da suavização, fazendo algo parecido com o seguinte código:
 
