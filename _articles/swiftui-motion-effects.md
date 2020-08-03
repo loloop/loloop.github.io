@@ -222,9 +222,8 @@ Para finalizar, o nosso Reader deve respeitar qualquer configuração que o usu�
 Como uma cerejinha em cima do bolo para facilitar o uso do nosso Reader, criaremos uma extension de `View` que faz todo o processo de parallaxing automagicamente para a gente! 
 
 {% highlight swift %}
-/// View+parallax.swift
 extension View {
-    func parallaxing(scale: CGFloat = 1.2,
+    func motionEffect(scale: CGFloat = 1.2,
                     range: ClosedRange<Double> = (-5.0...5.0),
                     strength: Double = 1) -> some View {
         MotionReader(motionRange: range, motionStrength: strength) { proxy in
@@ -234,14 +233,10 @@ extension View {
         }
     }
 }
-
-/// ContentView.swift
-struct ContentView: View {
-    var body: some View {
-        Card()
-            .parallaxing()
-    }
-}
 {% endhighlight %}
 
-O projeto completo com o exemplo do card e o reader do giroscópio está no [meu GitHub](https://github.com/loloop/SwiftInMotion) :)
+E com isso, o nosso código lá do começo funciona perfeitamente, da forma que eu queria que ele funcionasse :)
+
+![Imagem com uma view de SwiftUI onde um motionEffect é aplicado com sucesso]({{img}}/motionSucc.png)
+
+O projeto completo com o exemplo do card e o reader do giroscópio está no [meu GitHub](https://github.com/loloop/SwiftInMotion), e deixo meus agradecimentos aqui ao [@Alan Pégoli](https://twitter.com/alanpegoli) que fez o beta test e apontou uma falha gritante no artigo :)
