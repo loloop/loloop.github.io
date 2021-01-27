@@ -11,14 +11,14 @@ layout: main
 **Desenvolvedor iOS no [PeixeUrbano](https://peixeurbano.com)**
 <p class="muted">2019-presente</p>
 
-Atuo como desenvolvedor nos apps do PeixeUrbano, onde implementei refatorações de larga escala e atualmente cuido da implementação de grandes novas funcionalidades para os projetos.
+Atuo como desenvolvedor nos apps do PeixeUrbano, onde implementei refatorações de larga escala, trouxe um maior foco no desenvolvimento de testes unitários para os apps e atualmente cuido da implementação de grandes novas funcionalidades para os projetos da companhia.
 
 <div class="spacer"></div>
 
 **Chapter Leader do [CocoaHeads São Paulo](http://cocoaheads.com.br/cidades/detalhes/2) e [Online](https://www.youtube.com/user/cocoaheadsbr), Organizador da [NSBrazil](https://nsbrazil.com)**
 <p class="muted">2018-presente</p>
 
-Organizo os meetups de São Paulo, coordenando com empresas e palestrantes para unir os desenvolvedores do maior polo de desenvolvimento iOS do país, além de ajudar com a organização de outros capítulos pelo país, coordenando o canal do YouTube e ajudando a comunidade a criar cada vez mais conteúdo para todos. Também sou organizador principal da NSBrazil, o maior evento de plataformas Apple do Brasil, onde divido a responsabilidade de supervisionar as áreas necessárias para a realização do evento com a [Taís Batuíra](https://www.linkedin.com/in/taisbatuira/).
+Organizo os meetups de São Paulo, coordenando com empresas e palestrantes para unir os desenvolvedores do maior polo de desenvolvimento iOS do país, além de ajudar com a organização de outros capítulos pelo país, coordenando o canal do YouTube e ajudando a comunidade a criar cada vez mais conteúdo para todos. Também sou organizador principal da NSBrazil, o maior evento de plataformas Apple do Brasil, onde supervisiono as áreas necessárias para a realização do evento, dando direção e ajudando os outros organizadores como possível.
 
 <div class="spacer"></div>
 

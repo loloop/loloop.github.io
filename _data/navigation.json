@@ -2,38 +2,18 @@
     "placeholders": [
         {
             "text": "artigos",
-            "link": "/"
+            "link": "/",
+            "mobile": false
         },
         {
             "text": "sobre mim",
-            "link": "/me"
-        }
-    ],
-    "en": [
-        {
-            "text": "Apple Platforms",
-            "link": "/apple",
-            "image": "/img/portfolio.svg"
+            "link": "/me",
+            "mobile": true
         },
         {
-            "text": "Misc",
-            "link": "/cv",
-            "image": "/img/contato.svg"
-        }
-    ],
-    "pt": [
-        {
-            "text": "Apple Platforms",
-            "link": "/blog",
-            "image": "/img/portfolio.svg"
-        },
-        {
-            "text": "Misc",
-            "link": "/cv",
-            "image": "/img/contato.svg"
+            "text": "NSBrazil",
+            "link": "https://nsbrazil.com",
+            "mobile": true
         }
     ]
 }
-[   
-
-]

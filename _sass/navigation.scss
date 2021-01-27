@@ -8,11 +8,18 @@
         justify-content: flex-start;
         @include bgcolor('navigation-bg');
         margin: 0;              
-        padding: 10px 10%;        
+        padding: 10px 10%;     
+        @media (max-width: $small-phone) {
+            padding: 10px 5%;     
+        }
+        
         a, li {
             align-self: center;
             margin: 0 10px;
             text-decoration: none;
+            @media(max-width: $small-phone) {
+                margin: 0 5px;
+            }
         }
         ul{
             display: flex;

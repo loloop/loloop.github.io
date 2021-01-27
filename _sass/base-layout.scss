@@ -27,3 +27,9 @@ main {
 .spacer {
     height: 30px;
 }
+
+.hide-mobile {
+    @media (max-width: $small-phone) {
+        display: none;
+    }
+}
