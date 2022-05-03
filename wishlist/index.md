@@ -52,7 +52,6 @@ Wishlist
 ### Fast and Furious
 [Nissan Skyline GTR do Braia](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=15573)
 [Dodge Charger R/T](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=15454)
-[Dodge Charger R/T - Plane Drop Scene](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=15589)
 [Drift King Mustang](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=12062)
 [Premium Set](https://universohotwheels.com.br/product-page/hot-wheels-fast-furious-fast-stars-set-completo/)
 [F&F1 Supra](https://universohotwheels.com.br/product-page/hot-wheels-fast-furious-94-toyota-supra/)
@@ -88,8 +87,7 @@ Wishlist
 [Tyrrell 6-wheeler](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=7943)
 
 ### Mario/Kart
-VALIDAR SE EU JÁ TENHO!!!
-[Baby Mario](https://universohotwheels.com.br/product-page/hot-wheels-mariokart-baby-mario-b-dasher/)
+
 [Bullet Bill](https://universohotwheels.com.br/product-page/hot-wheels-character-cars-bullet-bill-super-mario/)
 
 ### McLaren
