@@ -24,7 +24,6 @@ Wishlist
 [Surf Crate](https://universohotwheels.com.br/product-page/hot-wheels-surf-s-up-surf-crate-3/)
 [Hammered Coupe](https://universohotwheels.com.br/product-page/hot-wheels-first-editions-hammered-coupe/)
 [Flashfire](https://universohotwheels.com.br/product-page/hot-wheels-mattel-wheels-flashfire/)
-[Overbored 454 -- Batman](https://universohotwheels.com.br/product-page/hot-wheels-batman-overbored-454/)
 [Overbored 454](https://universohotwheels.com.br/product-page/hot-wheels-designs-overbored-454/)
 
 ### [[Hot Wheels Stunt Track Driver]]
