@@ -170,7 +170,6 @@ Wishlist
 
 ### Porsche
 [918 Spyder](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=16302)
-[962 Gran Turismo](https://universohotwheels.com.br/product-page/hot-wheels-entertainment-porsche-962/)
 [914 Safari](https://universohotwheels.com.br/product-page/hot-wheels-nightburnerz-porsche-914-safari-2/)
 [959 Wild Terrain](https://universohotwheels.com.br/product-page/hot-wheels-car-culture-wild-terrain-porsche-959-1986/)
 
