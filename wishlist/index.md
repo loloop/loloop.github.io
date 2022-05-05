@@ -16,6 +16,7 @@ Wishlist
 [Heat Fleet Morris](https://universohotwheels.com.br/product-page/hot-wheels-heat-fleet-morris-mini/)
 [Austin MINI Van](https://universohotwheels.com.br/product-page/hot-wheels-city-works-67-austin-mini-van/)
 [Austin MINI Van](https://universohotwheels.com.br/product-page/hot-wheels-city-67-austin-mini-van/)
+[Austin MINI Van Premium](https://www.pitstoptoys.com.br/hot-wheels-67-austin-mini-van-azul-nose-art)
 [Morris Wagon](https://universohotwheels.com.br/product-page/hot-wheels-city-works-morris-wagon-2/)
 
 ### [[Hot Wheels Velocity X]]
@@ -219,6 +220,7 @@ Wishlist
 [Mach 5](https://www.automobilli.com.br/escala/miniatura-carro-mach-1-speed-racer-164-johnny-lightning)
 [Corredor X](https://www.automobilli.com.br/escala/miniatura-carro-shooting-star-corredor-x-164-johnny-lightning)
 [Corredor X - Stock Car](https://www.automobilli.com.br/escala/miniatura-speed-racer-racer-x-stock-car-164-johnny-lightning)
+[Mini Cooper S](https://www.pitstoptoys.com.br/johnny-lightning-mini-cooper-s-amarelo-street-freaks)
 
 ### 007
 [Diorama 007](https://www.automobilli.com.br/escala/diorama-james-bond-007-goldfinger-164-johnny-lightning)
