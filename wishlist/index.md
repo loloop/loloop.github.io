@@ -150,7 +150,6 @@ Wishlist
 [Bone Shaker](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=15738)
 [Bone Shaker](https://universohotwheels.com.br/product-page/hot-wheels-id-bone-shaker/)
 [Bone Shaker](https://universohotwheels.com.br/product-page/hot-wheels-tooned-skull-shaker/)
-[Bone Shaker + Rip Rod](https://universohotwheels.com.br/product-page/hot-wheels-pack-de-2-bon-shaker-rip-rod/)
 
 ### Premium
 [Euro Speed Set](https://universohotwheels.com.br/product-page/hot-wheels-car-culture-euro-speed-set-completo-5-minis/)
@@ -188,7 +187,6 @@ Wishlist
 ### Sem Categoria
 [Tesla Model 3](https://universohotwheels.com.br/product-page/hot-wheels-factory-fresh-tesla-model-3-3/)
 [Tesla Roadster](https://universohotwheels.com.br/product-page/hot-wheels-first-editions-2008-tesla-roadster/)
-[Dodge Van](https://universohotwheels.com.br/product-page/hot-wheels-metro-dodge-van/)
 [Dodge Sidewinder](https://universohotwheels.com.br/product-page/hot-wheels-snack-time-dodge-sidewinder/)
 [Honda Prelude 98](https://universohotwheels.com.br/product-page/hot-wheels-car-culture-modern-classics-98-honda-prelude/)
 [Honda Monkey](https://universohotwheels.com.br/product-page/hot-wheels-honda-honda-monkey-z50-3/)
