@@ -34,7 +34,6 @@ Wishlist
 
 ### Filmes
 [Toy Story 2-Pack](https://www.automobilli.com.br/escala/action-pack-toy-story-1998-164-hot-wheels)
-[Toy Story RC Car](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=16860)
 [2-pack Tomb Raider: The Movie](https://www.automobilli.com.br/escala/miniatura-lara-croft-tomb-rider-164-hot-wheels)
 [2-pack Ghostbusters](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=16160)
 [007 Skyfall](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=14077)
