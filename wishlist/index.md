@@ -198,7 +198,6 @@ Wishlist
 ### Originais Hot Wheels
 [Salt Shaker](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=15661)
 [Go Kart](https://arteemminiaturas.com.br/website/loja_detalhes.asp?loja_cat=&loja_sub=&loja_item=13123)
-[Twin Mill Gen-E](https://universohotwheels.com.br/product-page/hot-wheels-exotics-twin-mill-gen-e/)
 [Twin Mil 3](https://universohotwheels.com.br/product-page/hot-wheels-laranja-azul-twin-mill-iii/)
 [The Nash](https://universohotwheels.com.br/product-page/hot-wheels-compact-kings-the-nash/)
 [Indy 500 Oval](https://universohotwheels.com.br/product-page/hot-wheels-race-team-indy-500-oval-curta/)
