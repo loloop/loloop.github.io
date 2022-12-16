@@ -28,10 +28,6 @@ Wishlist
 [Saltflat Racer](https://universohotwheels.com.br/product-page/hot-wheels-first-editions-saltflat-racer-2/)
 [Super Modified](https://universohotwheels.com.br/product-page/hot-wheels-roll-patrol-super-modified/)
 
-### [[Hot Wheels Unleashed]]
-[Copo Camaro](https://universohotwheels.com.br/product-page/hot-wheels-workshop-68-copo-camaro-4/)
-
-
 ### Filmes
 [Toy Story 2-Pack](https://www.automobilli.com.br/escala/action-pack-toy-story-1998-164-hot-wheels)
 [2-pack Tomb Raider: The Movie](https://www.automobilli.com.br/escala/miniatura-lara-croft-tomb-rider-164-hot-wheels)
