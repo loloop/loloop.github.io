@@ -3,8 +3,6 @@ layout: article
 header: /img/animauricio.png
 ---
 
-# Obrigado por assistir a minha talk!
-
 Pra _compor_ um pouco mais sobre os assuntos que eu falei sobre na minha talk, aqui estão alguns links:
 
 ## Brandon explicando a lógica por trás da Composable
