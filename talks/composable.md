@@ -26,7 +26,7 @@ Pra _compor_ um pouco mais sobre os assuntos que eu falei sobre na minha talk, a
 
 - [Perfil do CocoaHeads Brasil no Instagram](https://instagram.com/cocoaheadsbr)
 
-- [Meu Instagram](https://instagram.com/cocoa.mauricio)
+- [Meu Twitter](https://twitter.com/cocoa.mauricio)
 
 Dúvidas? Quer só trocar uma ideia? Quer me contratar? Conhece alguém que quer me contratar? [Só entrar em contato comigo :)](/me)
 
