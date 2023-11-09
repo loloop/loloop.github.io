@@ -1,0 +1,38 @@
+#apps {
+  .app {
+    display: flex;
+    justify-content: center;
+
+    @media(max-width: $medium-ish) {
+      flex-direction: column-reverse;
+    }
+
+    .left {
+      @media(max-width: $medium-ish) {
+        display: flex;
+        justify-content: center;
+        
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+
+      @media(max-width: $medium-ish) {
+        >a {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      
+    }
+
+    &.reversed {
+      flex-direction: row-reverse;
+      @media(max-width: $medium-ish) {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+}

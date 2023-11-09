@@ -6,6 +6,11 @@
             "mobile": false
         },
         {
+            "text": "apps",
+            "link": "/apps",
+            "mobile": true
+        },
+        {
             "text": "contato",
             "link": "/me",
             "mobile": true
