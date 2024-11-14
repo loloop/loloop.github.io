@@ -2,7 +2,7 @@
 title: Let's talk about Swift on Linux?
 thumbnail: 
 description: Swift on Linux is an area little explored by Apple platform developers, but it can be a very useful tool and an immense source of knowledge, and it is very worth learning.
-publish: true
+publish: false
 layout: article
 header: /img/serverswift/tux.png
 date: 2023-10-25 00:00:00
