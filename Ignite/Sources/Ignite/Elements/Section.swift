@@ -19,6 +19,8 @@ public struct Section: BlockHTML {
 
     /// The unique identifier of this HTML.
     public var id = UUID().uuidString
+    
+    var tag: String = "div"
 
     /// Whether this HTML belongs to the framework.
     public var isPrimitive: Bool { true }
@@ -27,8 +29,38 @@ public struct Section: BlockHTML {
     public var columnWidth = ColumnWidth.automatic
 
     var items: [any HTML] = []
-
-    public init(@HTMLBuilder content: () -> some HTML) {
+    
+    /// Initializes an HTML element with a specified tag and content.
+    ///
+    /// - Parameters:
+    ///   - tag: A `String` representing the HTML tag for this element. Defaults to `"div"`.
+    ///   - content: A closure that returns an `HTML`-conforming value, constructed using an `@HTMLBuilder` result builder.
+    ///
+    /// This initializer assigns the provided `tag` to the instance and processes
+    /// the `content` using `flatUnwrap(_:)` to handle any optional or nested HTML structures.
+    ///
+    /// ### Example Usage
+    /// ```swift
+    /// Section {
+    ///     Text {
+    ///         "Hello, world!"
+    ///     }
+    /// }
+    /// ```
+    /// This creates an HTML element with a default `<div>` tag containing a `<p>` element with text.
+    ///
+    /// If a custom tag is needed:
+    /// ```swift
+    /// Section(tag: "section") {
+    ///     Text("This is a section.")
+    /// }
+    /// ```
+    /// This produces a `<section>` element instead of the default `<div>`.
+    public init(
+        tag: String = "div",
+        @HTMLBuilder content: () -> some HTML
+    ) {
+        self.tag = tag
         self.items = flatUnwrap(content())
     }
 
@@ -39,7 +71,7 @@ public struct Section: BlockHTML {
     public func render() -> String {
         let content = items.map { $0.render() }.joined()
         var attributes = attributes
-        attributes.tag = "div"
+        attributes.tag = tag
         return attributes.description(wrapping: content)
     }
 }

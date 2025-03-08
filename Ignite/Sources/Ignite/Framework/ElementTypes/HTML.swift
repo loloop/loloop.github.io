@@ -56,7 +56,7 @@ public extension HTML {
 
 extension HTML {
     /// A collection of styles, classes, and attributes managed by the `AttributeStore` for this element.
-    var attributes: CoreAttributes {
+    public var attributes: CoreAttributes {
         get { AttributeStore.default.attributes(for: id) }
         set { AttributeStore.default.merge(newValue, intoHTML: id) }
     }
@@ -311,7 +311,7 @@ extension HTML {
 /// Recursively flattens nested HTML content into a single array, unwrapping any body properties.
 /// - Parameter content: The content to flatten and unwrap
 /// - Returns: An array of unwrapped HTML elements
-@MainActor func flatUnwrap(_ content: Any) -> [any HTML] {
+@MainActor public func flatUnwrap(_ content: Any) -> [any HTML] {
     if let array = content as? [Any] {
         array.flatMap { flatUnwrap($0) }
     } else if let html = content as? any HTML {

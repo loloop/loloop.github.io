@@ -144,7 +144,7 @@ public struct Content {
 
         body = parser.body
         metadata = parser.metadata
-        title = parser.title.strippingTags()
+        title = metadata["title"] as? String ?? parser.title.strippingTags()
         description = parser.description.strippingTags()
         path = metadata["path"] as? String ?? deployPath
 

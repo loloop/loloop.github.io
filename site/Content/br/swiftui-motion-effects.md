@@ -2,9 +2,9 @@
 title: Fazendo MotionEffects com SwiftUI
 thumbnail: 
 description: Já tentou aplicar efeitos de movimento em views de SwiftUI? Não? Vem comigo!
-publish: true
+published: true
 header: /img/motion/header.jpg
-layout: article
+layout: ArticleLayout
 date: 2020-08-01 00:00:00
 ---
 

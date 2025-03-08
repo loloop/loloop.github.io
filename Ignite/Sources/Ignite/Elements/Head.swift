@@ -102,8 +102,6 @@ public struct Head: RootElement {
             MetaLink.animationCSS
         }
 
-        MetaLink.themeCSS
-
         if CSSManager.default.hasCSS {
             MetaLink.mediaQueryCSS
         }

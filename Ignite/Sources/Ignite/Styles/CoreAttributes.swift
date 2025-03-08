@@ -28,7 +28,7 @@ public typealias Date = Foundation.Date
 
 /// A handful of attributes that all HTML types must support, either for
 /// rendering or for publishing purposes.
-struct CoreAttributes: Sendable {
+public struct CoreAttributes: Sendable {
     /// A unique identifier. Can be empty.
     var id = ""
 
@@ -52,7 +52,7 @@ struct CoreAttributes: Sendable {
     var customAttributes = OrderedSet<Attribute>()
 
     /// The HTML tag to use for this element, e.g. "div" or "p".
-    var tag: String?
+    public var tag: String?
 
     /// An optional different tag to use when closing this element, e.g. "a" for links with href attributes.
     var closingTag: String?
@@ -175,7 +175,7 @@ struct CoreAttributes: Sendable {
     /// Generates an HTML string containing all attributes and optionally wraps content.
     /// - Parameter content: Optional content to wrap with opening and closing tags
     /// - Returns: A string containing all attributes and optional content wrapped in tags
-    func description(wrapping content: String? = nil) -> String {
+    public func description(wrapping content: String? = nil) -> String {
         let attributes = idString + customAttributeString + classString + styleString
                          + dataString + ariaString + eventString
 

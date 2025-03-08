@@ -1,9 +1,9 @@
 ---
 title: Criando o seu primeiro App Clip
 description: Neste artigo conto como foi a experiência de criar um App Clip para o app do maior evento de plataformas Apple do Brasil, e te falo como é fácil fazer o seu próprio!
-publish: true
+published: true
 header: /img/appclips/header.png
-layout: article
+layout: ArticleLayout
 date: 2021-01-26 00:00:00
 ---
 

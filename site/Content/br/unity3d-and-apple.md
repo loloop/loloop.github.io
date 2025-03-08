@@ -3,7 +3,7 @@ title: Unity3D e o mundo Apple
 subtitle: "Introdução e Integração da engine com iOS"
 thumbnail: 
 description: Este artigo é um espelho do meu artigo publicado para o equinociOS 2016, uma reunião de artigos criados durante o equinócio feitos pela comunidade Apple no Brasil.
-publish: true
+published: true
 header: 
 date: 2016-03-11 00:00:00
 ---

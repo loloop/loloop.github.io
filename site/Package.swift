@@ -6,14 +6,19 @@ import PackageDescription
 let package = Package(
     name: "IgniteStarter",
     platforms: [
-        .macOS(.v13)
+        .macOS(.v14)
     ],
     dependencies: [
-        .package(path: "Ignite")
+        .package(path: "Ignite"),
+        .package(url: "https://github.com/johnfairh/swift-sass.git", from: "3.1.0")
     ],
     targets: [
         .executableTarget(
             name: "IgniteStarter",
-            dependencies: ["Ignite"]),
+            dependencies: [
+                "Ignite",
+                .product(name: "DartSass", package: "swift-sass")
+            ]
+        ),
     ]
 )

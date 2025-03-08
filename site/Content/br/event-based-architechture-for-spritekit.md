@@ -2,9 +2,9 @@
 title: Arquitetura baseada em eventos para SpriteKit
 thumbnail: 
 description: Vamos dar uma olhada em como podemos facilitar o desenvolvimento de apps com SpriteKit
-publish: true
+published: true
 header: /img/spritekit/logo.png
-layout: article
+layout: ArticleLayout
 date: 2020-07-19 00:00:00
 ---
 

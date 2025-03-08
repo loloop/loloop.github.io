@@ -2,9 +2,9 @@
 title: Recriando o CoverFlow com SwiftUI
 thumbnail: 
 description: Neste artigo vamos ver como podemos criar componentes divertidos que também podem nos ajudar no nosso dia a dia!
-publish: false
+published: false
 header: /img/coverflow/header.png
-layout: article
+layout: ArticleLayout
 date: 2021-01-05 00:00:00
 ---
 #### reframear este artigo como uma forma de recriar o page controller do SwiftUI iOS14 para o iOS13

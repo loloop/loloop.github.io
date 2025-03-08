@@ -12,12 +12,12 @@ import SwiftSoup
 /// elements. This allows any part of the site to reference content, add
 /// build warnings, and more.
 @MainActor
-final class PublishingContext {
+public final class PublishingContext {
     /// The shared instance of `PublishingContext`.
     private static var defaultContext: PublishingContext!
 
     /// The shared instance of `PublishingContext`.
-    static var `default`: PublishingContext {
+    public static var `default`: PublishingContext {
         guard let defaultContext else {
             fatalError("""
             "PublishingContext.default accessed before being initialized. \
@@ -32,7 +32,7 @@ final class PublishingContext {
     var site: any Site
 
     /// The root directory for the user's website package.
-    var sourceDirectory: URL
+    public var sourceDirectory: URL
 
     /// The directory containing their custom assets.
     var assetsDirectory: URL
@@ -47,7 +47,7 @@ final class PublishingContext {
     var includesDirectory: URL
 
     /// The directory containing their final, built website.
-    var buildDirectory: URL
+    public var buildDirectory: URL
 
     /// Path at which content renders. Defaults to nil.
     public var currentRenderingPath: String?
