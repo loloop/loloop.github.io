@@ -8,6 +8,7 @@ struct IgniteWebsite {
         // Build site
         let site = ExampleSite()
         do {
+            try site.initialize()
             try await site.publish()
         } catch {
             print(error.localizedDescription)
@@ -40,6 +41,8 @@ struct IgniteWebsite {
                     atomically: true,
                     encoding: .utf8
                 )
+            // TODO: prettier message
+            print("CSS generated and copied")
         } catch {
             dump(error)
         }
@@ -59,4 +62,7 @@ struct ExampleSite: Site {
         VideoLayout()
     ]
     var useDefaultBootstrapURLs = BootstrapOptions.none
+    var markdownRenderer: InkMarkdownRenderer.Type {
+        InkMarkdownRenderer.self
+    }
 }

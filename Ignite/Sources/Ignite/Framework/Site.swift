@@ -245,6 +245,17 @@ public extension Site {
     internal var supportsDarkTheme: Bool {
         darkTheme != nil
     }
+    
+    func initialize(
+        from file: StaticString = #filePath,
+        buildDirectoryPath: String = "Build"
+    ) throws {
+        try PublishingContext.initialize(
+            for: self,
+            from: file,
+            buildDirectoryPath: buildDirectoryPath
+        )
+    }
 
     /// Performs the entire publishing flow from a file in user space, e.g. main.swift
     /// or Site.swift.
@@ -256,11 +267,7 @@ public extension Site {
     ///   artifacts for the web page. Please modify as needed.
     ///   The default is "Build".
     func publish(from file: StaticString = #filePath, buildDirectoryPath: String = "Build") async throws {
-        let context = try PublishingContext.initialize(
-            for: self,
-            from: file,
-            buildDirectoryPath: buildDirectoryPath
-        )
+        let context = PublishingContext.default
         try await context.publish()
 
         if !context.warnings.isEmpty || !context.errors.isEmpty {

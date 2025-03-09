@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "ink",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/ink.git",
+      "state" : {
+        "revision" : "bcc9f219900a62c4210e6db726035d7f03ae757b",
+        "version" : "0.6.0"
+      }
+    },
+    {
       "identity" : "semver.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/johnfairh/Semver.swift.git",
@@ -16,6 +25,15 @@
       "state" : {
         "revision" : "2c86d8f44beb2c41effa2f9c5f6cf29b871bf3b9",
         "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "splash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/Splash",
+      "state" : {
+        "revision" : "7f4df436eb78fe64fe2c32c58006e9949fa28ad8",
+        "version" : "0.16.0"
       }
     },
     {

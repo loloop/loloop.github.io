@@ -63,7 +63,10 @@ public struct Body: RootElement {
             """).render()
         }
 
-        output += Script(file: "/js/ignite-core.js").render()
+        // ignite-core controls syntax-highlighting
+        // and a couple of other things that we don't need or
+        // have replaced with different tech
+        // output += Script(file: "/js/ignite-core.js").render()
 
         var attributes = attributes
         attributes.tag = "body"

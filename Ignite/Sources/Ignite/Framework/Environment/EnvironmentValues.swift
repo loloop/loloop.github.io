@@ -43,6 +43,9 @@ public struct EnvironmentValues {
 
     /// The base URL for the site
     public let siteURL: URL
+    
+    /// The site object itself
+    public let site: any Site
 
     /// The author of the site
     public let author: String
@@ -73,6 +76,7 @@ public struct EnvironmentValues {
         self.favicon = nil
         self.builtInIconsEnabled = .localBootstrap
         self.timeZone = .gmt
+        self.site = EmptySite()
     }
 
     init(sourceDirectory: URL, site: any Site, allContent: [Content]) {
@@ -89,5 +93,6 @@ public struct EnvironmentValues {
         self.favicon = site.favicon
         self.builtInIconsEnabled = site.builtInIconsEnabled
         self.timeZone = site.timeZone
+        self.site = site
     }
 }

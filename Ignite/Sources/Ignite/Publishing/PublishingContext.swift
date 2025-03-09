@@ -62,7 +62,7 @@ public final class PublishingContext {
     private(set) var allContent = [Content]()
 
     /// An ordered set of syntax highlighters pulled from code blocks throughout the site.
-    var syntaxHighlighters = OrderedSet<HighlighterLanguage>()
+    public var syntaxHighlighters = OrderedSet<HighlighterLanguage>()
 
     /// Whether the site uses syntax highlighters.
     var hasSyntaxHighlighters: Bool {
@@ -104,7 +104,7 @@ public final class PublishingContext {
     ///   The default is "Build".
     /// - Returns: The shared `PublishingContext` instance.
     @discardableResult
-    static func initialize(
+    public static func initialize(
         for site: any Site,
         from file: StaticString,
         buildDirectoryPath: String = "Build"
