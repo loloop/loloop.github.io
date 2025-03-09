@@ -46,6 +46,8 @@ struct IgniteWebsite {
         } catch {
             dump(error)
         }
+        
+        print("Build process ended at", Date())
     }
 }
 
