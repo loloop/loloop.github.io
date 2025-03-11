@@ -1,0 +1,16 @@
+.alert {
+    background-color: #ff7777;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: solid red;
+    margin-bottom: 15px;
+    h3 {
+        margin: 0;
+        color: white;
+    }
+    p {
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+}

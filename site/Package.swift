@@ -10,17 +10,17 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "Ignite"),
+        .package(path: "Splash"),
         .package(url: "https://github.com/johnfairh/swift-sass.git", from: "3.1.0"),
         .package(url: "https://github.com/johnsundell/ink.git", from: "0.1.0"),
-        .package(url: "https://github.com/JohnSundell/Splash", from: "0.1.0")
     ],
     targets: [
         .executableTarget(
             name: "IgniteStarter",
             dependencies: [
                 "Ignite",
+                "Splash",
                 .product(name: "Ink", package: "Ink"),
-                .product(name: "Splash", package: "Splash"),
                 .product(name: "DartSass", package: "swift-sass")
             ]
         ),
