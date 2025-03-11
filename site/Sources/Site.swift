@@ -63,6 +63,9 @@ struct ExampleSite: Site {
         ArticleLayout(),
         VideoLayout()
     ]
+    var staticLayouts: [any StaticLayout] = [
+        Me()
+    ]
     var useDefaultBootstrapURLs = BootstrapOptions.none
     var markdownRenderer: InkMarkdownRenderer.Type {
         InkMarkdownRenderer.self
