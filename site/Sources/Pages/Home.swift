@@ -12,13 +12,13 @@ struct Home: StaticLayout {
                 .font(.title1)
                 .class("huge")
             
-            Text("Esse é o meu blog sobre tecnologias Apple e mais algumas outras coisas :)")
+            Text("Vamos falar sobre tecnologias Apple?")
                 .font(.title2)
         }
         .class("intro")
         
         Section {
-            ForEach(content.all) { content in
+            ForEach(content.home) { content in
                 HomeLink(content: content)
             }
         }

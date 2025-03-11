@@ -111,6 +111,14 @@ public struct Content {
             true
         }
     }
+    
+    public var isHidden: Bool {
+        if let published = metadata["hidden"] as? String {
+            Bool(published) ?? false
+        } else {
+            false
+        }
+    }
 
     /// A rough estimate of the number of words in this content.
     public var estimatedWordCount: Int {

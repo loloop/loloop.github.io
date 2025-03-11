@@ -1,13 +1,13 @@
 ---
-layout: main
+layout: ArticleLayout
+title: Apps
+hidden: true
 ---
-
-# Apps
 
 <div id='apps'>
   <div class='app reversed'>
     <div class='left'>
-      <img src="/img/serverswift/telegram.png" width='100%'>
+      <img src="/images/serverswift/telegram.png" width='100%'>
     </div>
     <div class='right'>
       <h2>F1LandinhoBot</h2>
@@ -26,7 +26,7 @@ layout: main
 
   <div class='app'>
     <div class='left'>
-      <img src="/img/apps/nsbrazil-small.png" height="600px">
+      <img src="/images/apps/nsbrazil-small.png" height="600px">
     </div>
 
     <div class='right'>
@@ -36,7 +36,7 @@ layout: main
 
       <strong>Experimente o app</strong>
       <a href="https://apps.apple.com/br/app/nsbrazil/id1180455342" style='background-color: unset'>
-        <img src="/img/appclips/nsclip.svg" height="300px">
+        <img src="/images/appclips/nsclip.svg" height="300px">
       </a>
     </div>
   </div>

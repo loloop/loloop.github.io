@@ -20,4 +20,8 @@ public struct ContentLoader {
     public func tagged(_ tag: String) -> [Content] {
         all.filter { $0.tags.contains(tag) }
     }
+    
+    public var home: [Content] {
+        all.filter { !$0.isHidden }
+    }
 }
