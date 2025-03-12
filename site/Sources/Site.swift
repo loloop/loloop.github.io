@@ -52,11 +52,13 @@ struct IgniteWebsite {
 }
 
 struct ExampleSite: Site {
-    var author = "John Appleseed"
-    var name = "Hello World"
-    var titleSuffix = " – My Awesome Site"
-    var url = URL(static: "https://www.example.com")
+    var author = "Mauricio Cardozo"
+    var name = "Mauricio Cardozo"
+    var titleSuffix = " – Mauricio Cardozo"
+    var url = URL(static: "https://mauriciocardozo.me")
     var builtInIconsEnabled = BootstrapOptions.none
+    var lightTheme: (any Theme)? = nil
+    var darkTheme: (any Theme)? = nil
     var homePage = Home()
     var layout = MainLayout()
     var contentLayouts: [any ContentLayout] = [

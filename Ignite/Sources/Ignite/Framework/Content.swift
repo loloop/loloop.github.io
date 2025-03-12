@@ -94,7 +94,7 @@ public struct Content {
     /// The image for this content, if set. This should be specified relative to
     /// the root of your site, e.g. /images/dog.jpg.
     public var image: String? {
-        metadata["image"] as? String
+        metadata["image"] as? String ?? metadata["header"] as? String
     }
 
     /// An accessibility description for the image.

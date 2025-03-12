@@ -352,7 +352,7 @@ public final class PublishingContext {
             title: content.title,
             description: content.description,
             url: site.url.appending(path: content.path),
-            image: content.image.flatMap { URL(string: $0) },
+            image: content.image.flatMap { site.url.appending(path: $0) },
             body: body
         )
 
