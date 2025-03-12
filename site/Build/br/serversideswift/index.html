@@ -1,0 +1,125 @@
+<!doctype html>
+<html data-bs-theme="auto" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Swift no Linux é uma área pouco explorada pelo desenvolvedor de plataformas Apple, mas pode ser uma ferramenta muito útil e uma fonte de conhecimento imensa, e que vale muito a pena de se aprender." name="description" />
+    <meta content="Mauricio Cardozo" name="author" />
+    <meta content="Ignite v0.2.1" name="generator" />
+    <title>Vamos falar de Swift no Linux? – Mauricio Cardozo</title>
+    <link href="https://mauriciocardozo.me/br/serversideswift" rel="canonical" />
+    <meta content="Mauricio Cardozo" property="og:site_name" />
+    <meta content="https://mauriciocardozo.me/serverswift/tux.png" property="og:image" />
+    <meta content="https://mauriciocardozo.me/serverswift/tux.png" name="twitter:image" />
+    <meta content="Vamos falar de Swift no Linux?" property="og:title" />
+    <meta content="Vamos falar de Swift no Linux?" name="twitter:title" />
+    <meta content="Swift no Linux é uma área pouco explorada pelo desenvolvedor de plataformas Apple, mas pode ser uma ferramenta muito útil e uma fonte de conhecimento imensa, e que vale muito a pena de se aprender." property="og:description" />
+    <meta content="Swift no Linux é uma área pouco explorada pelo desenvolvedor de plataformas Apple, mas pode ser uma ferramenta muito útil e uma fonte de conhecimento imensa, e que vale muito a pena de se aprender." name="twitter:description" />
+    <meta content="https://mauriciocardozo.me/br/serversideswift" property="og:url" />
+    <meta content="mauriciocardozo.me" name="twitter:domain" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="on" name="twitter:dnt" />
+    <meta content="article" name="og:type" />
+    <meta content="pt_BR" name="og:locale" />
+    <meta content="Swift no Linux é uma área pouco explorada pelo desenvolvedor de plataformas Apple, mas pode ser uma ferramenta muito útil e uma fonte de conhecimento imensa, e que vale muito a pena de se aprender." property="og:description" />
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <nav>
+      <div class="site-navigation">
+        <a href="/" id="title" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover"><p style="font-weight: 500">MC</p></a>
+        <ul>
+          <li><a href="/" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>artigos</p></a></li>
+          <li><a href="/apps" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>apps</p></a></li>
+          <li><a href="/me" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>contato</p></a></li>
+          <li><a href="https://nsbrazil.com" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>NSBrazil</p></a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="content">
+        <div>
+          <article>
+            <img alt="" src="/images/serverswift/tux.png" class="rounded" />
+            <h1>Vamos falar de Swift no Linux?</h1>
+            <p></p>
+            <p>Swift no Linux é uma área pouco explorada pelo desenvolvedor de plataformas Apple, mas pode ser uma ferramenta muito útil e uma fonte de conhecimento imensa, e que vale muito a pena de se aprender.</p>
+            <p>Escrever o código todos nós já entendemos bem, e ver o resultado da nossa criação não é muito diferente das outras plataformas quando estamos no servidor, mas uma coisa que eu pessoalmente sempre tive muito problema é: Como eu faço o meu código ficar disponível para outras pessoas? A gente já sabe como subir um app na App Store, mas e subir um serviço aberto na internet? Existem tantas formas, todas corretas, cada uma de seu jeito e é quase impossível escolher uma.</p>
+            <h2>O Projeto</h2>
+            <p>Eu criei o <a href="https://t.me/F1LandinhoBot">@F1LandinhoBot</a> com o intuito de me ajudar a lembrar os horários das corridas da Fórmula 1 num grupo de amigos, acessando a API do Telegram e mandando mensagens para que a gente não perdesse o horário de uma sessão sequer das corridas.</p>
+            <img src="/images/serverswift/telegram.png" />
+            <p>E funcionou tudo bem tranquilo rodando direto no meu Mac, mas eu não quero deixar o meu Mac ligado o tempo todo, rodando esse código pro bot funcionar, e não quero nem pensar em como eu vou garantir que ele vai funcionar o tempo todo. Onde moro, quedas de energia são bem comuns, e isso me parece um desperdício de processamento do meu computador de qualquer forma.</p>
+            <p>Então resolvi colocar esse código para rodar no meu servidor na Amazon, que eu já tenho faz uns anos rodando um <a href="https://quake.host">servidor de Quake</a>, então não precisaria desembolsar nenhum centavo a mais do que eu já pago por ele pra colocar o serviço no ar. O setup do Swift no Linux está todo detalhado no <a href="https://swift.org">Swift.org</a> e apesar de um pouco trabalhoso, é fácil de seguir. Clonei o código do GitHub e eu não estava esperando o que vinha a seguir:</p>
+            <img src="/images/serverswift/wont-build.png" />
+            <p class="center muted caption">OpenCombine é uma biblioteca feita especificamente pra gente usar o Combine no Linux, como assim ela não existe? Desde quando URLSession é um AnyObject?</p>
+            <h2>Swift no Linux</h2>
+            <p>Existem algumas lombadas durante o caminho do Swift no servidor que são raramente mencionadas, principalmente porque são abstraídas pelos frameworks famosos, mas que você vai encontrar bem rápido se for pelo caminho de escrever o código "puro". Todas elas existem por conta do fato de que o Swift no Mac não traz as mesmas bibliotecas que o Swift no Linux. O Foundation, que a gente está bastante acostumado a usar no mundo Apple não é o mesmo Foundation que existe no Linux, e isso <a href="https://forums.swift.org/t/what-are-best-practices-to-write-a-linux-software-on-macos/">não é documentado</a> em lugar algum. É um problema que <a href="https://www.swift.org/blog/future-of-foundation/">não deve durar muito tempo</a>, mas ainda é um problema.</p>
+            <img src="/images/serverswift/urlsession.png" />
+            <p class="center muted caption">O URLSession fica em uma biblioteca completamente diferente no Linux, que nem existe no macOS!</p>
+            <h2>Publicando o nosso trabalho</h2>
+            <p>Resolvidos esses problemas, tenho meu projeto compilando e rodando no servidor, finalmente! Mas e agora, como que eu deixo ele rodando lá? Não posso simplesmente fechar o ssh no meu terminal, porque ele vai parar a execução do código. Para resolver esse problema, eu utilizei o <code>systemd</code>, que é o gerenciador de serviços padrão do Ubuntu.</p>
+            <p>O meu arquivo de configuração dele é bem simples, eu pedi pro GPT criar uma base e fui customizando com as necessidades que eu tinha, tipo as minhas variáveis de ambiente (não coloquem elas direto no seu código!) e o que o meu serviço teria de fazer caso acontecesse um problema.</p>
+            <pre class="splash"><code>[<span class="type">Unit</span>]
+    <span class="type">Description</span>=<span class="type">Landinho</span> formula one schedule telegram bot
+    <span class="type">After</span>=network-online.<span class="property">target</span>
+
+    [<span class="type">Service</span>]
+    <span class="type">Type</span>=simple
+    <span class="type">User</span>=ubuntu
+    <span class="type">WorkingDirectory</span>=/home/ubuntu/<span class="type">LandinhoBot<br /> ExecStart</span>=/home/ubuntu/swift/swift-<span class="number">5.7.3</span>-<span class="type">RELEASE</span>-ubuntu22.<span class="number">04</span>/usr/bin/swift run
+    <span class="type">Environment</span>=<span class="string">"TELEGRAM_TOKEN=6103171:AAHrN7p7rTJPgeNoeYRo"</span>
+    <span class="type">Environment</span>=“<span class="type">DEBUG_CHAT</span>=-<span class="string">123131234"</span>
+    <span class="type">Restart</span>=always
+
+    [<span class="type">Install</span>]
+    <span class="type">WantedBy</span>=multi-user.<span class="property">target</span></code></pre>
+            <p>Depois disso, ainda preciso entrar no servidor, baixar o código, compilar e rodar o serviço. Esse processo todo é muito chato de se fazer, e como não é parte do nosso dia a dia, é até capaz de esquecermos como são todos esses passos, então escrevi um script de deploy bem simples, para facilitar o processo. Ele baixa o código, compila e reinicia o serviço:</p>
+            <pre class="splash"><code>#!/bin/bash
+
+git fetch
+git pull origin main
+(
+  cd telegram
+  swift build
+  sudo systemctl restart landinho.<span class="property">service</span>
+)</code></pre>
+            <p>Mas eu ainda tenho que entrar no servidor, rodar o script e ver se tá tudo ok. Dá pra deixar melhor. Para resolver isso, depois de conversar com um amigo que é full-stack, decidi ir para o caminho mais simples possível: Automatizar o processo que eu já estava fazendo manualmente, pelo GitHub Actions.</p>
+            <pre class="splash"><code>on:
+  push:
+    branches:
+    - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: configure-ssh
+      run: |
+          mkdir -p ~/.<span class="property">ssh</span>/
+          echo <span class="string">"$key"</span> &gt; ~/.<span class="property">ssh</span>/server.<span class="property">key</span>
+          chmod <span class="number">400</span> ~/.<span class="property">ssh</span>/server.<span class="property">key</span>
+          cat &gt;&gt;~/.<span class="property">ssh</span>/config &lt;&lt;<span class="type">END<br /> Host</span> server
+            <span class="type">HostName</span> <span class="property">$host</span>
+            <span class="type">User</span> <span class="property">$username</span>
+            <span class="type">IdentityFile</span> ~/.<span class="property">ssh</span>/server.<span class="property">key</span>
+            <span class="type">StrictHostKeyChecking</span> no
+          <span class="type">END</span>
+    - name: run-deploy-script
+      run: ssh server 'cd <span class="type">LandinhoBot</span>; sh deploy.<span class="property">sh</span>'
+    env:
+      host: ${% raw %}{{secrets.<span class="type">SSH_HOST</span>}}{% endraw %}
+      username: ${% raw %}{{secrets.<span class="type">SSH_USERNAME</span>}}{% endraw %}
+      key: ${% raw %}{{secrets.<span class="type">SSH_KEY</span>}}{% endraw %}</code></pre>
+            <p>Importante agradecer o <a href="https://twitter.com/flpms">@flpms</a>, que é o amigo que menciono durante o artigo. A parte da configuração que cria o arquivo de configuração do SSH para o GitHub Actions é de autoria dele.</p>
+            <p>Dissecando a configuração do Actions, a gente tem um job que vai ser executado toda vez que acontecer um push na minha branch <code>main</code>, com um passo pra configurar o SSH e um passo para executar o nosso script de deploy.</p>
+            <p>E é isso! Desse jeito você consegue automatizar a execução do seu código em qualquer máquina Linux que você tenha acesso ao terminal. Mas existe uma outra alternativa:</p>
+            <h2>Platform as a Service</h2>
+            <p>Um jeito muito mais fácil de se realizar esse processo todo é utilizando uma plataforma como o <a href="https://render.com">Render</a> (ou outros milhares de serviços que fazem a mesma coisa), que vai abstrair todo o processo de configurar o ambiente, realizar o deploy quando houver um merge, e vai te dar outras regalias, como backups de banco de dados e etc. Essa facilidade toda tem o seu custo ($), e caso você queira subir outro serviço, os custos vão subir bem mais rápido.</p>
+            <img src="/images/serverswift/render.png" />
+            <p>Não tem muito o que ficar falando sobre essas plataformas, cada uma vai ter suas particularidades, mas é uma alternativa que eu gosto muito de usar! Quanto menos tempo a gente gasta na infraestrutura, mais a gente pode investir no produto em si, e isso é o que importa no final. Até a próxima!</p>
+            <p></p>
+          </article>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

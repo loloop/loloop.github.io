@@ -1,3 +1,10 @@
 .sass-cache
 ._site
 _site
+.DS_Store
+Packages
+xcuserdata/
+DerivedData/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
