@@ -1,0 +1,234 @@
+<!doctype html>
+<html data-bs-theme="auto" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Já tentou aplicar efeitos de movimento em views de SwiftUI? Não? Vem comigo!" name="description" />
+    <meta content="Mauricio Cardozo" name="author" />
+    <meta content="Ignite v0.2.1" name="generator" />
+    <title>Fazendo MotionEffects com SwiftUI – Mauricio Cardozo</title>
+    <link href="https://mauriciocardozo.me/br/swiftui-motion-effects" rel="canonical" />
+    <meta content="Mauricio Cardozo" property="og:site_name" />
+    <meta content="https://mauriciocardozo.me/motion/header.jpg" property="og:image" />
+    <meta content="https://mauriciocardozo.me/motion/header.jpg" name="twitter:image" />
+    <meta content="Fazendo MotionEffects com SwiftUI" property="og:title" />
+    <meta content="Fazendo MotionEffects com SwiftUI" name="twitter:title" />
+    <meta content="Já tentou aplicar efeitos de movimento em views de SwiftUI? Não? Vem comigo!" property="og:description" />
+    <meta content="Já tentou aplicar efeitos de movimento em views de SwiftUI? Não? Vem comigo!" name="twitter:description" />
+    <meta content="https://mauriciocardozo.me/br/swiftui-motion-effects" property="og:url" />
+    <meta content="mauriciocardozo.me" name="twitter:domain" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="on" name="twitter:dnt" />
+    <meta content="article" name="og:type" />
+    <meta content="pt_BR" name="og:locale" />
+    <meta content="Já tentou aplicar efeitos de movimento em views de SwiftUI? Não? Vem comigo!" property="og:description" />
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <nav>
+      <div class="site-navigation">
+        <a href="/" id="title" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover"><p style="font-weight: 500">MC</p></a>
+        <ul>
+          <li><a href="/" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>artigos</p></a></li>
+          <li><a href="/apps" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>apps</p></a></li>
+          <li><a href="/me" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>contato</p></a></li>
+          <li><a href="https://nsbrazil.com" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>NSBrazil</p></a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="content">
+        <div>
+          <article>
+            <img alt="" src="/images/motion/header.jpg" class="rounded" />
+            <h1>Fazendo MotionEffects com SwiftUI</h1>
+            <p></p>
+            <p>Pequenos detalhes fazem toda a diferença, e pequenos detalhes me deixam desproporcionalmente feliz, porque trazem deleite, fazem com que pequenas interações que temos com os nossos aparelhos um sejam pouco mais legais, mais divertidas. E o que mais pode nos fazer felizes, como desenvolvedores? O SwiftUI, é claro!</p>
+            <p>Uma das interações mais legais e super tranquilas da gente implementar nos nossos apps UIKit é o UIInterpolationMotionEffect, que dá aquele efeito de parallax quando mexemos o celular, mais conhecido pelo efeito <a href="https://support.apple.com/pt-br/HT200285">Perspectiva</a> que podemos aplicar nas imagens de fundo de nossos iPhones e iPads. Mas quando tentei adicionar um em minha View de SwiftUI, fui pego por isso daqui:</p>
+            <img src="/images/motion/motionError.png" alt="Imagem com uma view de SwiftUI onde um motionEffect que tenta ser aplicado nela dá erro, porque não existe" />
+            <p>Eis que descubro, pesquisando pela documentação que não existe uma forma de colocar um efeito desses nativamente com o SwiftUI! Meu primeiro pensamento foi criar uma UIViewRepresentable que tivesse a minha View dentro de um container do SwiftUI, fazendo um bridge de SwiftUI -&gt; UIKit -&gt; SwiftUI, que tentei fazer, mas sem muito sucesso. Decidi então ver se era possível ler os sensores do aparelho e recriar esse comportamento manualmente, criando uma view que me parece mais “nativa” ao SwiftUI. E com o <a href="https://developer.apple.com/documentation/coremotion">CoreMotion</a> isso tudo não só é possível como é bem fácil, e vai nos dar mais facilidade para criar efeitos compostos, como elementos que se mexem em velocidades diferentes de acordo com o movimento do meu device.</p>
+            <p>Para acessar os dados do acelerômetro/giroscópio do aparelho, precisamos de uma instância do CMMotionManager, <a href="https://developer.apple.com/documentation/coremotion/cmmotionmanager">que segundo as recomendações da Apple</a>, precisa ser compartilhada:</p>
+            <pre class="splash"><code><span class="keyword">import</span> CoreMotion
+
+<span class="keyword">extension</span> <span class="type">CMMotionManager</span> {
+    <span class="keyword">static var</span> shared = <span class="type">CMMotionManager</span>()
+}</code></pre>
+            <p>Com o <code>CMMotionManager</code>, podemos acessar o acelerômetro, giroscópio, magnetômetro e o device-motion, que é uma multitude de dados inferidos pelos algoritmos do Core Motion. Como quero fazer meu efeito com a rotação do device, vou utilizar o giroscópio, que mede cada eixo de rotação do aparelho. Primeiro, crio uma <code>View</code> que vai cuidar dessa leitura e, assim como o <a href="https://developer.apple.com/documentation/swiftui/geometryreader">GeometryReader</a> faz, expor esses dados para views filhas, e nela fazer as configurações necessárias do MotionManager, como o intervalo de update dos dados (com uma frequência de atualização de 30x por segundo), o início/fim da leitura deles e o publisher onde vamos ler e processar esses dados:</p>
+            <pre class="splash"><code><span class="keyword">struct</span> MotionReader&lt;Content&gt;: <span class="type">View</span> <span class="keyword">where</span> <span class="type">Content</span>: <span class="type">View</span> {
+
+    <span class="keyword">private let</span> contentView: () -&gt; <span class="type">Content</span>
+    <span class="keyword">private let</span> motionManager: <span class="type">CMMotionManager</span> = .<span class="dotAccess">shared</span>
+    <span class="keyword">private let</span> timer = <span class="type">Timer</span>.<span class="call">publish</span>(every: <span class="number">1</span>/<span class="number">30</span>, on: .<span class="dotAccess">main</span>, in: .<span class="dotAccess">common</span>).<span class="call">autoconnect</span>()
+
+    <span class="keyword">init</span>(<span class="keyword">@ViewBuilder</span> content: <span class="keyword">@escaping</span> () -&gt; <span class="type">Content</span>) {
+        contentView = content
+    }
+
+    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> {
+        <span class="call">contentView</span>()
+        .<span class="call">onAppear</span> {
+            <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="property">gyroUpdateInterval</span> = <span class="number">1</span>/<span class="number">30</span>
+            <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="call">startGyroUpdates</span>()
+        }
+        .<span class="call">onDisappear</span> {
+            <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="call">stopAccelerometerUpdates</span>()
+        }
+        .<span class="call">onReceive</span>(timer) { <span class="keyword">_ in</span>
+        }
+    }
+}</code></pre>
+            <p>E assim podemos começar a ler os dados do nosso manager, alterando o <code>onReceive</code>. Também criei um <code>struct</code> que encapsula os dados do giroscópio (eixos x,y e z) para passá-los para nossas child views:</p>
+            <pre class="splash"><code><span class="comment">/// MotionReader.swift</span>
+    <span class="keyword">private let</span> contentView: (<span class="type">MotionProxy</span>) -&gt; <span class="type">Content</span>
+    <span class="keyword">@State private var</span> currentOffset: <span class="type">MotionProxy</span> = .<span class="dotAccess">zero</span>
+...
+    <span class="call">contentView</span>(currentOffset)
+...
+    .<span class="call">onReceive</span>(timer) { <span class="keyword">_ in<br /> guard let</span> data = <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="property">gyroData</span> <span class="keyword">else</span> { <span class="keyword">return</span> }
+        <span class="keyword">let</span> rate = data.<span class="property">rotationRate</span>
+        <span class="keyword">self</span>.<span class="property">currentOffset</span> = <span class="type">MotionProxy</span>(x: rate.<span class="property">x</span>, y: rate.<span class="property">y</span>, z: rate.<span class="property">z</span>)
+    }
+
+<span class="comment">/// ContentView.swift</span>
+<span class="keyword">struct</span> ContentView: <span class="keyword">some</span> <span class="type">View</span> {
+    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> {
+        <span class="type">MotionReader</span> { proxy <span class="keyword">in</span>
+            <span class="type">CardView</span>()
+                .<span class="call">offset</span>(x: proxy.<span class="property">x</span>, y: proxy.<span class="property">y</span>)
+        }
+    }
+}</code></pre>
+            <video loop autoplay muted> 
+              <source type="video/mp4" src="/images/motion/effectless.mp4" /> 
+            </video>
+            <p> <span class="caption muted">Tive que balançar <strong>bastante</strong> o iPad pra conseguir esse pouquinho de mudança</span> </p>
+            <p>Fazendo isso tudo, devemos rodar o app no device (o simulador não tem suporte ao CoreMotion, infelizmente), e aí, podemos atestar que quase nada mudou, e o pouco que mudou não é perceptível quando utilizamos o aparelho em si, sendo visível apenas pelo vídeo numa tela parada. Além disso, o movimento está muito tremido.</p>
+            <p>Os valores que o giroscópio emite são muito baixos, então precisamos manipular eles de forma que o <code>offset</code> do card seja alterado com mais intensidade, e podemos aproveitar para configurar alguns limites, iguais às propriedades <code>minimumRelativeValue</code> e <code>maximumRelativeValue</code> do <code>UIInterpolationMotionEffect</code>, além de adicionar uma animação básica na view, para que a tremedeira pare:</p>
+            <pre class="splash"><code><span class="keyword">private let</span> strength: <span class="type">Double</span>
+    <span class="keyword">private let</span> minimum: <span class="type">Double</span>
+    <span class="keyword">private let</span> maximum: <span class="type">Double</span>
+...
+    <span class="keyword">init</span>(motionRange: <span class="type">ClosedRange</span>&lt;<span class="type">Double</span>&gt; = (-<span class="number">5.0</span>...<span class="number">5.0</span>),
+         motionStrength: <span class="type">Double</span> = <span class="number">1</span>,
+         <span class="keyword">@ViewBuilder</span> content: <span class="keyword">@escaping</span> (<span class="type">MotionProxy</span>) -&gt; <span class="type">Content</span>) {
+        minimum = motionRange.<span class="property">lowerBound</span>
+        maximum = motionRange.<span class="property">upperBound</span>
+        contentView = content
+        strength = motionStrength * <span class="number">5</span>
+    }
+
+    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> {
+        <span class="call">contentView</span>()
+        .<span class="call">animation</span>(.<span class="dotAccess">linear</span>)
+        .<span class="call">onAppear</span> {
+            <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="property">gyroUpdateInterval</span> = <span class="number">1</span>/<span class="number">30</span>
+            <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="call">startGyroUpdates</span>()
+        }
+        .<span class="call">onDisappear</span> {
+            <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="call">stopAccelerometerUpdates</span>()
+        }
+        .<span class="call">onReceive</span>(timer) { <span class="keyword">_ in<br /> guard let</span> data = <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="property">gyroData</span> <span class="keyword">else</span> { <span class="keyword">return</span> }
+            <span class="keyword">let</span> rate = data.<span class="property">rotationRate</span>
+            <span class="keyword">self</span>.<span class="property">currentOffset</span> = <span class="call">calculateOffset</span>(x: rate.<span class="property">x</span>, y: rate.<span class="property">y</span>, z: rate.<span class="property">z</span>)
+        }
+    }
+
+    <span class="keyword">private func</span> calculateOffset(x: <span class="type">Double</span>, y: <span class="type">Double</span>, z: <span class="type">Double</span>) -&gt; <span class="type">MotionProxy</span> {
+        <span class="keyword">let</span> xAxis = <span class="call">max</span>(minimum, <span class="call">min</span>((x * strength), maximum))
+        <span class="keyword">let</span> yAxis = <span class="call">max</span>(minimum, <span class="call">min</span>((y * strength), maximum))
+        <span class="keyword">return</span> <span class="type">MotionProxy</span>(x: xAxis, y: yAxis, z: z)
+    }</code></pre>
+            <video loop autoplay muted> 
+              <source type="video/mp4" src="/images/motion/smooth-comp.mp4" /> 
+            </video>
+            <p> <span class="caption muted">Ficou bem mais suave agora né? Eu tava chacoalhando o iPad de novo</span> </p>
+            <p>Agora além de ter uma animação muito mais suave, podemos configurar todos os valores do movimento para que o efeito fique exatamente da forma como desejamos! Mas ao virar o device, podemos perceber que o movimento não está indo pros mesmos lados quando mexemos nosso device. Por que? As coordenadas de x e y da minha view e as coordenadas que o giroscópio está emitindo não são consistentes em cada orientação, então precisamos calcular e fazer essa troca manualmente.</p>
+            <p>Para isso, precisamos criar uma forma de detectar quando o aparelho muda de orientação, e mudar o cálculo do offset de acordo, e isso é bem simples:</p>
+            <pre class="splash"><code><span class="comment">/// DeviceOrientation.swift</span>
+<span class="keyword">final class</span> DeviceOrientation: <span class="type">ObservableObject</span> {
+    <span class="keyword">private var</span> observer: <span class="type">AnyCancellable</span>?
+    <span class="keyword">@Published var</span> deviceOrientation: <span class="type">UIDeviceOrientation</span>
+
+    <span class="keyword">init</span>() {
+        deviceOrientation = <span class="type">UIDevice</span>.<span class="property">current</span>.<span class="property">orientation</span>
+        <span class="call">observeOrientation</span>()
+    }
+
+    <span class="keyword">private func</span> observeOrientation() {
+        observer = <span class="type">NotificationCenter</span>.<span class="property">default</span>.<span class="call">publisher</span>(for: <span class="type">UIDevice</span>.<span class="property">orientationDidChangeNotification</span>)
+            .<span class="call">compactMap</span>({ $0.<span class="property">object</span> <span class="keyword">as</span>? <span class="type">UIDevice</span>})
+            .<span class="call">sink</span> { [<span class="keyword">weak self</span>] device <span class="keyword">in<br /> self</span>?.<span class="property">deviceOrientation</span> = device.<span class="property">orientation</span>
+            }
+    }
+}
+
+<span class="comment">/// MotionReader.swift</span>
+    <span class="keyword">@ObservedObject var</span> deviceOrientation = <span class="type">DeviceOrientation</span>()
+...
+    .<span class="call">onReceive</span>(timer) { <span class="keyword">_ in<br /> guard let</span> data = <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="property">gyroData</span> <span class="keyword">else</span> { <span class="keyword">return</span> }
+        <span class="keyword">let</span> rate = data.<span class="property">rotationRate</span>
+        <span class="keyword">self</span>.<span class="property">currentOffset</span> = <span class="call">calculateOffsetForCurrentOrientation</span>(x: rate.<span class="property">x</span>, y: rate.<span class="property">y</span>, z: rate.<span class="property">z</span>)
+    }
+
+    <span class="keyword">private func</span> calculateOffsetForCurrentOrientation(x: <span class="type">Double</span>, y: <span class="type">Double</span>, z: <span class="type">Double</span>) -&gt; <span class="type">MotionProxy</span> {
+        <span class="keyword">let</span> xAxis = <span class="call">max</span>(minimum, <span class="call">min</span>((x * strength), maximum))
+        <span class="keyword">let</span> yAxis = <span class="call">max</span>(minimum, <span class="call">min</span>((y * strength), maximum))
+
+        <span class="keyword">switch</span> deviceOrientation.<span class="property">deviceOrientation</span> {
+        <span class="keyword">case</span> .<span class="dotAccess">portrait</span>:
+            <span class="keyword">return</span> <span class="type">MotionProxy</span>(x: yAxis, y: xAxis, z: z)
+        <span class="keyword">case</span> .<span class="dotAccess">portraitUpsideDown</span>:
+            <span class="keyword">return</span> <span class="type">MotionProxy</span>(x: yAxis, y: -xAxis, z: z)
+        <span class="keyword">case</span> .<span class="dotAccess">landscapeLeft</span>:
+            <span class="keyword">return</span> <span class="type">MotionProxy</span>(x: -xAxis, y: -yAxis, z: z)
+        <span class="keyword">case</span> .<span class="dotAccess">landscapeRight</span>:
+            <span class="keyword">return</span> <span class="type">MotionProxy</span>(x: -xAxis, y: yAxis, z: z)
+        <span class="keyword">case</span> .<span class="dotAccess">unknown</span>, .<span class="dotAccess">faceDown</span>, .<span class="dotAccess">faceUp</span>:
+            <span class="keyword">return</span> <span class="type">MotionProxy</span>(x: xAxis, y: yAxis, z: z)
+        <span class="keyword">@unknown default</span>:
+            <span class="keyword">return</span> <span class="type">MotionProxy</span>(x: xAxis, y: yAxis, z: z)
+        }
+    }</code></pre>
+            <p>Para finalizar, o nosso Reader deve respeitar qualquer configuração que o usuário possa fazer no aparelho, como o <a href="https://developer.apple.com/documentation/foundation/processinfo/1617047-islowpowermodeenabled">modo de baixa energia</a> e a configuração de acessibilidade para <a href="https://developer.apple.com/videos/play/wwdc2019/244/">reduzir movimentos</a>. Para isso, precisamos criar duas propriedades, uma para acessar o Environment que representa o Reduce Motion e uma que encapsula todas as barreiras de acesso ao acelerômetro:</p>
+            <pre class="splash"><code><span class="comment">/// MotionReader.swift</span>
+    <span class="keyword">@Environment</span>(\.<span class="property">accessibilityReduceMotion</span>) <span class="keyword">var</span> isReduceMotionOn: <span class="type">Bool</span>
+...
+    .<span class="call">onAppear</span> {
+        <span class="keyword">guard self</span>.<span class="property">shouldEnableMotion</span> <span class="keyword">else</span> { <span class="keyword">return</span> }
+        <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="property">gyroUpdateInterval</span> = <span class="number">1</span>/<span class="number">30</span>
+        <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="call">startGyroUpdates</span>()
+    }
+...
+    .<span class="call">onReceive</span>(timer) { publisher <span class="keyword">in<br /> guard self</span>.<span class="property">shouldEnableMotion</span>,
+              <span class="keyword">let</span> data = <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="property">gyroData</span> <span class="keyword">else</span> { <span class="keyword">return</span> }
+
+        <span class="keyword">let</span> rate = data.<span class="property">rotationRate</span>
+        <span class="keyword">self</span>.<span class="property">currentOffset</span> = <span class="keyword">self</span>.<span class="call">calculateOffsetForCurrentOrientation</span>(x: rate.<span class="property">x</span>, y: rate.<span class="property">y</span>, z: rate.<span class="property">z</span>)
+    }
+...
+    <span class="keyword">private var</span> shouldEnableMotion: <span class="type">Bool</span> {
+        !<span class="type">ProcessInfo</span>.<span class="property">processInfo</span>.<span class="property">isLowPowerModeEnabled</span> &amp;&amp;
+            motionManager.<span class="property">isAccelerometerAvailable</span> &amp;&amp;
+            !isReduceMotionOn
+    }</code></pre>
+            <p>Como uma cerejinha em cima do bolo para facilitar o uso do nosso Reader, criaremos uma extension de <code>View</code> que faz todo o processo de parallaxing automagicamente para a gente!</p>
+            <pre class="splash"><code><span class="keyword">extension</span> <span class="type">View</span> {
+    <span class="keyword">func</span> motionEffect(scale: <span class="type">CGFloat</span> = <span class="number">1.2</span>,
+                    range: <span class="type">ClosedRange</span>&lt;<span class="type">Double</span>&gt; = (-<span class="number">5.0</span>...<span class="number">5.0</span>),
+                    strength: <span class="type">Double</span> = <span class="number">1</span>) -&gt; <span class="keyword">some</span> <span class="type">View</span> {
+        <span class="type">MotionReader</span>(motionRange: range, motionStrength: strength) { proxy <span class="keyword">in<br /> self</span>
+                .<span class="call">scaleEffect</span>(scale)
+                .<span class="call">offset</span>(x: proxy.<span class="property">x</span>, y: proxy.<span class="property">y</span>)
+        }
+    }
+}</code></pre>
+            <p>E com isso, o nosso código lá do começo funciona perfeitamente, da forma que eu queria que ele funcionasse :)</p>
+            <img src="/images/motion/motionSucc.png" alt="Imagem com uma view de SwiftUI onde um motionEffect é aplicado com sucesso" />
+            <p>O projeto completo com o exemplo do card e o reader do giroscópio está no <a href="https://github.com/loloop/SwiftInMotion">meu GitHub</a>, e deixo meus agradecimentos aqui ao <a href="https://twitter.com/alanpegoli">@Alan Pégoli</a> que fez o beta test e apontou uma falha gritante no artigo :)</p>
+            <p></p>
+          </article>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+<!doctype html>
+<html data-bs-theme="auto" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Este artigo é um espelho do meu artigo publicado para o equinociOS 2016, uma reunião de artigos criados durante o equinócio feitos pela comunidade Apple no Brasil." name="description" />
+    <meta content="Mauricio Cardozo" name="author" />
+    <meta content="Ignite v0.2.1" name="generator" />
+    <title>Unity3D e o mundo Apple – Mauricio Cardozo</title>
+    <link href="https://mauriciocardozo.me/br/unity3d-and-apple" rel="canonical" />
+    <meta content="Mauricio Cardozo" property="og:site_name" />
+    <meta content="Unity3D e o mundo Apple" property="og:title" />
+    <meta content="Unity3D e o mundo Apple" name="twitter:title" />
+    <meta content="Este artigo é um espelho do meu artigo publicado para o equinociOS 2016, uma reunião de artigos criados durante o equinócio feitos pela comunidade Apple no Brasil." property="og:description" />
+    <meta content="Este artigo é um espelho do meu artigo publicado para o equinociOS 2016, uma reunião de artigos criados durante o equinócio feitos pela comunidade Apple no Brasil." name="twitter:description" />
+    <meta content="https://mauriciocardozo.me/br/unity3d-and-apple" property="og:url" />
+    <meta content="mauriciocardozo.me" name="twitter:domain" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="on" name="twitter:dnt" />
+    <meta content="article" name="og:type" />
+    <meta content="pt_BR" name="og:locale" />
+    <meta content="Este artigo é um espelho do meu artigo publicado para o equinociOS 2016, uma reunião de artigos criados durante o equinócio feitos pela comunidade Apple no Brasil." property="og:description" />
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <nav>
+      <div class="site-navigation">
+        <a href="/" id="title" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover"><p style="font-weight: 500">MC</p></a>
+        <ul>
+          <li><a href="/" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>artigos</p></a></li>
+          <li><a href="/apps" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>apps</p></a></li>
+          <li><a href="/me" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>contato</p></a></li>
+          <li><a href="https://nsbrazil.com" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>NSBrazil</p></a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="content">
+        <div>
+          <article>
+            <h1>Unity3D e o mundo Apple</h1>
+            <p></p>
+            <div class="alert"> 
+              <h3>Alerta</h3> 
+              <p> Este artigo foi escrito há muito tempo atrás. O site onde hospedei os gifs na época não existe mais, e as referências podem (e provavelmente estão) desatualizadas. </p> 
+            </div>
+            <p>Este artigo é uma cópia do meu artigo publicado para o equinociOS 2016, uma reunião de artigos criados durante o equinócio feitos pela comunidade Apple no Brasil.</p>
+            <img src="/images/unity/muchocaliente.png" alt="O fps mais inovador que eu já joguei em anos" />
+            <p>Nascida no OS X em 2005 e portada para o resto do mundo todo, a Unity é uma das maiores game engines da atualidade, e uma das melhores escolhas que se pode fazer quando o assunto é gamedev para aparelhos mobile. Com suporte a tantas plataformas que eu não duvidaria que ela funciona até em torradeiras, e isto naturalmente traz aquela dúvida que todo framework que promete mil e uma plataformas traz: Mas realmente funciona?</p>
+            <p>Sim, funciona. Diferente de apps híbridos, que na maior parte do tempo são várias Web Views com uns hooks para acessar algumas funcionalidades nativas, o core da Unity é todo em C++ (<a href="http://blogs.unity3d.com/2015/05/06/an-introduction-to-ilcpp-internals/">E o build que ela gera para o iOS também</a>) e ela implementa o <a href="http://blogs.unity3d.com/2015/04/17/ios-64-bit-and-metal-update/">Metal</a> no iOS, e assim tem uma performance ótima mesmo quando comparada com o SceneKit.</p>
+            <p>Agora que você já conhece um pouco da Unity e o core dela, vamos começar? :)</p>
+            <h2>Primeiros Passos</h2>
+            <img src="/images/unity/GetUnity.png" alt="Página Inicial da Unity3D" />
+            <p>Bom, vamos começar baixando a Unity né? Não precisa se preocupar muito se ela vai rodar bem no seu Mac, pois estou usando um <a href="https://support.apple.com/kb/sp618?locale=en_US">MacBook Air de 2010</a> para escrever este artigo. A versão que eu usei pra escrever ele é a 5.3.2, mas já saiu uma versão mais nova, a 5.3.3, mas tudo que eu fizer aqui deve funcionar nela sem o menor dos problemas. O download tá no <a href="http://unity3d.com/download">site da Unity</a>, e a Personal Edition é completa o suficiente pra funcionar com tudo que a gente vai usar.</p>
+            <img src="/images/unity/BuildSupport.png" />
+            <p>Não se esqueça de marcar pro Download Assistant baixar o Build Support para as plataformas que vamos usar :)</p>
+            <h3>O Unity Remote</h3>
+            <img src="/images/unity/UnityRemote4.png" alt="Unity Remote 4 na App Store" />
+            <p><span class="caption muted"><a href="https://itunes.apple.com/us/app/unity-remote-4/id871767552?mt=8">Download do UnityRemote na App Store</a></span></p>
+            <p>Testar builds em aparelhos iOS com a Unity é um processo demorado e chato. Para aqueles testes onde queremos apenas o input do celular, o Remote é uma ótima ferramenta de auxílio no desenvolvimento. Ele pode utilizar os sensores do seu celular, como acelerômetro e etc, mas não roda o jogo no hardware dele, apenas renderizando o jogo no Editor no computador, e enviando o vídeo pelo USB e captando os inputs feitos no device. Um downside é que não dá pra capturar a câmera do device com o remote.</p>
+            <h3>Git</h3>
+            <img src="/images/unity/EditorSettings.png" />
+            <p>Para deixar o mais amigável para se trabalhar com o Git, nós precisamos mudar a forma como ela trata com alguns arquivos lá em <code>Edit &gt; Project Settings &gt; Editor Settings</code>. Precisamos mudar o Version Control Mode para <em>Visible Meta Files</em> e o Asset Serialization Mode para <em>Force Text</em>. Isso faz com que a Unity não esconda os arquivos de configuração dela, e todos os arquivos que ela puder deixar como texto, como cenas, prefabs e até os ProjectSettings sejam textos.</p>
+            <p>Fica bem mais fácil de identificar problemas assim, já que antes não era possível fazer diff dos arquivos, mas isso deixa os commits um número de linhas bem exagerado, como dá pra ver nos graphs do GitHub de um dos meus projetos.</p>
+            <img src="/images/unity/3MilhoesDeLinhas.png" alt="3mi linhas de código" />
+            <h3>Player Settings</h3>
+            <p>As outras configurações básicas de cada projeto estão no <code>Edit &gt; Project Settings &gt; Player Settings</code>, como lock de rotação do device, habilitar split screen multitasking para o iPad Air2 / iPad Pro, estilo e posicionamento da Status Bar, Ícone, Company Name, Bundle ID, Launch Screen, versão do iOS mínima e várias outras coisas.</p>
+            <h2>Layouts e Canvas</h2>
+            <h3>Layouts específicos para os devices</h3>
+            <p>Vou começar falando da parte ruim do sistema de UI da Unity, que é o fato dela não saber lidar muito bem com os layouts aparelhos de dpi diferentes e resoluções parecidas, infelizmente nos forçando a fazer algo parecido com isso:</p>
+            <pre class="splash"><code><span class="comment">// O Device.generation retorna um enum com a versão específica do device<br />// então também é possível utilizar ele para saber se o usuário tem um iPad Pro ou um iPad Air, por exemplo</span>
+
+<span class="call">if</span>(<span class="type">UnityEngine</span>.<span class="property">iOS</span>.<span class="type">Device</span>.<span class="property">generation</span>.<span class="type">ToString</span>().<span class="type">Contains</span>(<span class="string">"iPhone"</span>)){
+	<span class="type">Debug</span>.<span class="type">Log</span>(<span class="string">"Estou num iPhone!"</span>);
+	<span class="comment">//Carrega a UI específica do iPhone</span>
+} <span class="keyword">else</span> {
+	<span class="type">Debug</span>.<span class="type">Log</span>(<span class="string">"Estou num iPad!"</span>);
+	<span class="comment">//Carrega a UI específica do iPad</span>
+}</code></pre>
+            <!-- http://docs.unity3d.com/ScriptReference/iOS.DeviceGeneration.html -->
+            <h3>Canvas</h3>
+            <p>A Unity, na versão 4.6, ganhou um sistema novo de UI (<a href="https://bitbucket.org/Unity-Technologies/ui">open source, btw</a>), com suporte muito melhor para lidar com múltiplas resoluções, aspectos e variações de DPI. Um dos componentes mais importantes desse sistema é o <code>Canvas Scaler</code>, responsável por coordenar a escala dos elementos no aparelho. Existem algumas formas de configurar ele:</p>
+            <ul>
+              <li><code>Constant Pixel Size</code>: É a configuração padrão do Scaler, e nela os elementos retém o tamanho original deles, e pode ser bem enganadora. É o que causa uma interface a ficar boa em um iPad 2, mas minúscula em um iPad Air. Tem seus usos, mas tome cuidado ao decidir ficar nela.</li>
+            </ul>
+            <ul>
+              <li><code>Scale With Screen Size</code>: Nesta configuração a Unity escala os elementos de acordo com a resolução da tela, e você tem uma resolução virtual para trabalhar com os seus elementos.</li>
+            </ul>
+            <ul>
+              <li><code>Constant Physical Size</code>: Na última configuração, os valores de pontos da Unity são trocados por valores em dp. Esta configuração depende do device reportar adequadamente o dpi de sua tela, e você pode especificar um valor de DPI padrão como fallback.</li>
+            </ul>
+            <p>A configuração mais "segura" de todas é usar o <code>Scale With Screen Size</code>, com resolução virtual de 1080p, e o <code>Match Width or Height</code> configurado para 0.5.</p>
+            <iframe src="https://gfycat.com/ifr/RewardingCreepyHowlermonkey" frameborder="0" scrolling="no" width="600" height="340" allowfullscreen></iframe>
+            <p>Também é possível incluir o Canvas dentro do mundo do seu jogo, como um elemento que faz parte dele. Usar isto é útil para quando você quiser colocar um nome em cima dos jogadores, por exemplo, mas desabilita completamente qualquer tipo de escala de acordo com o tamanho da tela.</p>
+            <h3>Input Handling</h3>
+            <p>A classe <code>Input</code> controla todo tipo de input feito no jogo na Unity3D, desde o apertar de teclas no teclado, a movimentação dos analógicos em um controle e claro, por que não, os toques em uma tela.</p>
+            <h4>Multitouch</h4>
+            <iframe src="https://gfycat.com/ifr/RealCluelessDrongo" frameborder="0" scrolling="no" width="600" height="340" allowfullscreen></iframe>
+            <p><span class="caption muted">Testando com o UnityRemote no computador</span></p>
+            <p>O <code>Input</code> possui suporte fácil ao multitouch, com a propriedade <code>Input.touches</code>, que nada mais é do que um array de <a href="http://docs.unity3d.com/ScriptReference/Touch.html">toques</a>, com a posição, delta de movimento e tempo, posição, pressão no caso de aparelhos como o 6S e até se ele veio do dedo do usuário ou de uma <a href="http://docs.unity3d.com/ScriptReference/Touch-type.html">Apple Pencil</a>.</p>
+            <h4>Swiping</h4>
+            <iframe src="https://gfycat.com/ifr/OpulentSeparateArizonaalligatorlizard" frameborder="0" scrolling="no" width="600" height="340" allowfullscreen></iframe>
+            <p><span class="caption muted">Gravei da tela do iPhone pra mostrar como é fácil usar o UnityRemote</span></p>
+            <p>Infelizmente a Unity não tem nada para detecção de swipe, então nesse caso nós temos uma alternativa bem legal: Usar uma lib externa, o <a href="https://github.com/prime31/TouchKit">TouchKit</a>.</p>
+            <p>O uso do TouchKit é bem simples para detectar swiping:</p>
+            <pre class="splash"><code>void <span class="type">Start</span> () {    
+    <span class="comment">//É possível limitar as direções do swipe que o TK vai detectar</span>
+    <span class="type">TKSwipeRecognizer</span> recognizer = new <span class="type">TKSwipeRecognizer</span>(<span class="type">TKSwipeDirection</span>.<span class="type">All</span>); 
+    
+    recognizer.<span class="property">gestureRecognizedEvent</span> += (r) =&gt; {
+            <span class="comment">//Ação desejada no swipe vem aqui</span>
+            swipeText.<span class="property">text</span> = r.<span class="property">completedSwipeDirection</span>.<span class="type">ToString</span>();
+            <span class="type">Color</span> color = <span class="type">Color</span>.<span class="property">black</span>;
+            <span class="keyword">switch</span> (r.<span class="property">completedSwipeDirection</span>){
+                <span class="keyword">case</span> <span class="type">TKSwipeDirection</span>.<span class="type">Down</span>:
+                    color = <span class="type">Color</span>.<span class="property">green</span>;
+                    <span class="keyword">break</span>;
+                <span class="keyword">case</span> <span class="type">TKSwipeDirection</span>.<span class="type">Up</span>:
+                    color = <span class="type">Color</span>.<span class="property">blue</span>;
+                    <span class="keyword">break</span>;
+                <span class="keyword">case</span> <span class="type">TKSwipeDirection</span>.<span class="type">Left</span>:
+                    color = <span class="type">Color</span>.<span class="property">magenta</span>;
+                    <span class="keyword">break</span>;
+                <span class="keyword">case</span> <span class="type">TKSwipeDirection</span>.<span class="type">Right</span>:
+                    color = <span class="type">Color</span>.<span class="property">yellow</span>;
+                    <span class="keyword">break</span>;
+                <span class="keyword">default</span>:
+                    <span class="keyword">break</span>;
+            }
+            background.<span class="property">color</span> = color;
+    }; 
+            
+    <span class="type">TouchKit</span>.<span class="call">addGestureRecognizer</span>(recognizer);
+}</code></pre>
+            <p>O <code>TKSwipeRecognizer</code> retorna valores bem completos sobre o swipe, com posição de início, posição final, direção e velocidade do swipe, de forma bem fácil de tratar no código. Além do Swipe, o TouchKit também traz informações sobre pinch, tap, long press, pan e até toques normais, caso necessário.</p>
+            <h4>Aceleração</h4>
+            <p>O input de aceleração é reportado como um <code>Vector3</code> que representa a aceleração em valores de força G que o device está recebendo. É possível capturar e utilizar estes dados de forma bem simples, com o <code>Input.acceleration</code>:</p>
+            <pre class="splash"><code><span class="type">IEnumerator NonSmoothedAccelerate</span>(){
+    <span class="call">while</span>(<span class="keyword">true</span>){
+        transform.<span class="property">localPosition</span> = <span class="type">Input</span>.<span class="property">acceleration</span> * strength;
+        yield <span class="keyword">return</span> new <span class="type">WaitForEndOfFrame</span>();                
+    }
+}</code></pre>
+            <p>O problema de usar o valor direto assim é esse aqui:</p>
+            <iframe src="https://gfycat.com/ifr/ShockedAthleticAlligatorsnappingturtle" frameborder="0" scrolling="no" width="600" height="340" allowfullscreen></iframe>
+            <p><span class="caption muted">`Input.acceleration`do jeito que ele realmente é</span></p>
+            <p>Você muito provavelmente vai querer suavizar estes valores pro jogador não achar que ele tem alguma tremedeira ou coisa do tipo, e é bem simples, é só usar o <code>SmoothDamp</code> do próprio <code>Vector3</code> que a gente pode definir o valor que vai ser suavizado, a "força" com que ele vai ser suavizado, e o delay da suavização, fazendo algo parecido com o seguinte código:</p>
+            <pre class="splash"><code><span class="type">IEnumerator Accelerate</span>(){
+    <span class="type">Vector3</span> lastFramePosition = transform.<span class="property">localPosition</span>;
+    <span class="type">Vector3</span> velocity = <span class="type">Vector3</span>.<span class="property">zero</span>;            
+    <span class="call">while</span>(<span class="keyword">true</span>){
+        baseline = <span class="type">Input</span>.<span class="property">acceleration</span>;
+        <span class="comment">//Inputs do sensor devem ser "limpos", senão ele fica pulando loucamente por aí</span>              
+        <span class="type">Vector3</span> accelData = <span class="type">Vector3</span>.<span class="type">SmoothDamp</span>(lastFramePosition, baseline, ref velocity, <span class="number">0</span>.1f); 
+        <span class="type">Vector2</span> ad = (<span class="type">Vector2</span>) accelData;  
+        transform.<span class="type">Translate</span>(ad * strength * <span class="type">Time</span>.<span class="property">deltaTime</span>);
+        lastFramePosition = transform.<span class="property">localPosition</span>;            
+        yield <span class="keyword">return</span> new <span class="type">WaitForEndOfFrame</span>();                
+    }
+}</code></pre>
+            <iframe src="https://gfycat.com/ifr/SarcasticDismalEidolonhelvum" frameborder="0" scrolling="no" width="600" height="340" allowfullscreen></iframe>
+            <p><span class="caption text-muted">`Input.acceleration` com suavização</span></p>
+            <h4>Vibração</h4>
+            <p>Não dá pra ter muito controle da vibração do device mas é bem fácil de fazer ele vibrar, caso o device tenha como fazer isso. (Não adianta tentar num iPad, por exemplo :p )</p>
+            <pre class="splash"><code>void <span class="type">Vibrar</span>(){
+	<span class="type">Handheld</span>.<span class="type">Vibrate</span>();
+}</code></pre>
+            <h3>Integração com o mundo nativo</h3>
+            <p>A Unity permite que o código C# interaja com várias linguagens de programação específicas de outros sistemas, como no nosso caso, o Objective-C, através dos <a href="http://docs.unity3d.com/Manual/NativePlugins.html">Native Plugins</a>. Não só isso, como ela também disponibiliza alguns wrappers básicos, para que você não se perca na burocracia de trazer o resultado do Obj-C para o C#.</p>
+            <h4>GameCenter</h4>
+            <p>As APIs da Unity já provem um nível bem básico de integração com o GameCenter, utilizando a classe <a href="http://docs.unity3d.com/ScriptReference/Social.html">Social</a>, que possui as funcionalidades básicas de autenticação, leaderboards e achievements.</p>
+            <pre class="splash"><code>void <span class="type">Start</span> () {
+    <span class="type">Social</span>.<span class="property">localUser</span>.<span class="type">Authenticate</span>(<span class="type">SocialUserLogin</span>);
+}
+
+void <span class="type">SocialUserLogin</span>(bool success){
+    <span class="call">if</span>(success){
+        <span class="type">Debug</span>.<span class="type">Log</span>(<span class="string">"do stuff with logged user here"</span>);
+    } <span class="keyword">else</span> {                
+        <span class="type">Debug</span>.<span class="type">Log</span>(<span class="string">"disable gamecenter features until player logs in"</span>);
+    }
+}</code></pre>
+            <h4>Low Power Mode</h4>
+            <p>Com a interoperabilidade de código, podemos fazer coisas interessantes, como reduzir o framerate do nosso jogo quando o iOS9 está em modo Low Power para economizar bateria.</p>
+            <p>Esse exemplo é bem simples, e mostra como é fácil misturar o Objective C com o C#. Em um arquivo .mm, tenho o seguinte código:</p>
+            <pre class="splash"><code>extern <span class="string">"C"</span> bool <span class="call">getLowPowerMode</span>(){
+    <span class="keyword">return</span> [[<span class="type">NSProcessInfo</span> processInfo] isLowPowerModeEnabled];
+}</code></pre>
+            <p>E eu acesso esse código na minha classe pelo namespace <code>System.Runtime.InteropServices</code>, apenas declarando o nome e o retorno do método no corpo da classe:</p>
+            <pre class="splash"><code>using <span class="type">System</span>.<span class="type">Runtime</span>.<span class="type">InteropServices</span>;
+
+namespace <span class="type">CocoaHeadsBR</span>{   
+    <span class="keyword">public class</span> DeviceManager {        
+        [<span class="type">DllImport</span> (<span class="string">"__Internal"</span>)] <span class="keyword">private static</span> extern bool <span class="call">getLowPowerMode</span>();
+        
+        <span class="keyword">public static</span> bool isLowPowerActive{
+            <span class="keyword">get</span>{
+                <span class="keyword">return</span> <span class="call">getLowPowerMode</span>();
+            }
+        }
+    }
+}</code></pre>
+            <p>E aí, preferencialmente no startup do nosso jogo, modificamos o framerate alvo do jogo, que será menor caso o Low Power Mode esteja ativo:</p>
+            <pre class="splash"><code>void <span class="type">Start</span>(){
+	<span class="type">Application</span>.<span class="property">targetFrameRate</span> = <span class="type">DeviceManager</span>.<span class="property">isLowPowerActive</span>? <span class="number">30</span>: <span class="number">60</span>;
+}</code></pre>
+            <h4>Câmera</h4>
+            <p>Como com os nossos outros exemplos, a Unity dá uma forma bem fácil de acessar a câmera também. Usando a classe <code>WebCamTexture</code>.</p>
+            <iframe src="https://gfycat.com/ifr/GloomySpitefulAmericanwigeon" frameborder="0" scrolling="no" width="600" height="340" allowfullscreen></iframe>
+            <p>Na minha cena tenho algumas texturas que eu quero que sejam fotos que eu vou tirar na hora (Aqueles quadrados brancos ali no meio dos estandartes), e é bem simples de fazer isso funcionar.</p>
+            <p>Para capturar a imagem, as ações dos botões na tela são estas:</p>
+            <pre class="splash"><code><span class="keyword">public</span> <span class="type">GameObject</span> cameraOverlay;
+<span class="keyword">public</span> <span class="type">RawImage</span> camImage; 
+
+<span class="type">WebCamTexture</span> wct;
+
+void <span class="type">Awake</span>(){
+    wct = new <span class="type">WebCamTexture</span>();                                               
+}     
+
+<span class="keyword">public</span> void <span class="type">StartCamera</span>(){
+    camImage.<span class="property">texture</span> = wct;            
+    camImage.<span class="property">material</span>.<span class="property">mainTexture</span> = wct;            
+    wct.<span class="type">Play</span>(); <span class="comment">//Começa a modificar a RawImage que aparecerá como overlay na tela</span>
+    cameraOverlay.<span class="type">SetActive</span>(<span class="keyword">true</span>); <span class="comment">//Abre o overlay</span>
+}
+
+<span class="keyword">public</span> void <span class="type">CaptureImage</span>(){
+    cameraOverlay.<span class="type">SetActive</span>(<span class="keyword">false</span>); <span class="comment">//Fecha o overlay</span>
+    wct.<span class="type">Stop</span>(); <span class="comment">//Para o RawImage no último frame capturado</span>
+    <span class="type">CameraSceneManager</span>.<span class="property">sharedInstance</span>.<span class="type">PostPictureIntoStandard</span>(camImage.<span class="property">texture</span>);     
+}</code></pre>
+            <p>Para colocar a imagem dentro do jogo, na textura, o <code>CameraSceneManager</code> faz isto:</p>
+            <pre class="splash"><code><span class="keyword">public</span> void <span class="type">PostPictureIntoStandard</span>(<span class="type">Texture</span> photo){
+    <span class="call">foreach</span>(<span class="type">Standard</span> s <span class="keyword">in</span> standards){
+        s.<span class="type">ApplyPhoto</span>(photo);    
+    }
+}</code></pre>
+            <p>E cada um dos estandartes na cena só faz isso:</p>
+            <pre class="splash"><code><span class="keyword">public</span> <span class="type">MeshRenderer</span> meshToApplyPhoto; <span class="comment">//Esse MeshRenderer é colocado direto no Inspector da Unity</span>
+
+<span class="keyword">public</span> void <span class="type">ApplyPhoto</span>(<span class="type">Texture</span> photo){
+    meshToApplyPhoto.<span class="property">material</span>.<span class="property">mainTexture</span> = photo;
+}</code></pre>
+            <p>Fazer funcionar direito é outra história. A texture que a Unity retornou no <code>WebCamTexture</code> está invertida, mas como com o exemplo da aceleração, é possível brincar o suficiente com esses settings para deixar o input da câmera bem legalzinho :)</p>
+            <h2>Conclusão</h2>
+            <p>Com esse material todo aí vocês já tem uma boa base para desenvolver o jogo usando as features do iOS que tanto queriam. Mal posso esperar para ver o que vocês vão fazer!</p>
+            <p>O projeto que eu usei para fazer todas as imagens e vídeos utilizados para ilustrar os code samples estão no <a href="https://github.com/loloop/equinox">GitHub</a> :D</p>
+            <p>A imagem do Header é do jogo <a href="http://www.firewatchgame.com"><strong>Firewatch</strong></a>, desenvolvido pela empresa americana <a href="http://www.camposanto.com">Campo Santo</a> com Unity3D para PS4 e OS X, a imagem que abre o post é de <a href="https://superhotgame.com"><strong>SUPER HOT</strong></a>, também desenvolvido com Unity3D, para OS X. A Unity tem um espaço de showcase dos jogos desenvolvidos usando ela, o <a href="http://madewith.unity.com/games?type=featured&amp;search=&amp;platform=ios&amp;genre=">Made With Unity</a>. Se você quiser conhecer mais jogos desenvolvidos com ela, é só dar um pulinho lá :)</p>
+            <p></p>
+          </article>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
