@@ -12,7 +12,7 @@ Pequenos detalhes fazem toda a diferença, e pequenos detalhes me deixam desprop
 
 Uma das interações mais legais e super tranquilas da gente implementar nos nossos apps UIKit é o UIInterpolationMotionEffect, que dá aquele efeito de parallax quando mexemos o celular, mais conhecido pelo efeito [Perspectiva](https://support.apple.com/pt-br/HT200285) que podemos aplicar nas imagens de fundo de nossos iPhones e iPads. Mas quando tentei adicionar um em minha View de SwiftUI, fui pego por isso daqui:
 
-![Imagem com uma view de SwiftUI onde um motionEffect que tenta ser aplicado nela dá erro, porque não existe](/images/motion/motionError.png)
+![Imagem com uma view de SwiftUI onde um motionEffect que tenta ser aplicado nela dá erro, porque não existe](motion/motionError.png)
 
 Eis que descubro, pesquisando pela documentação que não existe uma forma de colocar um efeito desses nativamente com o SwiftUI! Meu primeiro pensamento foi criar uma UIViewRepresentable que tivesse a minha View dentro de um container do SwiftUI, fazendo um bridge de SwiftUI -> UIKit -> SwiftUI, que tentei fazer, mas sem muito sucesso.
  
@@ -237,6 +237,6 @@ extension View {
 
 E com isso, o nosso código lá do começo funciona perfeitamente, da forma que eu queria que ele funcionasse :)
 
-![Imagem com uma view de SwiftUI onde um motionEffect é aplicado com sucesso](/images/motion/motionSucc.png)
+![Imagem com uma view de SwiftUI onde um motionEffect é aplicado com sucesso](motion/motionSucc.png)
 
 O projeto completo com o exemplo do card e o reader do giroscópio está no [meu GitHub](https://github.com/loloop/SwiftInMotion), e deixo meus agradecimentos aqui ao [@Alan Pégoli](https://twitter.com/alanpegoli) que fez o beta test e apontou uma falha gritante no artigo :)

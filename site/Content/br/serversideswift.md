@@ -16,20 +16,20 @@ Escrever o código todos nós já entendemos bem, e ver o resultado da nossa cri
 
 Eu criei o [@F1LandinhoBot](https://t.me/F1LandinhoBot) com o intuito de me ajudar a lembrar os horários das corridas da Fórmula 1 num grupo de amigos, acessando a API do Telegram e mandando mensagens para que a gente não perdesse o horário de uma sessão sequer das corridas. 
 
-![](/images/serverswift/telegram.png)
+![](serverswift/telegram.png)
 
 E funcionou tudo bem tranquilo rodando direto no meu Mac, mas eu não quero deixar o meu Mac ligado o tempo todo, rodando esse código pro bot funcionar, e não quero nem pensar em como eu vou garantir que ele vai funcionar o tempo todo. Onde moro, quedas de energia são bem comuns, e isso me parece um desperdício de processamento do meu computador de qualquer forma.
 
 Então resolvi colocar esse código para rodar no meu servidor na Amazon, que eu já tenho faz uns anos rodando um [servidor de Quake](https://quake.host), então não precisaria desembolsar nenhum centavo a mais do que eu já pago por ele pra colocar o serviço no ar. O setup do Swift no Linux está todo detalhado no [Swift.org](https://swift.org) e apesar de um pouco trabalhoso, é fácil de seguir. Clonei o código do GitHub e eu não estava esperando o que vinha a seguir: 
 
-![](/images/serverswift/wont-build.png)
+![](serverswift/wont-build.png)
 <p class="center muted caption">OpenCombine é uma biblioteca feita especificamente pra gente usar o Combine no Linux, como assim ela não existe? Desde quando URLSession é um AnyObject?</p>
 
 ## Swift no Linux
 
 Existem algumas lombadas durante o caminho do Swift no servidor que são raramente mencionadas, principalmente porque são abstraídas pelos frameworks famosos, mas que você vai encontrar bem rápido se for pelo caminho de escrever o código "puro". Todas elas existem por conta do fato de que o Swift no Mac não traz as mesmas bibliotecas que o Swift no Linux. O Foundation, que a gente está bastante acostumado a usar no mundo Apple não é o mesmo Foundation que existe no Linux, e isso [não é documentado](https://forums.swift.org/t/what-are-best-practices-to-write-a-linux-software-on-macos/) em lugar algum. É um problema que [não deve durar muito tempo](https://www.swift.org/blog/future-of-foundation/), mas ainda é um problema.
 
-![](/images/serverswift/urlsession.png)
+![](serverswift/urlsession.png)
 <p class="center muted caption">O URLSession fica em uma biblioteca completamente diferente no Linux, que nem existe no macOS!</p>
 
 ## Publicando o nosso trabalho
@@ -110,6 +110,6 @@ E é isso! Desse jeito você consegue automatizar a execução do seu código em
 
 Um jeito muito mais fácil de se realizar esse processo todo é utilizando uma plataforma como o [Render](https://render.com) (ou outros milhares de serviços que fazem a mesma coisa), que vai abstrair todo o processo de configurar o ambiente, realizar o deploy quando houver um merge, e vai te dar outras regalias, como backups de banco de dados e etc. Essa facilidade toda tem o seu custo ($), e caso você queira subir outro serviço, os custos vão subir bem mais rápido.
 
-![](/images/serverswift/render.png)
+![](serverswift/render.png)
 
 Não tem muito o que ficar falando sobre essas plataformas, cada uma vai ter suas particularidades, mas é uma alternativa que eu gosto muito de usar! Quanto menos tempo a gente gasta na infraestrutura, mais a gente pode investir no produto em si, e isso é o que importa no final. Até a próxima!

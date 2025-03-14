@@ -60,6 +60,37 @@ extension MarkdownParser {
             return decorated
         }
         parser.addModifier(codeBlockModifier)
+        let imageModifier = Modifier(target: .images) { html, markdown in
+            do {
+                let altRegex = try Regex(#"alt="([^"]+)""#)
+                let altValue = try altRegex.firstMatch(in: html)?.last?.value
+                let altValueString = String(altValue as? Substring ?? "")
+                
+                let srcRegex = try Regex(#"src="([^"]+)""#)
+                let value = try srcRegex.firstMatch(in: html)?.last?.value
+                let valueString = String(value as? Substring ?? "")
+                
+                /*
+                // TODO: Fork Ink and add `metadata` as a modifier parameter
+                // TODO: so we can get the article slug and automatically append it here
+                let last = valueString.split(separator: "/").last ?? ""
+                print(regex)
+                print(last)
+                 */
+
+                return if altValueString.isEmpty {
+                    #"<img src="/images/\#(valueString)" />"#
+                } else {
+                    #"<img src="/images/\#(valueString)" alt="\#(altValueString)" />"#
+                }
+                
+            } catch {
+                fatalError("InkMarkdownParser: Failed to modify image URL")
+            }
+        }
+        
+        parser.addModifier(imageModifier)
+        
         return parser
     }
 }
