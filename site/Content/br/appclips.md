@@ -16,7 +16,7 @@ Os App Clips tem um tamanho limite de 10MB por Clip, então é importante escolh
 
 Começando do começo, os App Clips são um app como qualquer outro, apenas com algumas limitações, então para criá-los é bem simples, basta criar um target novo no seu projeto com o App Clip desejado. Como é possível criar mais de um clip por app, é interessante utilizar um bundle identifier que vai representar a funcionalidade do seu clip. Não se preocupe muito com isso, porque dá pra criar e configurar outros depois :) No app da NSBrazil, criei como `com.cocoaheads.conf.baseClip`
 
-![](/images/appclips/creating-clip-target.png)
+![](appclips/creating-clip-target.png)
 
 Uma das coisas mais legais dos App Clips é que eles são obrigatoriamente apps de iOS 14+, então nós podemos usar o lifecycle de um app SwiftUI ao invés do clássico App/SceneDelegate do UIKit. Também é possível usar eles, claro, mas se a gente pode optar pelo processo mais simples, por que não?
 
@@ -75,7 +75,7 @@ No clip da NSBrazil, existe uma `View` que só existe dentro do código do App C
 
 Escolhendo esse approach de compilar os mesmos arquivos para targets diferentes, as vezes ainda precisamos fazer alterações específicas para a experiência do nosso clip. Para esses casos, podemos criar uma compiler flag que vai incluir o código apenas na compilação do clip, em `Swift Compiler - Custom Flags` do target do App Clip, adicionando a `-D <NOMEDASUAFLAG>`:
 
-![](/images/appclips/swiftflag.png)
+![](appclips/swiftflag.png)
 
 Com isso, podemos escrever nosso código incluindo as flags quando necessário, como por exemplo:
 
@@ -106,17 +106,17 @@ VStack(alignment: .leading, spacing: 5) {
 
 E aí, compilando tanto o app quanto o App Clip, podemos ver o resultado:
 
-![](/images/appclips/clipcomparison.png)
+![](appclips/clipcomparison.png)
 
 ## Invocando e testando o App Clip
 
 Com o nosso código pronto e organizado, agora precisamos testar o clip. Rodando pelo Xcode, o clip se comporta com o mesmo processo de um app comum no simulador, mas essa não é a experiência completa que o usuário vai ter quando for invocar o clip, não é? Para isso, precisamos associar o domínio da URL que usaremos para invocar nas capabilities do target do clip:
 
-![](/images/appclips/assoc-domains.png)
+![](appclips/assoc-domains.png)
 
 E também precisamos criar uma Local Experience no menu de Desenvolvedor (`Desenvolvedor -> Local Experiences -> Register Local Experience`) do aparelho:
 
-![](/images/appclips/local-experience.png)
+![](appclips/local-experience.png)
 
 <p class="center muted caption">Caso o menu Desenvolvedor não esteja aparecendo nos Ajustes, instale um app no seu device pelo Xcode</p>
 
@@ -124,11 +124,11 @@ Assim que esse menu for preenchido, podemos abrir a câmera ou o Scanner de cód
 
 Caso queira testar em outros devices, é possível arquivar uma versão para instalação *ad-hoc* ou subir o app para o `TestFlight`, e aí, só seguir os mesmos passos de criar a experiência local.
 
-![](/images/appclips/testflight.png)
+![](appclips/testflight.png)
 
 Uma das limitações mais importantes do App Clip é o tamanho do app, e é bem fácil da gente checar isso também, basta arquivar o App Clip para instalações *ad-hoc* e marcar essas opções:
 
-![](/images/appclips/thinning.png)
+![](appclips/thinning.png)
 
 Dentro da pasta que o Xcode criou pra gente, existe um arquivo chamado `App Thinning Size Report.txt`, com o tamanho do seu clip para cada variante do App Thinning. Procure pela variante `Universal` do app e verifique o tamanho **uncompressed** dela. Esse é o tamanho que não pode passar de 10MB.
 
@@ -196,6 +196,6 @@ A partir daí, podemos criar as imagens de acesso, que podem ser tanto um QR Cod
 
 O último passo é criar a experiência no AppStore Connect, preencher todos os detalhes para formar o card do clip, e esperar até 48h para que ele se propague. (OBS: Essa parte só vai aparecer no seu Connect depois que você subir um build que contém um App Clip)
 
-![](/images/appclips/appstore.png)
+![](appclips/appstore.png)
 
 E é isso! Nosso App Clip está pronto para ser compartilhado com o mundo. Se você quiser conferir o projeto completo do app da NSBrazil, é só entrar lá no [Repositório do Projeto](https://github.com/CocoaHeadsConference/CHConferenceApp), completamente feito com SwiftUI, com target a partir do iOS13!

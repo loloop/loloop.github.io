@@ -17,7 +17,7 @@ Este artigo foi escrito há muito tempo atrás. O site onde hospedei os gifs na 
 
 Este artigo é uma cópia do meu artigo publicado para o equinociOS 2016, uma reunião de artigos criados durante o equinócio feitos pela comunidade Apple no Brasil.
 
-![O fps mais inovador que eu já joguei em anos](/images/unity/muchocaliente.png)
+![O fps mais inovador que eu já joguei em anos](unity/muchocaliente.png)
 
 Nascida no OS X em 2005 e portada para o resto do mundo todo, a Unity é uma das maiores game engines da atualidade, e uma das melhores escolhas que se pode fazer quando o assunto é gamedev para aparelhos mobile. Com suporte a tantas plataformas que eu não duvidaria que ela funciona até em torradeiras, e isto naturalmente traz aquela dúvida que todo framework que promete mil e uma plataformas traz: Mas realmente funciona?
 
@@ -28,7 +28,7 @@ Agora que você já conhece um pouco da Unity e o core dela, vamos começar? :)
 
 ## Primeiros Passos
 
-![Página Inicial da Unity3D](/images/unity/GetUnity.png)
+![Página Inicial da Unity3D](unity/GetUnity.png)
 
 Bom, vamos começar baixando a Unity né? Não precisa se preocupar muito se ela vai rodar bem no seu Mac, pois estou usando um [MacBook Air de 2010](https://support.apple.com/kb/sp618?locale=en_US) para escrever este artigo. A versão que eu usei pra escrever ele é a 5.3.2, mas já saiu uma versão mais nova, a 5.3.3, mas tudo que eu fizer aqui deve funcionar nela sem o menor dos problemas. O download tá no [site da Unity](http://unity3d.com/download), e a Personal Edition é completa o suficiente pra funcionar com tudo que a gente vai usar.
 
@@ -38,7 +38,7 @@ Não se esqueça de marcar pro Download Assistant baixar o Build Support para as
 
 ### O Unity Remote
 
-![Unity Remote 4 na App Store](/images/unity/UnityRemote4.png)
+![Unity Remote 4 na App Store](unity/UnityRemote4.png)
 <p><span class="caption muted"><a href="https://itunes.apple.com/us/app/unity-remote-4/id871767552?mt=8">Download do UnityRemote na App Store</a></span></p>
  
 Testar builds em aparelhos iOS com a Unity é um processo demorado e chato. Para aqueles testes onde queremos apenas o input do celular, o Remote é uma 
@@ -52,7 +52,7 @@ Para deixar o mais amigável para se trabalhar com o Git, nós precisamos mudar 
 
 Fica bem mais fácil de identificar problemas assim, já que antes não era possível fazer diff dos arquivos, mas isso deixa os commits um número de linhas bem exagerado, como dá pra ver nos graphs do GitHub de um dos meus projetos.
 
-![3mi linhas de código](/images/unity/3MilhoesDeLinhas.png)
+![3mi linhas de código](unity/3MilhoesDeLinhas.png)
 
 ### Player Settings
 

@@ -14,7 +14,7 @@ O SpriteKit é um framework desenvolvido pela Apple para a criação de jogos de
 
 O jogo de exemplo que desenvolvi para expor esta arquitetura é um infinite runner bem simples, que conta com todos os elementos básicos que se espera de um jogo: uma personagem que tem movimentos, ações, animações, pontos de vida, sons, que existe em um ambiente animado com inimigos que reagem a personagem e tentam acabar com a existência dela, e claro, com uma boa trilha sonora de fundo também.
 
-![](/images/spritekit/game.jpeg)
+![](spritekit/game.jpeg)
 <p class="center muted caption">Toda a arte deste jogo é composta de assets de domínio público, criados pelo ótimo <a href="https://kenney.nl">Kenney</a></p>
 
 O objeto básico do SpriteKit é o `SKNode`, todos os objetos que vão ser utilizados no contexto dele são do mesmo tipo, e quando juntos, formam uma árvore de nós pais e filhos, com métodos prontos para acessá-los.
