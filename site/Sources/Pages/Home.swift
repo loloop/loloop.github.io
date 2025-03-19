@@ -18,9 +18,18 @@ struct Home: StaticLayout {
         .class("intro")
         
         Section {
-            ForEach(content.home) { content in
+            ForEach(content.homeContent) { content in
                 HomeLink(content: content)
             }
         }
+    }
+}
+
+struct PortugueseHome: StaticLayout {
+    var title = "Home"
+    var path = "br"
+    
+    var body: some HTML {
+        Home().body
     }
 }

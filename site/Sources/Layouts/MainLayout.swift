@@ -3,18 +3,18 @@ import Ignite
 
 struct MainLayout: Layout {
     var body: some HTML {
-        // TODO: Fix this for en_US articles
-        HTMLDocument(language: .portugueseBrazil) {
+        HTMLDocument(language: page.language) {
             Head(for: page) {
-                // OpenGraph
+                // Additional OpenGraph tags
                 MetaTag(name: "og:type", content: "article")
-                MetaTag(name: "og:locale", content: "pt_BR") // TODO: Fix this for en_US articles
+                MetaTag(name: "og:locale", content: page.language.rawValue)
                 MetaTag(.openGraphDescription, content: page.description)
-
+                
+                // Dart-sass generated style
                 MetaLink(href: "/css/style.css", rel: .stylesheet)
             }
             Body {
-                Navigation()
+                Navigation(language: page.language)
                 Section(tag: "main") {
                     Section {
                         page.body.render()

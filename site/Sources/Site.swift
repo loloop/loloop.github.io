@@ -66,7 +66,10 @@ struct ExampleSite: Site {
         VideoLayout()
     ]
     var staticLayouts: [any StaticLayout] = [
-        Me()
+        Me(language: .english),
+        Me(language: .portugueseBrazil),
+        PortugueseHome(),
+        EnglishHome()
     ]
     var useDefaultBootstrapURLs = BootstrapOptions.none
     var markdownRenderer: InkMarkdownRenderer.Type {
