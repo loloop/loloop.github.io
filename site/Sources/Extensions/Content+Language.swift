@@ -10,7 +10,7 @@ import Ignite
 extension Content {
     var language: Language {
         guard
-            let lang = metadata["lang"] as? String,
+            let lang = metadata["language"] as? String,
             let language = Language(rawValue: lang)
         else { return .portugueseBrazil }
         

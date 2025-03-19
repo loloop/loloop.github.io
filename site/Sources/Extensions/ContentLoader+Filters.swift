@@ -15,7 +15,7 @@ extension ContentLoader {
     }
     
     var englishLanguageContent: [Content] {
-        homeContent.filter {
+        all.filter {
             !$0.isHidden && $0.language == .english
         }
     }
