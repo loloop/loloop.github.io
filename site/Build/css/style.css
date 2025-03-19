@@ -765,6 +765,9 @@ article iframe {
     flex-direction: column-reverse;
   }
 }
+#apps .app .left {
+  width: 100%;
+}
 @media (max-width: 767px) {
   #apps .app .left {
     display: flex;
