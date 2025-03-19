@@ -2,12 +2,13 @@ import Foundation
 import Ignite
 
 struct Me: StaticLayout {
-    var title = "Contato"
-    var path = "me"
+    var title: String { language == .english ? "Contact Info" : "Contato" }
+    var path: String { language == .english ? "contact" : "me" }
+    var language: Language
 
     var body: some HTML {
         Section {
-            Text("contato")
+            Text(language == .english ? "contact" : "contato")
                 .font(.title1)
                 .id("contato")
             

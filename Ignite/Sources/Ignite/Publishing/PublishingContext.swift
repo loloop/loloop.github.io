@@ -326,7 +326,8 @@ public final class PublishingContext {
             description: staticLayout.description,
             url: site.url.appending(path: path),
             image: staticLayout.image,
-            body: body
+            body: body,
+            language: staticLayout.language
         )
 
         let outputString = render(page, using: staticLayout.parentLayout)
@@ -347,13 +348,16 @@ public final class PublishingContext {
         }
 
         currentRenderingPath = content.path
+        let languageString = content.metadata["language"] as? String ?? "pt_BR"
+        let language = Language(rawValue: languageString) ?? .portugueseBrazil
 
         let page = Page(
             title: content.title,
             description: content.description,
             url: site.url.appending(path: content.path),
             image: content.image.flatMap { site.url.appending(path: $0) },
-            body: body
+            body: body,
+            language: language
         )
 
         let outputString = render(page, using: layout.parentLayout)

@@ -15,6 +15,7 @@ public struct Page: Sendable {
     private(set) public var url: URL
     private(set) public var image: URL?
     private(set) public var body: any HTML
+    private(set) public var language: Language
 }
 
 extension Page {
@@ -23,6 +24,7 @@ extension Page {
         title: "",
         description: "",
         url: URL(string: "about:blank")!,
-        body: EmptyHTML()
+        body: EmptyHTML(),
+        language: .portugueseBrazil
     )
 }

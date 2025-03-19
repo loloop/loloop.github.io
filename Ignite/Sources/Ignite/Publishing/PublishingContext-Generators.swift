@@ -77,7 +77,9 @@ extension PublishingContext {
                 title: "Tags",
                 description: "Tags",
                 url: site.url.appending(path: path),
-                body: body
+                body: body,
+                // TODO: Add language support for TagLayouts
+                language: .portugueseBrazil
             )
 
             let outputString = render(page, using: site.tagLayout.parentLayout)

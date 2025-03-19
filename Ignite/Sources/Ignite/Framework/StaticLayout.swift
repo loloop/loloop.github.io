@@ -20,6 +20,9 @@ public protocol StaticLayout: Layoutable {
 
     /// The image for sharing the layout
     var image: URL? { get }
+    
+    /// The language for the layout
+    var language: Language { get }
 
     /// A plain-text description for this layout. Defaults to an empty string.
     var description: String { get }
@@ -48,6 +51,9 @@ public extension StaticLayout {
             "/\(title.lowercased().replacing(" ", with: "-"))"
         }
     }
+    
+    /// Defaults to brazilian portuguese
+    var language: Language { .portugueseBrazil }
 
     /// Defaults to no sharing image
     var image: URL? { nil }
