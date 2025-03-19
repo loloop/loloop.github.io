@@ -1,39 +1,39 @@
 <!doctype html>
-<html data-bs-theme="auto" lang="pt-BR">
+<html data-bs-theme="auto" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Vamos dar uma olhada em como podemos facilitar o desenvolvimento de apps com SpriteKit" name="description" />
+    <meta content="Let's take a look at how we can simplify app development with SpriteKit." name="description" />
     <meta content="Mauricio Cardozo" name="author" />
     <meta content="Ignite v0.2.1" name="generator" />
-    <title>Arquitetura baseada em eventos para SpriteKit – Mauricio Cardozo</title>
-    <link href="https://mauriciocardozo.me/br/event-based-architechture-for-spritekit" rel="canonical" />
+    <title>Event-Based Architecture for SpriteKit – Mauricio Cardozo</title>
+    <link href="https://mauriciocardozo.me/en/event-based-architecture-for-spritekit" rel="canonical" />
     <meta content="Mauricio Cardozo" property="og:site_name" />
     <meta content="https://mauriciocardozo.me/images/spritekit/logo.png" property="og:image" />
     <meta content="https://mauriciocardozo.me/images/spritekit/logo.png" name="twitter:image" />
-    <meta content="Arquitetura baseada em eventos para SpriteKit" property="og:title" />
-    <meta content="Arquitetura baseada em eventos para SpriteKit" name="twitter:title" />
-    <meta content="Vamos dar uma olhada em como podemos facilitar o desenvolvimento de apps com SpriteKit" property="og:description" />
-    <meta content="Vamos dar uma olhada em como podemos facilitar o desenvolvimento de apps com SpriteKit" name="twitter:description" />
-    <meta content="https://mauriciocardozo.me/br/event-based-architechture-for-spritekit" property="og:url" />
+    <meta content="Event-Based Architecture for SpriteKit" property="og:title" />
+    <meta content="Event-Based Architecture for SpriteKit" name="twitter:title" />
+    <meta content="Let's take a look at how we can simplify app development with SpriteKit." property="og:description" />
+    <meta content="Let's take a look at how we can simplify app development with SpriteKit." name="twitter:description" />
+    <meta content="https://mauriciocardozo.me/en/event-based-architecture-for-spritekit" property="og:url" />
     <meta content="mauriciocardozo.me" name="twitter:domain" />
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="on" name="twitter:dnt" />
     <meta content="article" name="og:type" />
-    <meta content="pt-BR" name="og:locale" />
-    <meta content="Vamos dar uma olhada em como podemos facilitar o desenvolvimento de apps com SpriteKit" property="og:description" />
+    <meta content="en" name="og:locale" />
+    <meta content="Let's take a look at how we can simplify app development with SpriteKit." property="og:description" />
     <link href="/css/style.css" rel="stylesheet" />
   </head>
   <body class="container">
     <nav>
       <div class="site-navigation">
-        <a href="/" id="title" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover"><p style="font-weight: 500">MC</p></a>
+        <a href="/en" id="title" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover"><p style="font-weight: 500">MC</p></a>
         <ul>
-          <li><a href="/" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>artigos</p></a></li>
+          <li><a href="/en" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>articles</p></a></li>
           <li><a href="/apps" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>apps</p></a></li>
-          <li><a href="/me" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>contato</p></a></li>
+          <li><a href="/contact" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>contact</p></a></li>
           <li><a href="https://nsbrazil.com" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>NSBrazil</p></a></li>
-          <li><a href="/en" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>🇺🇸</p></a></li>
+          <li><a href="/" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>🇧🇷</p></a></li>
         </ul>
       </div>
     </nav>
@@ -42,33 +42,14 @@
         <div>
           <article>
             <img alt="" src="/images/images/spritekit/logo.png" class="rounded" />
-            <h1>Arquitetura baseada em eventos para SpriteKit</h1>
+            <h1>Event-Based Architecture for SpriteKit</h1>
             <p></p>
-            <p>Este artigo é um pedaço do que apresentei na <a href="https://www.youtube.com/watch?v=69lGgGLGoJQ">talk que dei no CocoaHeads ES em Vitória</a>, realizado na Brooder, em novembro de 2019, "Criando o seu primeiro jogo com SpriteKit". Lá, falo um pouco mais sobre os objetos, funcionalidades e lifecycle do SpriteKit em si, além de introduzir a arquitetura baseada em eventos.</p>
-            <p>O SpriteKit é um framework desenvolvido pela Apple para a criação de jogos de alta performance em 2D. Como ex-desenvolvedor de jogos, este framework me atraiu naturalmente assim que comecei a estudar Swift e desenvolver apps, mas como desenvolvia com a Unity, que é bastante opinativa em sua arquitetura, fiquei um pouco perdido ao tentar criar experiências com ele. A talk que fiz e por consequência este artigo são o resultado de uma tentativa de deixar o desenvolvimento com SpriteKit mais estruturado para facilitar o seu entendimento.</p>
-            <p>O jogo de exemplo que desenvolvi para expor esta arquitetura é um infinite runner bem simples, que conta com todos os elementos básicos que se espera de um jogo: uma personagem que tem movimentos, ações, animações, pontos de vida, sons, que existe em um ambiente animado com inimigos que reagem a personagem e tentam acabar com a existência dela, e claro, com uma boa trilha sonora de fundo também.</p>
+            <p>This article is part of what I presented in the <a href="https://www.youtube.com/watch?v=69lGgGLGoJQ">talk I gave at CocoaHeads ES in Vitória</a>, held at Brooder in November 2019, "Creating Your First Game with SpriteKit." There, I talk a little more about the objects, features, and lifecycle of SpriteKit itself, as well as introducing the event-based architecture.</p>
+            <p>SpriteKit is a framework developed by Apple for the creation of high-performance 2D games. As a former game developer, this framework naturally attracted me as soon as I started studying Swift and developing apps. However, as I was working with Unity, which has a highly opinionated architecture, I initially felt lost when trying to create experiences with SpriteKit. The talk I gave and, consequently, this article, are the result of an attempt to make development with SpriteKit more structured to facilitate its understanding.</p>
+            <p>The game I developed to demonstrate this architecture is a simple infinite runner that includes all the basic elements expected of a game: a character with movements, actions, animations, health points, and sounds, existing in an animated environment with enemies that react to the character and attempt to end its existence. And of course, it features a great background soundtrack as well.</p>
             <img src="/images/spritekit/game.jpeg" />
-            <p class="center muted caption">Toda a arte deste jogo é composta de assets de domínio público, criados pelo ótimo <a href="https://kenney.nl">Kenney</a></p>
-            <p>O objeto básico do SpriteKit é o <code>SKNode</code>, todos os objetos que vão ser utilizados no contexto dele são do mesmo tipo, e quando juntos, formam uma árvore de nós pais e filhos, com métodos prontos para acessá-los.</p>
-            <div class="appledoc"> 
-              <div class="left-col">
-                 Accessing Related Nodes 
-              </div> 
-              <div class="right-col"> 
-                <div class="var"> 
-                  <code>var <span class="blue">scene</span>: SKScene?</code> 
-                  <span class="description">The scene node that contains this node.</span> 
-                </div> 
-                <div class="var"> 
-                  <code>var <span class="blue">parent</span>: SKNode?</code> 
-                  <span class="description">The node's parent node.</span> 
-                </div> 
-                <div class="var"> 
-                  <code>var <span class="blue">children</span>: [SKNode]</code> 
-                  <span class="description">The node's children.</span> 
-                </div> 
-              </div> 
-            </div>
+            <p class="center muted caption">All of this game’s art is composed of public domain assets, created by the great <a href="https://kenney.nl">Kenney</a></p>
+            <p>SpriteKit’s basic object is <code>SKNode</code>. All objects used within its context share this type, forming a tree structure of parent and child nodes, with built-in methods to access them.</p>
             <svg viewbox="0 0 709 709" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
               <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com --> 
               <title>Artboard</title> 
@@ -94,8 +75,9 @@
                 </g> 
               </g> 
             </svg>
-            <p>Quando um nó qualquer é criado, o SpriteKit automaticamente organiza a sua cadeia com essa estrutura, e podemos assim criar uma forma de comunicação padronizada entre os nós. Com um objeto base e uma simples extension, nosso nó pode receber um evento e escolher propagar, modificar ou impedir que este evento continue pela cadeia:</p>
-            <pre class="splash"><code><span class="keyword">@objc class</span> Event: <span class="type">NSObject</span> {}
+            <p>When any node is created, SpriteKit automatically organizes its hierarchy accordingly. This allows us to establish a standardized communication form of communication between nodes. With a base object and a simple extension, our node can receive an event and choose to propagate, modify, or prevent it from continuing down the chain:</p>
+            <pre class="splash"><code>swift
+<span class="keyword">@objc class</span> Event: <span class="type">NSObject</span> {}
 
 <span class="keyword">extension</span> <span class="type">SKNode</span>: <span class="type">EventHandler</span> {
     <span class="keyword">@objc func</span> handle(event: <span class="type">Event</span>) {
@@ -107,25 +89,28 @@
         parent?.<span class="call">raise</span>(event: event)
     }
 }</code></pre>
-            <p>Com estes dois métodos, quando criarmos um nó qualquer, ele automaticamente propaga o evento passado para baixo ou para cima na cadeia e quando quisermos causar alguma mudança no evento, podemos lidar com eles assim:</p>
-            <pre class="splash"><code><span class="keyword">final class</span> MyNode: <span class="type">SKNode</span> {
+            <p>With these two methods, when we create a node, it automatically propagates the passed event up or down the chain. If we want to modify an event, we can handle it like this:</p>
+            <pre class="splash"><code>swift
+<span class="keyword">final class</span> MyNode: <span class="type">SKNode</span> {
     <span class="keyword">override func</span> handle(event: <span class="type">Event</span>) {
-        <span class="comment">// lido com os eventos da forma que eu quiser</span>
-        <span class="keyword">super</span>.<span class="call">handle</span>(event: event) <span class="comment">// e passo eles pra frente, caso necessário</span>
+        <span class="comment">// Handle events in any way necessary</span>
+        <span class="keyword">super</span>.<span class="call">handle</span>(event: event) <span class="comment">// Then pass them along if needed</span>
     }
 
     <span class="keyword">override func</span> raise(event: <span class="type">Event</span>) {
-        <span class="comment">// faço o que quero com meu evento</span>
-        <span class="keyword">super</span>.<span class="call">raise</span>(event: event) <span class="comment">// e continuo a propagação do evento para cima na árvore</span>
+        <span class="comment">// Modify or handle the event</span>
+        <span class="keyword">super</span>.<span class="call">raise</span>(event: event) <span class="comment">// Continue propagation up the tree</span>
     }
 }</code></pre>
-            <p>Também podemos criar elementos na árvore que não fazem parte do SpriteKit, que não são necessariamente um <code>SKNode</code>, para lidar com elementos externos, como uma view do <code>UIKit</code>, um objeto que controle o haptic feedback do device pra gente, etc. Para isso, utilizo o protocolo <code>EventHandler</code>, que meus <code>SKNodes</code> implementam:</p>
-            <pre class="splash"><code><span class="keyword">protocol</span> EventHandler: <span class="type">AnyObject</span> {
+            <p>We can also create elements in the event chain that aren't part of SpriteKit—elements that aren’t necessarily <code>SKNode</code>—to handle external elements such as a UIKit view, the device’s haptic feedback controller, etc. To achieve this, we use the <code>EventHandler</code> protocol, which <code>SKNode</code> implements:</p>
+            <pre class="splash"><code>swift
+<span class="keyword">protocol</span> EventHandler: <span class="type">AnyObject</span> {
     <span class="keyword">func</span> handle(event: <span class="type">Event</span>)
     <span class="keyword">func</span> raise(event: <span class="type">Event</span>)
 }</code></pre>
-            <p>Agora que temos uma base, podemos começar a criar nossos objetos, eventos e a interação que pode acontecer entre eles. Para começar, estabeleço toda a criação dos nós de UI, da fase e do personagem no começo do ciclo de vida de minha <code>SKScene</code></p>
-            <pre class="splash"><code><span class="keyword">override func</span> didMove(to view: <span class="type">SKView</span>) {
+            <p>Now that we have a foundation, we can begin creating our objects, events, and interactions. To start, we establish all UI, level, and character nodes at the beginning of our <code>SKScene</code> lifecycle:</p>
+            <pre class="splash"><code>swift
+<span class="keyword">override func</span> didMove(to view: <span class="type">SKView</span>) {
     <span class="call">setupHandlers</span>()
     <span class="call">setupSpeed</span>()
 }
@@ -142,8 +127,9 @@
 <span class="keyword">func</span> setupSpeed() {
     <span class="call">handle</span>(event: <span class="type">SpeedEvent</span>(speed: <span class="number">30</span>))
 }</code></pre>
-            <p>Cada evento que será passado pelo sistema é um objeto completo que pode apenas indicar alguma coisa que aconteceu, ou carregar dados adicionais sobre o evento em si, como o <code>SpeedEvent</code>, que define a velocidade do jogo, e cada objeto meu lida com ele da forma que desejar:</p>
-            <pre class="splash"><code><span class="keyword">final class</span> SpeedEvent: <span class="type">Event</span> {
+            <p>Each event passed through the system is a complete object that can either indicate an occurrence or carry additional data about the event itself. For example, <code>SpeedEvent</code> defines the game speed, and each object handles it as needed:</p>
+            <pre class="splash"><code>swift
+<span class="keyword">final class</span> SpeedEvent: <span class="type">Event</span> {
     <span class="keyword">let</span> speed: <span class="type">CGFloat</span>
 
     <span class="keyword">init</span>(speed: <span class="type">CGFloat</span>) {
@@ -151,7 +137,7 @@
     }
 }
 
-<span class="comment">// VisibleFloor.swift</span> 
+<span class="comment">// VisibleFloor.swift</span>
 <span class="keyword">override func</span> handle(event: <span class="type">Event</span>) {
     <span class="keyword">if let</span> event = event <span class="keyword">as</span>? <span class="type">SpeedEvent</span> {
         floorSpeed = event.<span class="property">speed</span>
@@ -168,15 +154,17 @@
         <span class="call">animateEnemies</span>()
     }
 }</code></pre>
-            <p>Para lidar com eventos que apenas indicam algum acontecimento no sistema, podemos simplificar o processo:</p>
-            <pre class="splash"><code><span class="comment">// AudioController.swift</span>
+            <p>To handle events that simply indicate something happening in the system, we can simplify the process:</p>
+            <pre class="splash"><code>swift
+<span class="comment">// AudioController.swift</span>
 <span class="keyword">override func</span> handle(event: <span class="type">Event</span>) {
     <span class="keyword">if</span> event <span class="keyword">is</span> <span class="type">DeathEvent</span> {
         <span class="call">playDeathSound</span>()
     }
 }</code></pre>
-            <p>E por fim, para mostrar a facilidade de se criar objetos que interagem com o sistema como um todo e causam efeitos na cadeia, mesmo que não sejam SKNodes, para adicionar suporte aos controles de Xbox e PlayStation no nosso jogo, podemos simplesmente adicionar uma classe como esta:</p>
-            <pre class="splash"><code><span class="keyword">import</span> GameController
+            <p>Finally, to demonstrate how easy it is to create objects that interact with the system and trigger effects in the chain—even if they aren't <code>SKNode</code> we can add support for Xbox and PlayStation controllers using a simple class:</p>
+            <pre class="splash"><code>swift
+<span class="keyword">import</span> GameController
 
 <span class="keyword">final class</span> GameController: <span class="type">EventHandler</span> {
 
@@ -190,13 +178,13 @@
     <span class="keyword">func</span> addObservers() {
         <span class="type">NotificationCenter</span>.<span class="property">default</span>.<span class="call">addObserver</span>(<span class="keyword">self</span>,
                                                selector: <span class="keyword">#selector</span>(setupInput),
-                                               name: .<span class="dotAccess">GCControllerDidConnect</span>, 
+                                               name: .<span class="dotAccess">GCControllerDidConnect</span>,
                                                object: <span class="keyword">nil</span>)
     }
 
     <span class="keyword">@objc func</span> setupInput() {
         <span class="keyword">self</span>.<span class="property">controller</span> = <span class="type">GCController</span>.<span class="call">controllers</span>().<span class="property">first</span>
-        controller?.<span class="property">extendedGamepad</span>?.<span class="property">buttonA</span>.<span class="property">pressedChangedHandler</span> = { [<span class="keyword">weak self</span>] (<span class="keyword">_</span>,<span class="keyword">_</span>, pressed) <span class="keyword">in<br /> if</span> pressed {
+        controller?.<span class="property">extendedGamepad</span>?.<span class="property">buttonA</span>.<span class="property">pressedChangedHandler</span> = { [<span class="keyword">weak self</span>] (<span class="keyword">_</span>, <span class="keyword">_</span>, pressed) <span class="keyword">in<br /> if</span> pressed {
                 <span class="keyword">self</span>?.<span class="call">raise</span>(event: <span class="type">InteractionEvent</span>(type: .<span class="dotAccess">tap</span>))
             }
         }
@@ -207,9 +195,8 @@
     <span class="keyword">func</span> raise(event: <span class="type">Event</span>) {
         parent?.<span class="call">raise</span>(event: event)
     }
-
 }</code></pre>
-            <p>A talk que fiz tem um hands-on no final que mostra essa arquitetura toda funcionando, incluindo um live code que mostra o quão fácil é incluir novas funcionalidades e criar objetos que interagem com o sistema de forma dinâmica, sem a necessidade de objetos que conhecem uns aos outros diretamente. O projeto completo do jogo pode ser visto no <a href="https://github.com/loloop/SpriteKitCocoaHeadsES">meu GitHub</a></p>
+            <p>The talk I gave features a hands-on section that showcases this entire architecture in action, including a live coding session that highlights how easy it is to add new features and create objects that interact dynamically, without requiring objects to be aware of each other directly. The full project can be found on my <a href="https://github.com/loloop/SpriteKitCocoaHeadsES">GitHub</a>.</p>
             <p></p>
           </article>
         </div>
