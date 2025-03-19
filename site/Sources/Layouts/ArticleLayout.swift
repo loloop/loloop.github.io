@@ -17,6 +17,14 @@ struct ArticleLayout: ContentLayout {
             
             Text(content.title)
                 .font(.title1)
+                .style(.marginBottom, "0")
+
+            if let translated = content.metadata["translated"] as? String {
+                Text("Article originally written in brazilian portuguese. Translated by: \(translated)")
+                    .class("muted caption")
+                    .style(.textAlign, "start")
+            }
+
             Text(inkMarkdown: content.body)
         }
     }

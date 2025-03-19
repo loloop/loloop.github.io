@@ -24,7 +24,7 @@ struct Navigation: InlineElement {
                 List {
                     articleLink
                     
-                    Link(target: "/apps") {
+                    Link(target: language == .english ? "/en/apps" : "/apps") {
                         Text("apps")
                     }
                     .class("inverted")

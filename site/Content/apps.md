@@ -26,7 +26,7 @@ hidden: true
 
   <div class='app'>
     <div class='left'>
-      <img src="/images/apps/nsbrazil-small.png" height="600px">
+      <img src="/images/apps/nsbrazil-small.png" />
     </div>
 
     <div class='right'>

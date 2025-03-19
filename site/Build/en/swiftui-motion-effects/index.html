@@ -1,39 +1,39 @@
 <!doctype html>
-<html data-bs-theme="auto" lang="pt-BR">
+<html data-bs-theme="auto" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Já tentou aplicar efeitos de movimento em views de SwiftUI? Não? Vem comigo!" name="description" />
+    <meta content="Have you ever tried applying motion effects to SwiftUI views? No? Come with me!" name="description" />
     <meta content="Mauricio Cardozo" name="author" />
     <meta content="Ignite v0.2.1" name="generator" />
-    <title>Fazendo MotionEffects com SwiftUI – Mauricio Cardozo</title>
-    <link href="https://mauriciocardozo.me/br/swiftui-motion-effects" rel="canonical" />
+    <title>Making MotionEffects with SwiftUI – Mauricio Cardozo</title>
+    <link href="https://mauriciocardozo.me/en/swiftui-motion-effects" rel="canonical" />
     <meta content="Mauricio Cardozo" property="og:site_name" />
     <meta content="https://mauriciocardozo.me/motion/header.jpg" property="og:image" />
     <meta content="https://mauriciocardozo.me/motion/header.jpg" name="twitter:image" />
-    <meta content="Fazendo MotionEffects com SwiftUI" property="og:title" />
-    <meta content="Fazendo MotionEffects com SwiftUI" name="twitter:title" />
-    <meta content="Já tentou aplicar efeitos de movimento em views de SwiftUI? Não? Vem comigo!" property="og:description" />
-    <meta content="Já tentou aplicar efeitos de movimento em views de SwiftUI? Não? Vem comigo!" name="twitter:description" />
-    <meta content="https://mauriciocardozo.me/br/swiftui-motion-effects" property="og:url" />
+    <meta content="Making MotionEffects with SwiftUI" property="og:title" />
+    <meta content="Making MotionEffects with SwiftUI" name="twitter:title" />
+    <meta content="Have you ever tried applying motion effects to SwiftUI views? No? Come with me!" property="og:description" />
+    <meta content="Have you ever tried applying motion effects to SwiftUI views? No? Come with me!" name="twitter:description" />
+    <meta content="https://mauriciocardozo.me/en/swiftui-motion-effects" property="og:url" />
     <meta content="mauriciocardozo.me" name="twitter:domain" />
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="on" name="twitter:dnt" />
     <meta content="article" name="og:type" />
-    <meta content="pt-BR" name="og:locale" />
-    <meta content="Já tentou aplicar efeitos de movimento em views de SwiftUI? Não? Vem comigo!" property="og:description" />
+    <meta content="en" name="og:locale" />
+    <meta content="Have you ever tried applying motion effects to SwiftUI views? No? Come with me!" property="og:description" />
     <link href="/css/style.css" rel="stylesheet" />
   </head>
   <body class="container">
     <nav>
       <div class="site-navigation">
-        <a href="/" id="title" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover"><p style="font-weight: 500">MC</p></a>
+        <a href="/en" id="title" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover"><p style="font-weight: 500">MC</p></a>
         <ul>
-          <li><a href="/" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>artigos</p></a></li>
-          <li><a href="/apps" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>apps</p></a></li>
-          <li><a href="/me" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>contato</p></a></li>
+          <li><a href="/en" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>articles</p></a></li>
+          <li><a href="/en/apps" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>apps</p></a></li>
+          <li><a href="/contact" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>contact</p></a></li>
           <li><a href="https://nsbrazil.com" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>NSBrazil</p></a></li>
-          <li><a href="/en" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>🇺🇸</p></a></li>
+          <li><a href="/" class="inverted link-plain link-underline link-underline-opacity-100 link-underline-opacity-100-hover m-0"><p>🇧🇷</p></a></li>
         </ul>
       </div>
     </nav>
@@ -42,20 +42,24 @@
         <div>
           <article>
             <img alt="" src="/images/motion/header.jpg" class="rounded" />
-            <h1 style="margin-bottom: 0">Fazendo MotionEffects com SwiftUI</h1>
+            <h1 style="margin-bottom: 0">Making MotionEffects with SwiftUI</h1>
+            <p class="muted caption" style="text-align: start">Article originally written in brazilian portuguese. Translated by: Kayque Moraes</p>
             <p></p>
-            <p>Pequenos detalhes fazem toda a diferença, e pequenos detalhes me deixam desproporcionalmente feliz, porque trazem deleite, fazem com que pequenas interações que temos com os nossos aparelhos um sejam pouco mais legais, mais divertidas. E o que mais pode nos fazer felizes, como desenvolvedores? O SwiftUI, é claro!</p>
-            <p>Uma das interações mais legais e super tranquilas da gente implementar nos nossos apps UIKit é o UIInterpolationMotionEffect, que dá aquele efeito de parallax quando mexemos o celular, mais conhecido pelo efeito <a href="https://support.apple.com/pt-br/HT200285">Perspectiva</a> que podemos aplicar nas imagens de fundo de nossos iPhones e iPads. Mas quando tentei adicionar um em minha View de SwiftUI, fui pego por isso daqui:</p>
-            <img src="/images/motion/motionError.png" alt="Imagem com uma view de SwiftUI onde um motionEffect que tenta ser aplicado nela dá erro, porque não existe" />
-            <p>Eis que descubro, pesquisando pela documentação que não existe uma forma de colocar um efeito desses nativamente com o SwiftUI! Meu primeiro pensamento foi criar uma UIViewRepresentable que tivesse a minha View dentro de um container do SwiftUI, fazendo um bridge de SwiftUI -&gt; UIKit -&gt; SwiftUI, que tentei fazer, mas sem muito sucesso. Decidi então ver se era possível ler os sensores do aparelho e recriar esse comportamento manualmente, criando uma view que me parece mais “nativa” ao SwiftUI. E com o <a href="https://developer.apple.com/documentation/coremotion">CoreMotion</a> isso tudo não só é possível como é bem fácil, e vai nos dar mais facilidade para criar efeitos compostos, como elementos que se mexem em velocidades diferentes de acordo com o movimento do meu device.</p>
-            <p>Para acessar os dados do acelerômetro/giroscópio do aparelho, precisamos de uma instância do CMMotionManager, <a href="https://developer.apple.com/documentation/coremotion/cmmotionmanager">que segundo as recomendações da Apple</a>, precisa ser compartilhada:</p>
-            <pre class="splash"><code><span class="keyword">import</span> CoreMotion
+            <p>The small details make all the difference, and small details make me more happy than they should, because they bring delight, make the small interactions that we have with our devices a little cooler, more fun. And what else can make us happy as developers? SwiftUI, of course!</p>
+            <p>One of the coolest and super smooth interactions for us to implement in our UIKit apps is the <code>UIInterpolationMotionEffect</code>, which gives that parallax effect when we move the phone, better known as the <a href="https://support.apple.com/pt-br/HT200285">Perspective effect</a> that we can apply on the background images of our iPhones and iPads. But when I tried to add one in my SwiftUI View, I got caught by this:</p>
+            <img src="/images/motion/motionError.png" alt="Image with a SwiftUI view where a motionEffect fails to apply, because it doesn't exist" />
+            <p>Then I discovered, searching through the documentation, that there is no way to place an effect like this natively with SwiftUI! My first thought was to create a <code>UIViewRepresentable</code> that had my View inside a SwiftUI container, making a SwiftUI -&gt; UIKit -&gt; SwiftUI bridge, which I tried to do, without much success.</p>
+            <p>So I decided to see if it was possible to read the device’s sensor and manually recreate this behavior, creating a view that seems more "native" to SwiftUI. And with <a href="https://developer.apple.com/documentation/coremotion">CoreMotion</a> all of this is not only possible but also very easy, and it will be easier for us to create composite effects, such as elements that move at different speeds according to my device’s movement.</p>
+            <p>To access the device's accelerometer/gyroscope data, we need a <code>CMMotionManager</code> instance, that <a href="https://developer.apple.com/documentation/coremotion/cmmotionmanager">according to Apple’s recommendations</a>, needs to be shared:</p>
+            <pre class="splash"><code>swift
+<span class="keyword">import</span> CoreMotion
 
 <span class="keyword">extension</span> <span class="type">CMMotionManager</span> {
     <span class="keyword">static var</span> shared = <span class="type">CMMotionManager</span>()
 }</code></pre>
-            <p>Com o <code>CMMotionManager</code>, podemos acessar o acelerômetro, giroscópio, magnetômetro e o device-motion, que é uma multitude de dados inferidos pelos algoritmos do Core Motion. Como quero fazer meu efeito com a rotação do device, vou utilizar o giroscópio, que mede cada eixo de rotação do aparelho. Primeiro, crio uma <code>View</code> que vai cuidar dessa leitura e, assim como o <a href="https://developer.apple.com/documentation/swiftui/geometryreader">GeometryReader</a> faz, expor esses dados para views filhas, e nela fazer as configurações necessárias do MotionManager, como o intervalo de update dos dados (com uma frequência de atualização de 30x por segundo), o início/fim da leitura deles e o publisher onde vamos ler e processar esses dados:</p>
-            <pre class="splash"><code><span class="keyword">struct</span> MotionReader&lt;Content&gt;: <span class="type">View</span> <span class="keyword">where</span> <span class="type">Content</span>: <span class="type">View</span> {
+            <p>With <code>CMMotionManager</code>, we can access the accelerometer, gyroscope, magnetometer, and device-motion, which is a multitude of data inferred by the Core Motion algorithms. Because I want to make my effect with the device’s rotation, I will use the gyroscope, which measures each rotation axis of the device. First, I will create a <code>View</code> that is going to handle this reading and, just like the <a href="https://developer.apple.com/documentation/swiftui/geometryreader">GeometryReader</a> does, expose this data to child views, and make the necessary <code>MotionManager</code> settings in it, like the data update interval (with an update frequency of 30x per second), the start/end of data reading, and the publisher where we will read and process this data:</p>
+            <pre class="splash"><code>swift
+<span class="keyword">struct</span> MotionReader&lt;Content&gt;: <span class="type">View</span> <span class="keyword">where</span> <span class="type">Content</span>: <span class="type">View</span> {
 
     <span class="keyword">private let</span> contentView: () -&gt; <span class="type">Content</span>
     <span class="keyword">private let</span> motionManager: <span class="type">CMMotionManager</span> = .<span class="dotAccess">shared</span>
@@ -74,11 +78,10 @@
         .<span class="call">onDisappear</span> {
             <span class="keyword">self</span>.<span class="property">motionManager</span>.<span class="call">stopAccelerometerUpdates</span>()
         }
-        .<span class="call">onReceive</span>(timer) { <span class="keyword">_ in</span>
-        }
+        .<span class="call">onReceive</span>(timer) { <span class="keyword">_ in</span> }
     }
 }</code></pre>
-            <p>E assim podemos começar a ler os dados do nosso manager, alterando o <code>onReceive</code>. Também criei um <code>struct</code> que encapsula os dados do giroscópio (eixos x,y e z) para passá-los para nossas child views:</p>
+            <p>And then we can start reading our manager’s data, changing <code>onReceive</code>. I also created a <code>struct</code> that encapsulates the gyroscope data (x,y, and z axes) to pass it to our child views:</p>
             <pre class="splash"><code><span class="comment">/// MotionReader.swift</span>
     <span class="keyword">private let</span> contentView: (<span class="type">MotionProxy</span>) -&gt; <span class="type">Content</span>
     <span class="keyword">@State private var</span> currentOffset: <span class="type">MotionProxy</span> = .<span class="dotAccess">zero</span>
@@ -102,9 +105,9 @@
             <video loop autoplay muted> 
               <source type="video/mp4" src="/images/motion/effectless.mp4" /> 
             </video>
-            <p> <span class="caption muted">Tive que balançar <strong>bastante</strong> o iPad pra conseguir esse pouquinho de mudança</span> </p>
-            <p>Fazendo isso tudo, devemos rodar o app no device (o simulador não tem suporte ao CoreMotion, infelizmente), e aí, podemos atestar que quase nada mudou, e o pouco que mudou não é perceptível quando utilizamos o aparelho em si, sendo visível apenas pelo vídeo numa tela parada. Além disso, o movimento está muito tremido.</p>
-            <p>Os valores que o giroscópio emite são muito baixos, então precisamos manipular eles de forma que o <code>offset</code> do card seja alterado com mais intensidade, e podemos aproveitar para configurar alguns limites, iguais às propriedades <code>minimumRelativeValue</code> e <code>maximumRelativeValue</code> do <code>UIInterpolationMotionEffect</code>, além de adicionar uma animação básica na view, para que a tremedeira pare:</p>
+            <p> <span class="caption muted">I had to shake <strong>a lot</strong> to get this little bit of change</span> </p>
+            <p>Doing all this, we must run the app on the device (the simulator doesn’t have CoreMotion support, unfortunately), and then we can attest that almost nothing has changed, and the little that has is not noticeable when we use the device itself, being only visible on a video on a still screen. Furthermore, the movement is very shaky.</p>
+            <p>The values that the gyroscope emits are very low, so we need to manipulate them in a way that the <code>offset</code> of the card is altered with more intensity, and we can set some limits, like the <code>minimumRelativeValue</code> and <code>maximumRelativeValue</code> properties of the <code>UIInterpolationMotionEffect</code>, in addition to adding a basic animation to the view, so that the shaking stops:</p>
             <pre class="splash"><code><span class="keyword">private let</span> strength: <span class="type">Double</span>
     <span class="keyword">private let</span> minimum: <span class="type">Double</span>
     <span class="keyword">private let</span> maximum: <span class="type">Double</span>
@@ -142,9 +145,9 @@
             <video loop autoplay muted> 
               <source type="video/mp4" src="/images/motion/smooth-comp.mp4" /> 
             </video>
-            <p> <span class="caption muted">Ficou bem mais suave agora né? Eu tava chacoalhando o iPad de novo</span> </p>
-            <p>Agora além de ter uma animação muito mais suave, podemos configurar todos os valores do movimento para que o efeito fique exatamente da forma como desejamos! Mas ao virar o device, podemos perceber que o movimento não está indo pros mesmos lados quando mexemos nosso device. Por que? As coordenadas de x e y da minha view e as coordenadas que o giroscópio está emitindo não são consistentes em cada orientação, então precisamos calcular e fazer essa troca manualmente.</p>
-            <p>Para isso, precisamos criar uma forma de detectar quando o aparelho muda de orientação, e mudar o cálculo do offset de acordo, e isso é bem simples:</p>
+            <p> <span class="caption muted">It's much smoother now, right? I was shaking the iPad again</span> </p>
+            <p>Now in addition to having a much smoother animation, we can set all the movement values so that the effect is exactly the way we want! But when turning the device, we can see that the movement is not going in the same direction when we move our device. Why? The x and y coordinates of my view and the coordinates that the gyroscope is emitting are not consistent in each orientation, so we need to calculate and swap the values.</p>
+            <p>For this, we need to create a way to detect when the device changes orientation and change the offset calculation accordingly, and this is very simple:</p>
             <pre class="splash"><code><span class="comment">/// DeviceOrientation.swift</span>
 <span class="keyword">final class</span> DeviceOrientation: <span class="type">ObservableObject</span> {
     <span class="keyword">private var</span> observer: <span class="type">AnyCancellable</span>?
@@ -190,7 +193,7 @@
             <span class="keyword">return</span> <span class="type">MotionProxy</span>(x: xAxis, y: yAxis, z: z)
         }
     }</code></pre>
-            <p>Para finalizar, o nosso Reader deve respeitar qualquer configuração que o usuário possa fazer no aparelho, como o <a href="https://developer.apple.com/documentation/foundation/processinfo/1617047-islowpowermodeenabled">modo de baixa energia</a> e a configuração de acessibilidade para <a href="https://developer.apple.com/videos/play/wwdc2019/244/">reduzir movimentos</a>. Para isso, precisamos criar duas propriedades, uma para acessar o Environment que representa o Reduce Motion e uma que encapsula todas as barreiras de acesso ao acelerômetro:</p>
+            <p>Finally, our reader should respect any setting that the user can make on the device, such as <a href="https://developer.apple.com/documentation/foundation/processinfo/1617047-islowpowermodeenabled">low power mode</a> and accessibility configuration to <a href="https://developer.apple.com/videos/play/wwdc2019/244/">reduce motion</a>:</p>
             <pre class="splash"><code><span class="comment">/// MotionReader.swift</span>
     <span class="keyword">@Environment</span>(\.<span class="property">accessibilityReduceMotion</span>) <span class="keyword">var</span> isReduceMotionOn: <span class="type">Bool</span>
 ...
@@ -212,7 +215,7 @@
             motionManager.<span class="property">isAccelerometerAvailable</span> &amp;&amp;
             !isReduceMotionOn
     }</code></pre>
-            <p>Como uma cerejinha em cima do bolo para facilitar o uso do nosso Reader, criaremos uma extension de <code>View</code> que faz todo o processo de parallaxing automagicamente para a gente!</p>
+            <p>As a cherry on top to make it easier to use our Reader, we will create a <code>View</code> extension that does the entire parallaxing automatically for us!</p>
             <pre class="splash"><code><span class="keyword">extension</span> <span class="type">View</span> {
     <span class="keyword">func</span> motionEffect(scale: <span class="type">CGFloat</span> = <span class="number">1.2</span>,
                     range: <span class="type">ClosedRange</span>&lt;<span class="type">Double</span>&gt; = (-<span class="number">5.0</span>...<span class="number">5.0</span>),
@@ -223,9 +226,9 @@
         }
     }
 }</code></pre>
-            <p>E com isso, o nosso código lá do começo funciona perfeitamente, da forma que eu queria que ele funcionasse :)</p>
-            <img src="/images/motion/motionSucc.png" alt="Imagem com uma view de SwiftUI onde um motionEffect é aplicado com sucesso" />
-            <p>O projeto completo com o exemplo do card e o reader do giroscópio está no <a href="https://github.com/loloop/SwiftInMotion">meu GitHub</a>, e deixo meus agradecimentos aqui ao <a href="https://twitter.com/alanpegoli">@Alan Pégoli</a> que fez o beta test e apontou uma falha gritante no artigo :)</p>
+            <p>And with this, our code from the beginning works perfectly, the way that I wanted it to work :)</p>
+            <img src="/images/motion/motionSucc.png" alt="Image with a SwiftUI view where a motionEffect is applied successfully" />
+            <p>The complete project with the card example and the gyroscope reader is on my <a href="https://github.com/loloop/SwiftInMotion">GitHub</a>, and I would like to thank <a href="https://twitter.com/alanpegoli">@Alan Pégoli</a> who did the beta test and pointed out a glaring flaw in the article :)</p>
             <p></p>
           </article>
         </div>

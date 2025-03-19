@@ -6,7 +6,7 @@ published: true
 header: /images/spritekit/logo.png
 layout: ArticleLayout
 date: 2020-07-19 00:00:00
-translated: Kayque
+translated: Kayque Moraes
 language: en
 ---
 

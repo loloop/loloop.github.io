@@ -8,6 +8,8 @@
     }
 
     .left {
+      width: 100%;
+
       @media(max-width: $medium-ish) {
         display: flex;
         justify-content: center;
