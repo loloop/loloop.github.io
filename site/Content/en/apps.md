@@ -8,13 +8,10 @@ language: en
 
 <div id='apps'>
   <div class='app'>
-    <div class='left'>
-      <img src="/images/appclips/swiftflag.png" width='100%'>
-    </div>
     <div class='right'>
       <h2>DiffableUI</h2>
       <p>
-        DiffableUI is a Swift library that simplifies UICollectionView development with wrappers and helpers, making UIKit code cleaner and more SwiftUI-like. Built on UICollectionViewCompositionalLayout and UICollectionViewDiffableDataSource, it enables writing clean, reusable code for complex collections.
+        DiffableUI is a set of wrappers and helpers built on top of UICollectionViewCompositionalLayout and UICollectionViewDiffableDataSource to help you write clean, reusable and SwiftUI-like code on the UIKit world.
       </p>
       
       <p>
