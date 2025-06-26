@@ -9,11 +9,11 @@ hidden: true
     <div class='right'>
       <h2>DiffableUI</h2>
       <p>
-        DiffableUI é um conjunto de wrappers e helpers construídos sobre UICollectionViewCompositionalLayout e UICollectionViewDiffableDataSource para ajudar você a escrever código limpo, reutilizável e similar ao SwiftUI no mundo UIKit.
+        DiffableUI é um conjunto de wrappers e helpers construídos com base em UICollectionViewCompositionalLayout e UICollectionViewDiffableDataSource para ajudar você a escrever código limpo, reutilizável e similar ao SwiftUI no mundo UIKit.
       </p>
 
       <p>
-        <strong>Explore a biblioteca</strong><br>
+        <strong>Explore o package</strong><br>
         <a href="https://github.com/loloop/DiffableUI">GitHub</a> | <a href="https://swiftpackageindex.com/loloop/DiffableUI">Swift Package Index</a>
       </p>
     </div>
