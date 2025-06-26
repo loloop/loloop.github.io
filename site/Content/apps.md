@@ -26,7 +26,7 @@ hidden: true
     <div class='right'>
       <h2>F1LandinhoBot</h2>
       <p>
-        O F1LandinhoBot é um bot de Telegram que traz os calendários das principais categorias de esporte a motor mundial e brasileiro direto no seu chat, perfeito para grupos de amigos que acompanham a Formula 1 e outras categorias. Construído com <a href='/post/serversideswift'>Swift no Linux</a>, o bot acessa uma API construída com Vapor.
+        O F1LandinhoBot é um bot de Telegram que traz os calendários das principais categorias de esporte a motor mundial e brasileiro direto no seu chat, perfeito para grupos de amigos que acompanham a Formula 1 e outras categorias. Construído com <a href='/br/serversideswift/'>Swift no Linux</a>, o bot acessa uma API construída com Vapor.
       </p>
 
       <p>
