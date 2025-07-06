@@ -4,6 +4,7 @@ description: A quick and practical guide for those who want to bring the Apple d
 published: true
 layout: ArticleLayout
 date: 2025-07-02 00:00:00
+language: en
 ---
 
 After many years involved with CocoaHeads, one of the questions I get asked most is: "How do I start a CocoaHeads in my city?". The answer is simpler than it seems, but it requires a lot of dedication and consistency.
