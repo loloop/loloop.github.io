@@ -31,6 +31,7 @@ Para conteúdo, a estratégia é começar com quem você conhece:
 - **Sua rede** - você conhece alguém que poderia dar uma palestra?
 - **Rede da sua rede** - pergunte para essas pessoas se elas conhecem alguém que toparia palestrar
 - **Iniciantes** - muita gente quer palestrar mas nunca teve a oportunidade. Vá atrás, descubra onde essas pessoas estão e ajude-as a criar o conteúdo para o seu evento. Como organizador, seu dever não é apenas de juntas as pessoas num local, mas de incentivar e ajudar para que todo esse processo possa impactar 
+- **Redes Sociais** - Ir atrás das pessoas e perguntar pra elas diretamente, mesmo que não estejam em sua rede. Seja cara de pau. Vai te trazer mais resultados que você imagina.
 
 Em São Paulo e Campinas o formato que utilizamos para o conteúdo é: duas palestras de cerca de 40 minutos em um período de três horas. Isso deixa bastante tempo para transporte (Sabe como São Paulo é caótica, né), bastante networking, e as pessoas saem do evento revigoradas, não cansadas. Não é incomum que a gente termine um evento um pouco mais cedo e vá pra algum outro lugar comer ou o que for.
 
@@ -57,7 +58,7 @@ Você não vai estar sozinho nessa jornada. O CocoaHeads Brasil tem:
 
 ## A importância da consistência
 
-Todos os capítulos ativos começaram pequenos e cresceram através da consistência. São Paulo e Campinas tentam fazer mensalmente, mas é uma tarefa difícil. Outros lugares como Fortaleza fazem uma ou duas vezes por ano, enquanto Curitiba faz a cada três meses mais ou menos.
+Todos os capítulos ativos começaram pequenos e cresceram através da consistência. São Paulo e Campinas tentam fazer mensalmente, mas é uma tarefa difícil. Outros lugares como Fortaleza fazem uma ou duas vezes por ano, enquanto Curitiba faz a cada três meses mais ou menos, e tem bastante sucesso com essa estratégia, com a casa cheia e tudo mais.
 
 O importante não é a frequência que você escolhe reunir a comunidade, é a consistência. O primeiro evento é muito difícil de conseguir realizar. O segundo também. Talvez lá pelo quinto ou sexto, daí as coisas começam a andar melhor. O mais difícil é fazer a bola começar a rolar - depois que pega o ritmo, fica mais fácil.
 
