@@ -52,8 +52,7 @@ Você não vai estar sozinho nessa jornada. O CocoaHeads Brasil tem:
 
 - **Canal no YouTube** - onde todo o conteúdo dos eventos é centralizado
 - **Redes sociais** - Instagram e LinkedIn para divulgação dos eventos
-- **App** - com funcionalidades especiais para organizadores como sorteios, e em breve Q&A
-- **Site** - Ainda em desenvolvimento (também open source, vem contribuir!), serve de espelho para alguns dos conteúdos do app, mas com funcionalidades a menos
+- **App e Site** - com funcionalidades especiais para organizadores como sorteios, e em breve Q&A. O site, ainda em desenvolvimento (também open source, vem contribuir!), serve de espelho para alguns dos conteúdos do app, mas com funcionalidades a menos. Explico um pouco melhor mais embaixo.
 - **Estrutura de apoio** - eu e os organizadores dos outros chapters para te ajudar no que precisar
 
 ## A importância da consistência
@@ -84,7 +83,7 @@ O [Checklist do CocoaHeads São Paulo](https://carmauricio.notion.site/CocoaHead
 
 ### App e Site
 
-O CocoaHeads é uma comunidade de desenvovimento para plataformas Apple, certo? Nada mais óbvio do que a gente ter um app da comunidade, com informações úteis sobre os eventos que rolam no país todo, e até um App Clip para facilitar para os membros presentes durante o evento. O app tem até funcionalidades para realizar sorteios, e o código dele é completamente aberto no [GitHub](https://github.com/CocoaHeadsConference/CHConferenceApp). Também temos um site, que em breve deve evoluir para contar com as informações contidas no app, para facilitar pra quem não usa iPhone ainda, [totalmente desenvolvido com Swift](https://github.com/CocoaHeadsBrasil/CocoaHeadsSite). PRs e sugestões são muito bem-vindos em ambos! 
+O CocoaHeads é uma comunidade de desenvovimento para plataformas Apple, certo? Nada mais óbvio do que a gente ter um app da comunidade, com informações úteis sobre os eventos que rolam no país todo, e até um App Clip para facilitar para os membros presentes durante o evento. O app tem até funcionalidades para realizar sorteios, e o código dele é completamente aberto no [GitHub](https://github.com/CocoaHeadsConference/CHConferenceApp). Também temos um site, que em breve deve evoluir para contar com as informações contidas no app, para facilitar pra quem não usa iPhone ainda, [totalmente desenvolvido com Swift](https://github.com/CocoaHeadsBrasil/CocoaHeadsSite), e que você pode usar para hospedar arquivos sobre o domínio [cocoaheads.com.br](cocoaheads.com.br), como o documento de parcerias de Campinas. PRs e sugestões são muito bem-vindos em ambos! 
 
 ### Keynote de recepção
 
