@@ -94,6 +94,14 @@ p {
     }
 }
 
+li {
+    a {
+        font-size: $smallFont;
+    }
+    
+    font-weight: 300;
+}
+
 a {  
     @include bgcolor('link-bg');
     @include color('link-text');

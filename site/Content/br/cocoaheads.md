@@ -74,6 +74,24 @@ Antes de mais nada, é importante entender que para organizar um CocoaHeads não
 
 Uma coisa que é fundamental para nós: o CocoaHeads Brasil é uma comunidade que faz eventos gratuitos. Alguns capítulos como Belo Horizonte já fizeram eventos com taxa opcional para cobrir custos de comida, e tudo bem. Mas a ideia é que desenvolver para plataformas Apple já é caro o suficiente - não precisamos piorar isso para quem quer participar da comunidade. Brasil não é um país rico, e queremos que todas possam ter acesso ao conhecimento e à comunidade.
 
+## Recursos úteis
+
+Alguns recursos que podem te ajudar durante a sua jornada para a criação do seu chapter do Cocoaheads:
+
+### Checklist
+
+O [Checklist do CocoaHeads São Paulo](https://carmauricio.notion.site/CocoaHeads-Template-Checklist-2ef738ecf05980aca46bc881ba9b848d?source=copy_link) é uma página que eu crio no meu Notion para reunir informações úteis para todas as partes envolvidas na organização de um determinado evento. Data, local, horários, responsáveis, dúvidas úteis a nível nacional e regional todas organizadas em um lugar só, para facilitar a comunicação entre todas.
+
+### App e Site
+
+O CocoaHeads é uma comunidade de desenvovimento para plataformas Apple, certo? Nada mais óbvio do que a gente ter um app da comunidade, com informações úteis sobre os eventos que rolam no país todo, e até um App Clip para facilitar para os membros presentes durante o evento. O app tem até funcionalidades para realizar sorteios, e o código dele é completamente aberto no [GitHub](https://github.com/CocoaHeadsConference/CHConferenceApp). Também temos um site, que em breve deve evoluir para contar com as informações contidas no app, para facilitar pra quem não usa iPhone ainda, [totalmente desenvolvido com Swift](https://github.com/CocoaHeadsBrasil/CocoaHeadsSite). PRs e sugestões são muito bem-vindos em ambos! 
+
+### Keynote de recepção
+
+Para receber o público e dar início ao evento, use um Keynote de abertura, aproveitando o espaço para agradecer a empresa que está sediando e dando espaço para que ela faça a apresentação que achar necessária. Normalmente as empresas gostam de falar com alguns slides de employer branding e etc. Eu gosto de pedir os slides antecipadamente e arrastar eles pra dentro do keynote de apresentação, assim não é necessário ficar trocando de apresentação durante o começo do meetup.
+
+[Baixe o template aqui](/cocoaheads/abertura-cocoaheads.key) 
+
 ## Próximos passos
 
 Se você chegou até aqui e está pensando "quero fazer isso na minha cidade", o próximo passo é simples: **entre em contato comigo**.
