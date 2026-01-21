@@ -471,6 +471,13 @@ p a {
   border-radius: 5px;
 }
 
+li {
+  font-weight: 300;
+}
+li a {
+  font-size: 1rem;
+}
+
 a {
   background-color: black;
   color: white;
