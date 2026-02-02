@@ -1,7 +1,7 @@
 ---
 title: Recording Your Meetup with OBS Studio
 description: A practical guide for meetup organizers on setting up a simple but effective recording system using OBS Studio and minimal hardware investment.
-published: true
+published: false
 layout: ArticleLayout
 date: 2025-09-01 00:00:00
 language: en
