@@ -10,6 +10,15 @@ import Ignite
 struct ArticleLayout: ContentLayout {
     var body: some HTML {
         Section(tag: "article") {
+            if let alert = content.metadata["alert"] as? String {
+                Section {
+                    Text("Aviso")
+                        .font(.title3)
+                    Text(inkMarkdown: alert)
+                }
+                .class("alert")
+            }
+
             if let header = content.metadata["header"] as? String {
                 Image(decorative: "/images"+header)
                     .class("rounded")

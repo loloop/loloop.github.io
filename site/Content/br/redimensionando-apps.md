@@ -1,0 +1,172 @@
+---
+title: Redimensionando Apps de iOS
+description: Na WWDC26 a Apple anunciou que todo app de iPhone agora também é um app de iPad. Neste artigo conto o que muda, como muda, quais APIs usar e quanto tempo você tem para se preparar.
+published: true
+header: /redimensionando/header.png
+alert: Este artigo é uma transcrição da minha palestra "Redimensionando Apps de iOS". Você pode assistir à palestra completa [no YouTube](https://www.youtube.com/watch?v=ec2hMmwtKNQ).
+layout: ArticleLayout
+date: 2026-07-14 00:00:00
+---
+
+Existem muitos motivos pelos quais nós amamos usar e desenvolver para os dispositivos Apple. Hardware meticulosamente desenhado, criado com materiais da mais alta qualidade, software concebido unicamente para complementar cada aspecto dessa experiência, pensado até os últimos detalhes. E esses aparelhos se comunicam entre si de forma tão fácil e invisível que até parece mágica. Na WWDC26, um anúncio que pode ter passado despercebido por muitos é algo que veio para mudar a vida de quase todos nós que desenvolvemos para iOS.
+
+Apps de iOS compilados a partir do Xcode 27 poderão ser redimensionados em qualquer direção, para uso no Espelhamento do iPhone e no iPadOS. Isso significa que, na prática, **todo app de iPhone agora também é um app de iPad**.
+
+E não existe possibilidade de desabilitar esse novo comportamento para o seu app. Acreditem em mim, eu tentei. `UIRequiresFullscreen`, `windowScene.sizeRestrictions`, `.frame` com SwiftUI. Nada funciona. Dá pra configurar um tamanho mínimo, mas não máximo.
+
+## A verdade é que este não é um assunto novo
+
+Durante a session "What's new in Cocoa Touch" da WWDC14, a Apple introduziu no iOS 8 o tema de Adaptividade. No começo, havia o iPhone, e então Steve Jobs disse "que se faça o iPad". Desde então, o povo passou a clamar por mais apps em uma tela tão grande, e um modo de multitarefas no iPad surgiu, com novos tamanhos fixos e bem específicos de apps. Resumindo a história, isso tudo mudou com a chegada do iPadOS 16 e do Stage Manager, onde apps passaram a poder ser janelas organizáveis da forma como o usuário quiser. E agora tudo isso muda mais uma vez.
+
+O processo de transformação do seu app começa como? Pela familiaridade.
+
+## Familiaridade
+
+Adotando o Liquid Glass e as APIs do sistema, seu app fica com os comportamentos de interface e navegação do jeito que o usuário de iPhone espera, e você não precisa se preocupar em gastar tempo adaptando nada. Não tem a ver diretamente com o assunto, mas vale lembrar: a partir do iOS 27 adotar o Liquid Glass também passa a ser obrigatório.
+
+Apesar disso, ainda existem algumas diferenças de plataforma que os designers vão ter de se atentar ao criar layouts adaptáveis entre os aparelhos. O mesmo app compilado com Xcode 27 apresenta duas interfaces diferentes: no iPad, a Tab Bar fica em cima, e no Espelhamento de iPhone, a tab bar fica embaixo. Também é possível adotar estilos de sidebar lateral com a Tab, usando a API de `preferredPlacement` da Sidebar, como podemos ver no app Casa.
+
+O seu usuário vive em uma plataforma por vez. A paridade de design entre sistemas que você constrói a tanto custo, ele nem percebe. O que ele percebe é quando o app se comporta diferente de todos os outros no sistema dele. A identidade da marca não mora nos controles: ela mora na cor, na tipografia, no tom, no que o seu app faz. Dá pra ser reconhecível sem reinventar botões e tab bars. Recomendo muito a session "Communicate your brand identity on iOS" para entender como é importante a adoção dos padrões da plataforma e como comunicar isso.
+
+## APIs
+
+Agora vamos nos aprofundar nas APIs que podemos utilizar para adaptar nossos apps para múltiplos tamanhos.
+
+### UIApplicationDelegate
+
+Ao compilar seu app com Xcode 27, a primeira API que você vai ter que mudar, sem ao menos olhar qualquer tela do app, é o `UIApplicationDelegate`. Em UIKit, você pode substituí-la por `UISceneDelegate` ou pelo App lifecycle de SwiftUI. **Apps que ainda usam `UIApplicationDelegate` não vão nem abrir quando compilados com Xcode 27.**
+
+A boa notícia é que essas APIs não são novas: o `UISceneDelegate` foi introduzido em 2019 e está disponível a partir do iOS 13, e o ciclo de vida de Apps com SwiftUI foi introduzido no ano seguinte, em 2020, disponível a partir do iOS 14.
+
+### Size Classes
+
+Vamos falar agora de como podemos atualizar nossos layouts, começando pelo básico: as Size Classes.
+
+Size classes são definições básicas de tamanho disponível para o seu app, definidas para a horizontal e a vertical, divididas entre os tamanhos `compact` e `regular`.
+
+![](redimensionando/size-classes.png)
+<p class="center muted caption">As duas dimensões e os dois tamanhos possíveis de size class</p>
+
+Lembram-se daquela imagem do multitasking do iPad? Os apps no split screen sempre foram divididos por size classes, e os desenvolvedores de apps para iPad apenas adaptavam baseado nisso. Naquela época não havia `compact` na vertical, porque esse modo era exclusivo de iPhones, mas hoje dá pra diminuir bastante a altura da janela também.
+
+No SwiftUI, você pode acessar essas propriedades pelo environment, e no UIKit a melhor forma de reagir a essas mudanças é adotando o método `traitCollectionDidChange` até o iOS 17, e a partir do iOS 17, o `registerForTraitChanges`.
+
+```
+@Environment(\.horizontalSizeClass) var horizontalSizeClass
+@Environment(\.verticalSizeClass) var verticalSizeClass
+```
+
+### ViewThatFits
+
+Você também pode trabalhar pontualmente com o `ViewThatFits`. É uma View do SwiftUI que te permite fornecer todas as permutações de interface que você achar necessárias para um dado elemento, e ela vai escolher qual vai se encaixar melhor no tamanho de UI que o usuário tiver.
+
+No exemplo abaixo, temos uma série de botões com as ações escritas por extenso. Na medida em que a minha interface diminui, o SwiftUI desenha na tela a maior versão que cabe no espaço disponível: primeiro perdemos o texto e ficamos só com os ícones, e por fim, quando não temos mais espaço para nenhum botão, transformamos nossas ações em um menu de contexto.
+
+```swift
+struct AdaptiveActionBar: View {
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 16) {
+                ActionButton(icon: "square.and.arrow.up", label: "Share")
+                ActionButton(icon: "heart", label: "Favorite")
+                ActionButton(icon: "bookmark", label: "Save")
+                ActionButton(icon: "trash", label: "Delete")
+            }
+            HStack(spacing: 20) {
+                ActionButton(icon: "square.and.arrow.up", label: nil)
+                ActionButton(icon: "heart", label: nil)
+                ActionButton(icon: "bookmark", label: nil)
+                ActionButton(icon: "trash", label: nil)
+            }
+            Menu {
+                Button("Share", systemImage: "square.and.arrow.up") {}
+                Button("Favorite", systemImage: "heart") {}
+                Button("Save", systemImage: "bookmark") {}
+                Button("Delete", systemImage: "trash") {}
+            } label: {
+                Image(systemName: "ellipsis.circle")
+            }
+        }
+        .padding()
+    }
+}
+```
+
+Tome cuidado, porque a ordem das Views faz diferença aqui. O `ViewThatFits` busca a primeira view que cabe no espaço disponível. Se a ordem for invertida, colocando o menu compacto primeiro, as outras nunca vão ser exibidas na tela, porque a primeira sempre cabe.
+
+### Breakpoints
+
+Para mais granularidade do que as Size Classes e o `ViewThatFits` nos proveem, podemos descer um nível e criar nossos próprios breakpoints, definindo tamanhos de tela específicos onde queremos que a mudança aconteça. Apps como Tempo utilizam mais do que apenas as duas size classes para se redimensionar, apresentando múltiplos layouts possíveis para diferentes configurações de espaço na interface, aproveitando o espaço disponível de formas diferentes, e não sendo um simples reflow dos blocos.
+
+No SwiftUI, o modifier `onGeometryChange`, a View `GeometryReader`, ou o `layoutSubviews` do UIKit são seus amigos. Não utilize `UIScreen.main` e APIs que se relacionam diretamente à tela do aparelho para este tipo de operação, porque a tela onde o seu app está rodando não necessariamente é mais a main, e assim você vai receber valores inconsistentes com o que você espera.
+
+### UIRequiresFullscreen
+
+Quem já desenvolveu para iPadOS deve conhecer a chave de plist `UIRequiresFullscreen`. Essa chave era utilizada para remover o seu app do modo multitarefas e forçá-lo a tomar a tela inteira. Muito utilizada em jogos, mas muitos apps também a utilizam. Ela foi deprecada na WWDC do ano passado, e a partir deste ano o comportamento dela muda mais uma vez.
+
+Quando `UIRequiresFullscreen` está ativada, o app continuará redimensionando, mas de forma discreta, dando pulos, ao invés de redimensionar de forma fluida. Jogos como AmarganA podem adotar a chave para ter o redimensionamento discreto, onde o app ainda pode ser redimensionado, mas o update de layout só se aplica assim que o usuário termina o gesto.
+
+### UIUserInterfaceIdiom e UIInterfaceOrientation
+
+O `UIUserInterfaceIdiom` segue existindo e pode ser utilizado para diferenciar entre uma interface sendo exibida no iOS e no tvOS, por exemplo, mas a recomendação é que ele não seja utilizado para diferenciar entre aparelhos com telas maiores e menores. O `UIInterfaceOrientation` segue a mesma orientação.
+
+![](redimensionando/traits.png)
+<p class="center muted caption">A mesma interface, no mesmo tamanho, com traits completamente diferentes</p>
+
+No Apple Games, a mesma interface, com o mesmo tamanho, sendo exibida da mesma forma, tem traits completamente diferentes nos dois casos. No iPadOS, o idioma é `.pad` e a orientação é `.landscape`. No Espelhamento de iPhone, o idioma é `.phone` e a orientação segue sendo `.portrait`, mesmo a janela sendo mais larga que alta. Apps de iPhone rodando no iPadOS continuam reportando o idiom de `.phone`. O iPad mini também é mais ou menos do mesmo tamanho da maior interface possível no Espelhamento de iPhone, então não há necessidade de criar interfaces diferentes para os tipos de aparelho diferentes.
+
+## Na prática
+
+Vamos ver na prática como você pode olhar o seu app e aplicar todas essas mudanças. Joguei é um app que criei com um amigo para resolver um problema que nós dois tínhamos: compramos mais jogos do que temos tempo para jogar, eventualmente esquecemos de todos os jogos que já compramos, e compramos mais, sem ter jogado aqueles que compramos antes.
+
+A home, que é onde eu investi 99% do meu tempo desenvolvendo nesse app, é um grid baseado no tamanho do item, então ela encolhe e expande de acordo com o espaço disponível sem muito esforço da minha parte.
+
+Uma das features mais legais de catalogar esses dados é poder observá-los depois, então nós criamos uma tela de estatísticas. Dá até para gerar o seu relatório mensal, como se fosse o Apple Music Replay dos seus jogos. Vamos ver como o design dela se adapta entre diferentes tamanhos.
+
+![](redimensionando/stats-lista.png)
+<p class="center muted caption">A view em lista funciona bem no iPhone, mas fica comicamente esticada em telas maiores</p>
+
+A view em lista funciona ok para o tamanho de tela dos iPhones, mas fica comicamente esticada em telas maiores. Temos um problema de usabilidade aqui e vamos precisar adaptar o nosso layout.
+
+Então, depois de conversar com o meu amigo de verdade e o meu amigo imaginário, esse foi o protótipo do design novo que escolhemos para a tela, e para adaptá-lo utilizamos size classes. Eu gosto muito de usar o Claude Design como ferramenta de prototipagem, para ter um ponto de partida e poder trabalhar no design final do app.
+
+![](redimensionando/stats-redesign.png)
+<p class="center muted caption">O resultado final: ainda tem espaço para melhoria, mas já está muito melhor adaptado à realidade do redimensionamento</p>
+
+Por último, vamos olhar a tela onde cadastramos nossos jogos. Ela é uma sheet que pode ser invocada de qualquer lugar do app. No iPhone, essa sheet serve bem. Em telas maiores, acho que dá pra gente aproveitar um pouco mais o espaço, e mais uma vez as size classes fazem o trabalho de nos informar quando o layout precisa mudar.
+
+## Deadlines
+
+Agora vamos falar de deadlines, começando pelo Xcode.
+
+![](redimensionando/timeline.png)
+<p class="center muted caption">Historicamente, uma nova versão do Xcode e do iOS chega todo mês de setembro</p>
+
+Em setembro de 2021, a Apple lançou o Xcode 13 e o iOS 15. Em 2022, o Xcode 14 e o iOS 16. Em 2023, o Xcode 15 e o iOS 17. Em 2024, o Xcode 16 e o iOS 18. E em setembro de 2025, o Xcode 26 e o iOS 26. Historicamente, a nova versão do Xcode e do iOS são lançadas em setembro, e não temos nenhuma indicação para acreditar que este ano vai ser diferente.
+
+Isso nos dá... 2 meses para validar essas coisas. Bom, 12 anos e 2 meses, né?
+
+E a data de atualização para as versões do SDK mínimo de upload para a App Store, quando seremos obrigados a usar a versão nova, também segue um padrão histórico, só que desta vez no mês de abril. Daí a gente tem bem mais tempo: 9 meses. Dá pra fazer uma criança nova nesse tempo, e você vai falar que não dá pra atualizar o app?
+
+## Em resumo, qual é o seu dever de casa?
+
+Vamos dividir em passos. Primeiro, você vai baixar o **Xcode 27** e migrar o seu app para os **ciclos de vida modernos** (`UISceneDelegate` ou `SwiftUI.App`). Depois, você começa a investigar quais telas e fluxos são mais importantes e onde você pode gastar o seu esforço para **redesenhar** da melhor forma. Se quiser adotar as novidades logo quando o iOS 27 provavelmente for lançado, você tem **2 meses** para fazer isso.
+
+No Xcode 27, com o novo Device Hub, existe um botão novo no topo da janela que você pode usar para habilitar o modo de redimensionamento, perfeito para testar se o seu app pode funcionar em múltiplos modos de layout diferentes. Com SwiftUI é fácil adaptar as nossas interfaces para tamanhos diferentes e melhorar a usabilidade delas.
+
+![](redimensionando/device-hub.png)
+<p class="center muted caption">O botão de redimensionamento no Device Hub do Xcode 27</p>
+
+Não tem como migrar para o Xcode 27 ainda? Não tem problema. Adicione um **target de iPadOS** ao seu app usando o Xcode 26 para descobrir quais mudanças são necessárias e testar as APIs de redimensionamento. Você tem mais ou menos **9 meses** para fazer a troca do SDK, mas já pode publicar todas as mudanças que fizer na App Store agora. Apps como Ivory adaptam seu design de telas menores para telas maiores com soluções mais simples, ao invés de repensar o fluxo inteiro. Não precisa revolucionar o design do seu app inteiro de uma vez.
+
+E como tudo hoje em dia, o Xcode 27 vem com skills de modernização embutidas para facilitar a migração com os seus agents. Você pode inclusive exportá-las para utilizar em qualquer harness, sem a necessidade de invocação direta por dentro do Xcode:
+
+```
+xcrun agent skills export
+```
+
+## Bem-vindos ao resto da indústria
+
+A verdade é que nós agora vamos nos equiparar ao resto da indústria. Desenvolvedores que escrevem apps para Safari já escrevem apps que são obrigados a funcionar em múltiplos tamanhos de tela há décadas. Nem se fala da plataforma verde então: quem aí já teve que fazer um layout em T?
+
+Milhares de apps na App Store já estão prontos para essa mudança. E o seu, quando vai fazer parte disso?
