@@ -20,12 +20,14 @@ svg circle {
   border-radius: 10px;
   padding: 10px;
   background-color: #fafafa;
-  color: rgba(0, 0, 0, 0.85);
 }
 @media (prefers-color-scheme: dark) {
   .highlight {
     background-color: #1F1F24;
   }
+}
+.highlight {
+  color: rgba(0, 0, 0, 0.85);
 }
 @media (prefers-color-scheme: dark) {
   .highlight {
@@ -50,12 +52,14 @@ svg circle {
 }
 .highlight .kd, .highlight .k, .highlight .kc {
   color: #9B2393;
-  font-weight: bold;
 }
 @media (prefers-color-scheme: dark) {
   .highlight .kd, .highlight .k, .highlight .kc {
     color: #FC5FA3;
   }
+}
+.highlight .kd, .highlight .k, .highlight .kc {
+  font-weight: bold;
 }
 .highlight .nf, .highlight .nv {
   color: #0F68A0;
@@ -85,17 +89,17 @@ svg circle {
   overflow-x: auto;
 }
 @media (max-width: 767px) {
-  .highlight {
-    width: 100vw;
-    padding: 0;
-    border-radius: 0px;
-    margin-left: -10px;
-  }
   .highlight pre {
     padding: 0 10px;
   }
   .highlight pre code {
     font-size: 10px;
+  }
+  .highlight {
+    width: 100vw;
+    padding: 0;
+    border-radius: 0px;
+    margin-left: -10px;
   }
 }
 .highlight .err {
@@ -471,28 +475,32 @@ p a {
   border-radius: 5px;
 }
 
-li {
-  font-weight: 300;
-}
 li a {
   font-size: 1rem;
+}
+li {
+  font-weight: 300;
 }
 
 a {
   background-color: black;
-  color: white;
-  font-size: 1.7rem;
-  text-decoration: none;
 }
 @media (prefers-color-scheme: dark) {
   a {
     background-color: white;
   }
 }
+a {
+  color: white;
+}
 @media (prefers-color-scheme: dark) {
   a {
     color: #0c0c18;
   }
+}
+a {
+  font-size: 1.7rem;
+  text-decoration: none;
 }
 a:hover {
   color: deepskyblue;
@@ -504,12 +512,14 @@ a:hover {
 }
 a.inverted {
   background-color: white;
-  color: black;
 }
 @media (prefers-color-scheme: dark) {
   a.inverted {
     background-color: #0c0c18;
   }
+}
+a.inverted {
+  color: black;
 }
 @media (prefers-color-scheme: dark) {
   a.inverted {
@@ -600,20 +610,22 @@ main .content {
   }
 }
 
+.site-navigation #title {
+  font-weight: 500;
+}
 .site-navigation {
   display: flex;
   justify-content: center;
   background-color: white;
-  margin: 0;
-  padding: 10px 10%;
-}
-.site-navigation #title {
-  font-weight: 500;
 }
 @media (prefers-color-scheme: dark) {
   .site-navigation {
     background-color: #0c0c18;
   }
+}
+.site-navigation {
+  margin: 0;
+  padding: 10px 10%;
 }
 @media (max-width: 480px) {
   .site-navigation {
@@ -651,13 +663,15 @@ main .content {
   width: 100%;
   z-index: 1000;
   background-color: white;
-  padding-top: 5px;
-  border-top: 1px solid #eee;
 }
 @media (prefers-color-scheme: dark) {
   .site-navigation-mobile {
     background-color: #0c0c18;
   }
+}
+.site-navigation-mobile {
+  padding-top: 5px;
+  border-top: 1px solid #eee;
 }
 .site-navigation-mobile img {
   max-height: 30px;
@@ -803,15 +817,17 @@ article iframe {
 .appledoc {
   display: flex;
   background-color: #fafafa;
-  border-radius: 20px;
-  padding: 20px;
-  padding-top: 40px;
-  justify-content: center;
 }
 @media (prefers-color-scheme: dark) {
   .appledoc {
     background-color: rgb(32, 37, 44);
   }
+}
+.appledoc {
+  border-radius: 20px;
+  padding: 20px;
+  padding-top: 40px;
+  justify-content: center;
 }
 @media (max-width: 767px) {
   .appledoc {
@@ -822,17 +838,19 @@ article iframe {
 }
 .appledoc .left-col {
   color: #222;
+}
+@media (prefers-color-scheme: dark) {
+  .appledoc .left-col {
+    color: white;
+  }
+}
+.appledoc .left-col {
   font-size: 24px;
   line-height: 1.16667;
   font-weight: 600;
   letter-spacing: 0.009em;
   font-family: -apple-system, "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   max-width: 30%;
-}
-@media (prefers-color-scheme: dark) {
-  .appledoc .left-col {
-    color: white;
-  }
 }
 @media (max-width: 767px) {
   .appledoc .left-col {
@@ -849,46 +867,54 @@ article iframe {
   display: flex;
   flex-direction: column;
   color: #666;
-  font-family: ui-monospace, "SF Mono", "SFMono-Regular", "Meno", monospace;
-  font-size: 1em;
-  margin-bottom: 20px;
-  font-weight: 400;
 }
 @media (prefers-color-scheme: dark) {
   .appledoc .right-col .var {
     color: rgb(154, 157, 160);
   }
 }
+.appledoc .right-col .var {
+  font-family: ui-monospace, "SF Mono", "SFMono-Regular", "Meno", monospace;
+  font-size: 1em;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
 .appledoc .right-col .var code {
   font-family: ui-monospace, "SF Mono", "SFMono-Regular", "Meno", monospace;
 }
 .appledoc .right-col .var .blue {
   background-color: #fafafa;
-  color: #0070c9;
-  font-size: 1em;
 }
 @media (prefers-color-scheme: dark) {
   .appledoc .right-col .var .blue {
     background-color: rgb(32, 37, 44);
   }
 }
+.appledoc .right-col .var .blue {
+  color: #0070c9;
+}
 @media (prefers-color-scheme: dark) {
   .appledoc .right-col .var .blue {
     color: rgb(65, 156, 255);
   }
 }
+.appledoc .right-col .var .blue {
+  font-size: 1em;
+}
 .appledoc .right-col .var .description {
   margin-top: 5px;
   margin-left: 2.45294rem;
   color: #222;
-  font-weight: 400;
-  font-size: 17px;
-  font-family: -apple-system, "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   .appledoc .right-col .var .description {
     color: white;
   }
+}
+.appledoc .right-col .var .description {
+  font-weight: 400;
+  font-size: 17px;
+  font-family: -apple-system, "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .alert {
