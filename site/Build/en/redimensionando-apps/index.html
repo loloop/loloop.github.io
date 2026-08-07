@@ -69,7 +69,7 @@
             <h3>Size Classes</h3>
             <p>Let's now talk about how we can update our layouts, starting with the basics: Size Classes.</p>
             <p>Size classes are basic definitions of the size available to your app, defined for the horizontal and vertical axes, split between the <code>compact</code> and <code>regular</code> sizes.</p>
-            <img src="/images/redimensionando/size-classes.png" />
+            <div class="rz-widget" data-widget="size-classes" data-lang="en"><noscript><img src="/images/redimensionando/size-classes.png" alt="The two dimensions and the two possible size class sizes"/></noscript></div>
             <p class="center muted caption">The two dimensions and the two possible size class sizes</p>
             <p>Remember that iPad multitasking image? Apps in split screen have always been divided by size classes, and iPad app developers simply adapted based on that. Back then there was no vertical <code>compact</code>, because that mode was exclusive to iPhones, but today you can shrink the window height quite a bit too.</p>
             <p>In SwiftUI, you can access these properties through the environment, and in UIKit the best way to react to these changes is by adopting the <code>traitCollectionDidChange</code> method up to iOS 17, and starting with iOS 17, <code>registerForTraitChanges</code>.</p>
@@ -106,16 +106,22 @@
         .<span class="call">padding</span>()
     }
 }</code></pre>
+            <div class="rz-widget" data-widget="view-that-fits" data-lang="en"></div>
+            <p class="center muted caption">The example above, live: as the space shrinks, ViewThatFits falls back from labels to icons to a menu</p>
             <p>Be careful, because the order of the Views matters here. <code>ViewThatFits</code> looks for the first view that fits the available space. If the order is reversed, putting the compact menu first, the others will never be shown on screen, because the first one always fits.</p>
             <h3>Breakpoints</h3>
             <p>For more granularity than Size Classes and <code>ViewThatFits</code> provide, we can go a level deeper and create our own breakpoints, defining specific screen sizes where we want the change to happen. Apps like Weather use more than just the two size classes to resize themselves, presenting multiple possible layouts for different interface space configurations, taking advantage of the available space in different ways rather than being a simple reflow of blocks.</p>
+            <div class="rz-widget" data-widget="breakpoints" data-lang="en"></div>
+            <p class="center muted caption">Custom breakpoints in action: each layout takes advantage of the available space differently, instead of being a simple reflow of blocks</p>
             <p>In SwiftUI, the <code>onGeometryChange</code> modifier, the <code>GeometryReader</code> View, or UIKit's <code>layoutSubviews</code> are your friends. Don't use <code>UIScreen.main</code> and APIs that relate directly to the device's screen for this kind of operation, because the screen your app is running on isn't necessarily the main one anymore, and you'll get values inconsistent with what you expect.</p>
             <h3>UIRequiresFullscreen</h3>
             <p>Anyone who has developed for iPadOS probably knows the <code>UIRequiresFullscreen</code> plist key. This key was used to remove your app from multitasking mode and force it to take over the entire screen. Widely used in games, but many apps use it too. It was deprecated at last year's WWDC, and starting this year its behavior changes once again.</p>
             <p>When <code>UIRequiresFullscreen</code> is enabled, the app will still resize, but discretely, in jumps, instead of resizing fluidly. Games like AmarganA can adopt the key to get discrete resizing, where the app can still be resized, but the layout update only applies once the user finishes the gesture.</p>
+            <div class="rz-widget" data-widget="fullscreen" data-lang="en"></div>
+            <p class="center muted caption">Try it: turn the key on and the new size only applies when you let go of the handle</p>
             <h3>UIUserInterfaceIdiom and UIInterfaceOrientation</h3>
             <p><code>UIUserInterfaceIdiom</code> still exists and can be used to differentiate between an interface being displayed on iOS and on tvOS, for example, but the recommendation is not to use it to differentiate between devices with larger and smaller screens. The same guidance applies to <code>UIInterfaceOrientation</code>.</p>
-            <img src="/images/redimensionando/traits.png" />
+            <div class="rz-widget" data-widget="traits" data-lang="en"><noscript><img src="/images/redimensionando/traits.png" alt="The same interface, at the same size, with completely different traits"/></noscript></div>
             <p class="center muted caption">The same interface, at the same size, with completely different traits</p>
             <p>In Apple Games, the same interface, at the same size, displayed the same way, has completely different traits in the two cases. On iPadOS, the idiom is <code>.pad</code> and the orientation is <code>.landscape</code>. In iPhone Mirroring, the idiom is <code>.phone</code> and the orientation remains <code>.portrait</code>, even though the window is wider than it is tall. iPhone apps running on iPadOS still report the <code>.phone</code> idiom. The iPad mini is also roughly the same size as the largest possible interface in iPhone Mirroring, so there's no need to create different interfaces for the different device types.</p>
             <h2>In practice</h2>
@@ -147,6 +153,7 @@
             <h2>Welcome to the rest of the industry</h2>
             <p>The truth is we're now catching up with the rest of the industry. Developers who write apps for Safari have been writing apps that are required to work on multiple screen sizes for decades. Not to mention the green platform: who here has ever had to build a T layout?</p>
             <p>Thousands of apps on the App Store are already ready for this change. When will yours be part of it?</p>
+            <script defer src="/interactive/redimensionando-widgets.js"></script>
             <p></p>
           </article>
         </div>
