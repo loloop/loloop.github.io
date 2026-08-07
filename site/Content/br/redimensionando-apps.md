@@ -44,7 +44,7 @@ Vamos falar agora de como podemos atualizar nossos layouts, começando pelo bás
 
 Size classes são definições básicas de tamanho disponível para o seu app, definidas para a horizontal e a vertical, divididas entre os tamanhos `compact` e `regular`.
 
-![](redimensionando/size-classes.png)
+<div class="rz-widget" data-widget="size-classes" data-lang="br"><noscript><img src="/images/redimensionando/size-classes.png" alt="As duas dimensões e os dois tamanhos possíveis de size class"/></noscript></div>
 <p class="center muted caption">As duas dimensões e os dois tamanhos possíveis de size class</p>
 
 Lembram-se daquela imagem do multitasking do iPad? Os apps no split screen sempre foram divididos por size classes, e os desenvolvedores de apps para iPad apenas adaptavam baseado nisso. Naquela época não havia `compact` na vertical, porque esse modo era exclusivo de iPhones, mas hoje dá pra diminuir bastante a altura da janela também.
@@ -92,11 +92,17 @@ struct AdaptiveActionBar: View {
 }
 ```
 
+<div class="rz-widget" data-widget="view-that-fits" data-lang="br"></div>
+<p class="center muted caption">O exemplo acima, ao vivo: conforme o espaço diminui, o ViewThatFits cai dos textos para os ícones e por fim para o menu</p>
+
 Tome cuidado, porque a ordem das Views faz diferença aqui. O `ViewThatFits` busca a primeira view que cabe no espaço disponível. Se a ordem for invertida, colocando o menu compacto primeiro, as outras nunca vão ser exibidas na tela, porque a primeira sempre cabe.
 
 ### Breakpoints
 
 Para mais granularidade do que as Size Classes e o `ViewThatFits` nos proveem, podemos descer um nível e criar nossos próprios breakpoints, definindo tamanhos de tela específicos onde queremos que a mudança aconteça. Apps como Tempo utilizam mais do que apenas as duas size classes para se redimensionar, apresentando múltiplos layouts possíveis para diferentes configurações de espaço na interface, aproveitando o espaço disponível de formas diferentes, e não sendo um simples reflow dos blocos.
+
+<div class="rz-widget" data-widget="breakpoints" data-lang="br"></div>
+<p class="center muted caption">Breakpoints customizados em ação: cada layout aproveita o espaço disponível de uma forma diferente, ao invés de ser um simples reflow dos blocos</p>
 
 No SwiftUI, o modifier `onGeometryChange`, a View `GeometryReader`, ou o `layoutSubviews` do UIKit são seus amigos. Não utilize `UIScreen.main` e APIs que se relacionam diretamente à tela do aparelho para este tipo de operação, porque a tela onde o seu app está rodando não necessariamente é mais a main, e assim você vai receber valores inconsistentes com o que você espera.
 
@@ -106,11 +112,14 @@ Quem já desenvolveu para iPadOS deve conhecer a chave de plist `UIRequiresFulls
 
 Quando `UIRequiresFullscreen` está ativada, o app continuará redimensionando, mas de forma discreta, dando pulos, ao invés de redimensionar de forma fluida. Jogos como AmarganA podem adotar a chave para ter o redimensionamento discreto, onde o app ainda pode ser redimensionado, mas o update de layout só se aplica assim que o usuário termina o gesto.
 
+<div class="rz-widget" data-widget="fullscreen" data-lang="br"></div>
+<p class="center muted caption">Experimente: ligue a chave e o novo tamanho só é aplicado quando você solta a alça</p>
+
 ### UIUserInterfaceIdiom e UIInterfaceOrientation
 
 O `UIUserInterfaceIdiom` segue existindo e pode ser utilizado para diferenciar entre uma interface sendo exibida no iOS e no tvOS, por exemplo, mas a recomendação é que ele não seja utilizado para diferenciar entre aparelhos com telas maiores e menores. O `UIInterfaceOrientation` segue a mesma orientação.
 
-![](redimensionando/traits.png)
+<div class="rz-widget" data-widget="traits" data-lang="br"><noscript><img src="/images/redimensionando/traits.png" alt="A mesma interface, no mesmo tamanho, com traits completamente diferentes"/></noscript></div>
 <p class="center muted caption">A mesma interface, no mesmo tamanho, com traits completamente diferentes</p>
 
 No Apple Games, a mesma interface, com o mesmo tamanho, sendo exibida da mesma forma, tem traits completamente diferentes nos dois casos. No iPadOS, o idioma é `.pad` e a orientação é `.landscape`. No Espelhamento de iPhone, o idioma é `.phone` e a orientação segue sendo `.portrait`, mesmo a janela sendo mais larga que alta. Apps de iPhone rodando no iPadOS continuam reportando o idiom de `.phone`. O iPad mini também é mais ou menos do mesmo tamanho da maior interface possível no Espelhamento de iPhone, então não há necessidade de criar interfaces diferentes para os tipos de aparelho diferentes.
@@ -170,3 +179,5 @@ xcrun agent skills export
 A verdade é que nós agora vamos nos equiparar ao resto da indústria. Desenvolvedores que escrevem apps para Safari já escrevem apps que são obrigados a funcionar em múltiplos tamanhos de tela há décadas. Nem se fala da plataforma verde então: quem aí já teve que fazer um layout em T?
 
 Milhares de apps na App Store já estão prontos para essa mudança. E o seu, quando vai fazer parte disso?
+
+<script defer src="/interactive/redimensionando-widgets.js"></script>

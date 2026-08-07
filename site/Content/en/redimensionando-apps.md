@@ -46,7 +46,7 @@ Let's now talk about how we can update our layouts, starting with the basics: Si
 
 Size classes are basic definitions of the size available to your app, defined for the horizontal and vertical axes, split between the `compact` and `regular` sizes.
 
-![](redimensionando/size-classes.png)
+<div class="rz-widget" data-widget="size-classes" data-lang="en"><noscript><img src="/images/redimensionando/size-classes.png" alt="The two dimensions and the two possible size class sizes"/></noscript></div>
 <p class="center muted caption">The two dimensions and the two possible size class sizes</p>
 
 Remember that iPad multitasking image? Apps in split screen have always been divided by size classes, and iPad app developers simply adapted based on that. Back then there was no vertical `compact`, because that mode was exclusive to iPhones, but today you can shrink the window height quite a bit too.
@@ -94,11 +94,17 @@ struct AdaptiveActionBar: View {
 }
 ```
 
+<div class="rz-widget" data-widget="view-that-fits" data-lang="en"></div>
+<p class="center muted caption">The example above, live: as the space shrinks, ViewThatFits falls back from labels to icons to a menu</p>
+
 Be careful, because the order of the Views matters here. `ViewThatFits` looks for the first view that fits the available space. If the order is reversed, putting the compact menu first, the others will never be shown on screen, because the first one always fits.
 
 ### Breakpoints
 
 For more granularity than Size Classes and `ViewThatFits` provide, we can go a level deeper and create our own breakpoints, defining specific screen sizes where we want the change to happen. Apps like Weather use more than just the two size classes to resize themselves, presenting multiple possible layouts for different interface space configurations, taking advantage of the available space in different ways rather than being a simple reflow of blocks.
+
+<div class="rz-widget" data-widget="breakpoints" data-lang="en"></div>
+<p class="center muted caption">Custom breakpoints in action: each layout takes advantage of the available space differently, instead of being a simple reflow of blocks</p>
 
 In SwiftUI, the `onGeometryChange` modifier, the `GeometryReader` View, or UIKit's `layoutSubviews` are your friends. Don't use `UIScreen.main` and APIs that relate directly to the device's screen for this kind of operation, because the screen your app is running on isn't necessarily the main one anymore, and you'll get values inconsistent with what you expect.
 
@@ -108,11 +114,14 @@ Anyone who has developed for iPadOS probably knows the `UIRequiresFullscreen` pl
 
 When `UIRequiresFullscreen` is enabled, the app will still resize, but discretely, in jumps, instead of resizing fluidly. Games like AmarganA can adopt the key to get discrete resizing, where the app can still be resized, but the layout update only applies once the user finishes the gesture.
 
+<div class="rz-widget" data-widget="fullscreen" data-lang="en"></div>
+<p class="center muted caption">Try it: turn the key on and the new size only applies when you let go of the handle</p>
+
 ### UIUserInterfaceIdiom and UIInterfaceOrientation
 
 `UIUserInterfaceIdiom` still exists and can be used to differentiate between an interface being displayed on iOS and on tvOS, for example, but the recommendation is not to use it to differentiate between devices with larger and smaller screens. The same guidance applies to `UIInterfaceOrientation`.
 
-![](redimensionando/traits.png)
+<div class="rz-widget" data-widget="traits" data-lang="en"><noscript><img src="/images/redimensionando/traits.png" alt="The same interface, at the same size, with completely different traits"/></noscript></div>
 <p class="center muted caption">The same interface, at the same size, with completely different traits</p>
 
 In Apple Games, the same interface, at the same size, displayed the same way, has completely different traits in the two cases. On iPadOS, the idiom is `.pad` and the orientation is `.landscape`. In iPhone Mirroring, the idiom is `.phone` and the orientation remains `.portrait`, even though the window is wider than it is tall. iPhone apps running on iPadOS still report the `.phone` idiom. The iPad mini is also roughly the same size as the largest possible interface in iPhone Mirroring, so there's no need to create different interfaces for the different device types.
@@ -172,3 +181,5 @@ xcrun agent skills export
 The truth is we're now catching up with the rest of the industry. Developers who write apps for Safari have been writing apps that are required to work on multiple screen sizes for decades. Not to mention the green platform: who here has ever had to build a T layout?
 
 Thousands of apps on the App Store are already ready for this change. When will yours be part of it?
+
+<script defer src="/interactive/redimensionando-widgets.js"></script>
