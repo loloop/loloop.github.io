@@ -180,4 +180,4 @@ A verdade é que nós agora vamos nos equiparar ao resto da indústria. Desenvol
 
 Milhares de apps na App Store já estão prontos para essa mudança. E o seu, quando vai fazer parte disso?
 
-<script defer src="/interactive/redimensionando-widgets.js"></script>
+<script defer src="/interactive/redimensionando-widgets.js?v=2"></script>

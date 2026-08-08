@@ -182,4 +182,4 @@ The truth is we're now catching up with the rest of the industry. Developers who
 
 Thousands of apps on the App Store are already ready for this change. When will yours be part of it?
 
-<script defer src="/interactive/redimensionando-widgets.js"></script>
+<script defer src="/interactive/redimensionando-widgets.js?v=2"></script>

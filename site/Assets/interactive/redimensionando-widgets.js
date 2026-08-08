@@ -18,6 +18,7 @@
       vtfIcons: "HStack, icons only",
       vtfMenu: "Menu",
       vtfPicked: "ViewThatFits picked:",
+      vtfHint: "Drag the handle — or tap the buttons — to resize",
       width: "width",
       oneCol: "one column",
       twoCol: "two columns",
@@ -50,6 +51,7 @@
       vtfIcons: "HStack, só ícones",
       vtfMenu: "Menu",
       vtfPicked: "O ViewThatFits escolheu:",
+      vtfHint: "Arraste a alça — ou toque nos botões — para redimensionar",
       width: "largura",
       oneCol: "uma coluna",
       twoCol: "duas colunas",
@@ -111,7 +113,8 @@
     ".rz-btn-icon{padding:8px}" +
     ".rz-vtf-steps{display:flex;gap:6px;justify-content:center;margin-top:12px;flex-wrap:wrap}" +
     ".rz-step{font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(0,0,0,.06);color:#555;" +
-    "transition:background .2s,color .2s}" +
+    "transition:background .2s,color .2s;cursor:pointer}" +
+    ".rz-anim{transition:width .35s ease}" +
     ".rz-step-active{background:#EA3991;color:#fff}" +
     ".rz-menu{position:absolute;top:52px;left:50%;transform:translateX(-50%);min-width:180px;" +
     "background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:12px;" +
@@ -159,11 +162,16 @@
     ".rz-app{width:44px;text-align:center;font-size:8px;color:#555;flex:none}" +
     ".rz-app i{display:block;width:40px;height:40px;margin:0 auto 3px;border-radius:10px}" +
     /* Traits */
-    ".rz-seg{display:flex;gap:0;margin:0 auto 14px;max-width:340px;background:rgba(0,0,0,.07);" +
-    "border-radius:9px;padding:2px}" +
-    ".rz-seg button{flex:1;border:0;background:none;padding:6px 8px;font-size:12px;font-family:inherit;" +
-    "border-radius:7px;cursor:pointer;color:#222;white-space:nowrap}" +
-    ".rz-seg .rz-seg-active{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.15)}" +
+    ".rz-traits-wrap{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}" +
+    ".rz-trait-panel{flex:1 1 240px;max-width:280px;min-width:220px}" +
+    ".rz-plat{margin:0 0 8px;text-align:center;font-size:12px;font-weight:500;color:#222}" +
+    ".rz-trait-panel .rz-game-art{width:44px;height:44px;border-radius:10px}" +
+    ".rz-trait-panel .rz-game-body{padding:12px 10px;gap:10px}" +
+    ".rz-trait-panel .rz-game-body h4{font-size:13px}" +
+    ".rz-trait-panel .rz-play{padding:4px 12px;font-size:11px}" +
+    ".rz-trait-diff b{color:#EA3991}" +
+    ".rz-trait-same b{color:#555;font-weight:500}" +
+    ".rz-trait-hl{background:rgba(234,57,145,.08)}" +
     ".rz-game{border-radius:10px;overflow:hidden;background:#101014;color:#fff;max-width:420px;margin:0 auto}" +
     ".rz-game-top{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:12px;" +
     "background:rgba(255,255,255,.06)}" +
@@ -174,11 +182,10 @@
     ".rz-game-body p{margin:0;font-size:11px;color:rgba(255,255,255,.55)}" +
     ".rz-play{margin-left:auto;border:0;border-radius:20px;padding:6px 18px;background:#fff;color:#101014;" +
     "font-size:12px;font-weight:600;cursor:default}" +
-    ".rz-traits{max-width:420px;margin:12px auto 0;font-family:ui-monospace,Menlo,monospace;font-size:12px}" +
-    ".rz-trait-row{display:flex;justify-content:space-between;padding:6px 4px;" +
-    "border-bottom:1px solid rgba(0,0,0,.08);color:#555}" +
-    ".rz-trait-row b{font-weight:600;color:#EA3991;transition:opacity .15s}" +
-    ".rz-trait-fade b{opacity:0}" +
+    ".rz-traits{margin:10px auto 0;font-family:ui-monospace,Menlo,monospace;font-size:11px}" +
+    ".rz-trait-row{display:flex;justify-content:space-between;gap:8px;padding:6px 4px;" +
+    "border-bottom:1px solid rgba(0,0,0,.08);color:#555;border-radius:4px}" +
+    ".rz-trait-row b{font-weight:600;color:#222}" +
     "@media (prefers-color-scheme:dark){" +
     ".rz-widget{background:#1F1F24}" +
     ".rz-hint,.rz-readout{color:#aaa}" +
@@ -201,10 +208,12 @@
     ".rz-toggle-row{color:#fff}" +
     ".rz-switch{background:rgba(255,255,255,.25)}" +
     ".rz-switch-on{background:#34C759}" +
-    ".rz-seg{background:rgba(255,255,255,.1)}" +
-    ".rz-seg button{color:#fff}" +
-    ".rz-seg .rz-seg-active{background:#4a4a52}" +
+    ".rz-plat{color:#fff}" +
     ".rz-trait-row{border-bottom-color:rgba(255,255,255,.12);color:#aaa}" +
+    ".rz-trait-row b{color:#fff}" +
+    ".rz-trait-diff b{color:#ff6ab3}" +
+    ".rz-trait-same b{color:#aaa}" +
+    ".rz-trait-hl{background:rgba(234,57,145,.18)}" +
     ".rz-app{color:#aaa}" +
     "}";
 
@@ -319,7 +328,7 @@
   }
 
   function viewThatFitsWidget(root, t) {
-    root.appendChild(el("p", "rz-hint", t.dragHandle));
+    root.appendChild(el("p", "rz-hint", t.vtfHint));
     var stage = el("div", "rz-stage");
     stage.style.padding = "14px 20px";
     var win = el("div", "rz-win");
@@ -344,6 +353,7 @@
         var b = el("button", "rz-btn" + (withLabels ? "" : " rz-btn-icon"),
           svgIcon(a.icon) + (withLabels ? "<span>" + a.label + "</span>" : ""));
         b.type = "button";
+        b.addEventListener("click", function () { stepTo(current + 1); });
         frag.appendChild(b);
       });
       return frag;
@@ -369,7 +379,10 @@
         var item = el("button", "rz-menu-item",
           "<span>" + a.label + "</span>" + svgIcon(a.icon));
         item.type = "button";
-        item.addEventListener("click", function () { menuOpen = false; renderMenu(); });
+        item.addEventListener("click", function () {
+          menuOpen = false; renderMenu();
+          stepTo(0);
+        });
         menuEl.appendChild(item);
       });
       win.appendChild(menuEl);
@@ -380,8 +393,9 @@
 
     var steps = el("div", "rz-vtf-steps");
     var stepNames = [t.vtfLabels, t.vtfIcons, t.vtfMenu];
-    var stepEls = stepNames.map(function (n) {
+    var stepEls = stepNames.map(function (n, i) {
       var s = el("span", "rz-step", n);
+      s.addEventListener("click", function () { stepTo(i); });
       steps.appendChild(s);
       return s;
     });
@@ -427,8 +441,27 @@
       }
       readout.textContent = t.vtfPicked + " " + stepNames[current];
     }
+    // Animate the window to a width where ViewThatFits picks variant i,
+    // so tapping the buttons walks through the fallbacks without dragging.
+    function stepTo(i) {
+      i = ((i % 3) + 3) % 3;
+      dragged = true;
+      var maxW = stage.clientWidth - 40;
+      var target = maxW;
+      if (i > 0) {
+        target = Math.min(maxW, Math.max(64, naturalWidths[i] + 24));
+        target = Math.min(target, naturalWidths[i - 1] - 8);
+      }
+      win.classList.add("rz-anim");
+      w = target;
+      apply();
+      setTimeout(function () { win.classList.remove("rz-anim"); }, 400);
+    }
     var startW, dragged = false;
-    handle.addEventListener("pointerdown", function () { startW = w; dragged = true; });
+    handle.addEventListener("pointerdown", function () {
+      startW = w; dragged = true;
+      win.classList.remove("rz-anim");
+    });
     draggable(handle, function (dx) { w = startW + dx; apply(); });
     new ResizeObserver(function () {
       if (!naturalWidths.length) measure();
@@ -596,54 +629,69 @@
     }).observe(stage);
   }
 
+  // The same app window rendered twice, side by side: once as an iPadOS
+  // window, once in iPhone Mirroring. The interfaces are pixel-identical —
+  // only the reported traits differ. Hovering/tapping a trait row highlights
+  // it on both sides for direct comparison.
   function traitsWidget(root, t) {
-    var seg = el("div", "rz-seg");
     var modes = [
       { name: "iPadOS", idiom: ".pad", orientation: ".landscape" },
       { name: t.mirroring, idiom: ".phone", orientation: ".portrait" }
     ];
-    var traits = el("div", "rz-traits");
-    var rows = {};
-    ["userInterfaceIdiom", "interfaceOrientation", "windowSize"].forEach(function (k) {
-      var row = el("div", "rz-trait-row",
-        "<span>" + (k === "windowSize" ? "window size" : k) + "</span><b></b>");
-      rows[k] = row.querySelector("b");
-      traits.appendChild(row);
-    });
-
-    var game = el("div", "rz-game",
-      '<div class="rz-game-top">' + svgIcon("ellipsis") .replace("<svg ", '<svg style="width:14px;height:14px" ') +
+    var gameHtml =
+      '<div class="rz-game-top">' + svgIcon("ellipsis").replace("<svg ", '<svg style="width:14px;height:14px" ') +
       "<span>Apple Games</span></div>" +
       '<div class="rz-game-body"><div class="rz-game-art"></div>' +
       "<div><h4>AmarganA</h4><p>PhD Games</p></div>" +
-      '<button class="rz-play" type="button">▶</button></div>');
+      '<button class="rz-play" type="button">▶</button></div>';
 
-    var active = 0;
-    var btns = modes.map(function (m, i) {
-      var b = el("button", i === 0 ? "rz-seg-active" : "", m.name);
-      b.type = "button";
-      b.addEventListener("click", function () { setMode(i); });
-      seg.appendChild(b);
-      return b;
+    var wrap = el("div", "rz-traits-wrap");
+    modes.forEach(function (m) {
+      var panel = el("div", "rz-trait-panel");
+      panel.appendChild(el("p", "rz-plat", m.name));
+      panel.appendChild(el("div", "rz-game", gameHtml));
+      var list = el("div", "rz-traits");
+      [
+        ["userInterfaceIdiom", m.idiom, "diff"],
+        ["interfaceOrientation", m.orientation, "diff"],
+        ["window size", "740 × 420 pt", "same"]
+      ].forEach(function (row) {
+        var r = el("div", "rz-trait-row rz-trait-" + row[2],
+          "<span>" + row[0] + "</span><b>" + row[1] + "</b>");
+        r.setAttribute("data-trait", row[0]);
+        list.appendChild(r);
+      });
+      panel.appendChild(list);
+      wrap.appendChild(panel);
     });
-    function setMode(i) {
-      active = i;
-      btns.forEach(function (b, j) { b.className = j === i ? "rz-seg-active" : ""; });
-      traits.classList.add("rz-trait-fade");
-      setTimeout(function () {
-        rows.userInterfaceIdiom.textContent = modes[i].idiom;
-        rows.interfaceOrientation.textContent = modes[i].orientation;
-        rows.windowSize.textContent = "740 × 420 pt";
-        traits.classList.remove("rz-trait-fade");
-      }, 150);
-    }
-    root.appendChild(seg);
-    root.appendChild(game);
-    root.appendChild(traits);
+    root.appendChild(wrap);
     root.appendChild(el("p", "rz-hint", t.sameInterface)).style.marginTop = "12px";
-    rows.userInterfaceIdiom.textContent = modes[0].idiom;
-    rows.interfaceOrientation.textContent = modes[0].orientation;
-    rows.windowSize.textContent = "740 × 420 pt";
+
+    function setHl(key, on) {
+      Array.prototype.forEach.call(
+        wrap.querySelectorAll('[data-trait="' + key + '"]'),
+        function (r) { r.classList.toggle("rz-trait-hl", on); }
+      );
+    }
+    var tapped = null;
+    wrap.addEventListener("mouseover", function (ev) {
+      var row = ev.target.closest("[data-trait]");
+      if (row) setHl(row.getAttribute("data-trait"), true);
+    });
+    wrap.addEventListener("mouseout", function (ev) {
+      var row = ev.target.closest("[data-trait]");
+      if (row && row.getAttribute("data-trait") !== tapped) {
+        setHl(row.getAttribute("data-trait"), false);
+      }
+    });
+    wrap.addEventListener("click", function (ev) {
+      var row = ev.target.closest("[data-trait]");
+      if (!row) return;
+      var key = row.getAttribute("data-trait");
+      if (tapped && tapped !== key) setHl(tapped, false);
+      tapped = tapped === key ? null : key;
+      setHl(key, tapped === key);
+    });
   }
 
   var WIDGETS = {
