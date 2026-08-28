@@ -69,8 +69,9 @@ struct ExampleSite: Site {
         Me(language: .english),
         Me(language: .portugueseBrazil),
         PortugueseHome(),
-        EnglishHome()
-    ]
+        EnglishHome(),
+        ResidentEvilRefIndex()
+    ] + ResidentEvilGame.all.map { ResidentEvilRefGame(game: $0) }
     var useDefaultBootstrapURLs = BootstrapOptions.none
     var markdownRenderer: InkMarkdownRenderer.Type {
         InkMarkdownRenderer.self
