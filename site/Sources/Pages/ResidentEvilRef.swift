@@ -51,6 +51,14 @@ struct ResidentEvilRefIndex: StaticLayout {
     var path = "ref/resident-evil"
     var language = Language.portugueseBrazil
     var parentLayout: RefLayout { RefLayout() }
+    var description = "Referências das tatuagens do Mauricio"
+
+    var image: URL? {
+        guard let imagePath = ResidentEvilGame.all.first?.imagePaths.first else {
+            return nil
+        }
+        return URL(string: "https://mauriciocardozo.me\(imagePath)")
+    }
 
     var body: some HTML {
         Section {
