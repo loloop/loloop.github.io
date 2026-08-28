@@ -35,14 +35,9 @@
 }
 
 .moodboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-    align-items: start;
-
-    @media (max-width: $small-phone) {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
     img {
         display: block;
@@ -51,7 +46,7 @@
     }
 
     .stl-viewer {
-        aspect-ratio: 1;
+        aspect-ratio: 4 / 3;
         border: 1px solid rgba(128, 128, 128, 0.25);
         border-radius: 8px;
         overflow: hidden;
