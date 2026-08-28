@@ -20,13 +20,21 @@ struct ResidentEvilGame {
         "ref/resident-evil/\(slug)"
     }
 
-    // Enumerated at build time so images dropped into the asset
-    // folder show up on the next rebuild without code changes.
     @MainActor var imagePaths: [String] {
-        let assetsPath = "images/ref/resident-evil/\(slug)"
+        assetFiles(at: "images/ref/resident-evil/\(slug)")
+    }
+
+    @MainActor var modelPaths: [String] {
+        assetFiles(at: "models/ref/resident-evil/\(slug)")
+            .filter { $0.hasSuffix(".stl") }
+    }
+
+    // Enumerated at build time so images and models dropped into the
+    // asset folders show up on the next rebuild without code changes.
+    @MainActor private func assetFiles(at relativePath: String) -> [String] {
         let directory = PublishingContext.default
             .sourceDirectory
-            .appending(path: "Assets/\(assetsPath)")
+            .appending(path: "Assets/\(relativePath)")
 
         let files = (try? FileManager.default
             .contentsOfDirectory(atPath: directory.path())) ?? []
@@ -34,18 +42,19 @@ struct ResidentEvilGame {
         return files
             .filter { !$0.hasPrefix(".") }
             .sorted()
-            .map { "/\(assetsPath)/\($0)" }
+            .map { "/\(relativePath)/\($0)" }
     }
 }
 
 struct ResidentEvilRefIndex: StaticLayout {
-    var title = "Resident Evil"
+    var title = "Tatuagens"
     var path = "ref/resident-evil"
     var language = Language.portugueseBrazil
+    var parentLayout: RefLayout { RefLayout() }
 
     var body: some HTML {
         Section {
-            Text("resident evil")
+            Text("tatuagens")
                 .font(.title1)
         }
 
@@ -54,6 +63,8 @@ struct ResidentEvilRefIndex: StaticLayout {
                 Link(target: "/\(game.pagePath)") {
                     Image(decorative: game.imagePaths.first ?? "")
                     Text(game.title)
+                    Text("ver referências →")
+                        .class("ref-cta")
                 }
                 .class("inverted")
             }
@@ -68,6 +79,7 @@ struct ResidentEvilRefGame: StaticLayout {
     var title: String { game.title }
     var path: String { game.pagePath }
     var language = Language.portugueseBrazil
+    var parentLayout: RefLayout { RefLayout() }
 
     var body: some HTML {
         Section {
@@ -81,5 +93,13 @@ struct ResidentEvilRefGame: StaticLayout {
             }
         }
         .class("moodboard")
+
+        if !game.modelPaths.isEmpty {
+            let sources = game.modelPaths
+                .map { "\"\($0)\"" }
+                .joined(separator: ", ")
+            Script(code: "window.reModels = [\(sources)];")
+            Script(file: "/js/stl-viewer.js")
+        }
     }
 }

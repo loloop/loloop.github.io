@@ -814,6 +814,11 @@ article iframe {
   }
 }
 
+.breadcrumb {
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
 .re-ref-index {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -833,6 +838,13 @@ article iframe {
   margin-top: 8px;
   margin-bottom: 0;
 }
+.re-ref-index a p.ref-cta {
+  display: inline-block;
+  padding: 4px 14px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
 
 .moodboard {
   display: grid;
@@ -849,6 +861,18 @@ article iframe {
   display: block;
   width: 100%;
   border-radius: 8px;
+}
+.moodboard .stl-viewer {
+  aspect-ratio: 1;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: grab;
+}
+.moodboard .stl-viewer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .appledoc {
