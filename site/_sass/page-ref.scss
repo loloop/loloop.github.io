@@ -1,0 +1,39 @@
+.re-ref-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+
+    a {
+        text-decoration: none;
+
+        img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        p {
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.moodboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    align-items: start;
+
+    @media (max-width: $small-phone) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        border-radius: 8px;
+    }
+}
