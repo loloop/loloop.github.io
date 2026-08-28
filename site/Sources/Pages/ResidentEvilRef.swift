@@ -94,6 +94,8 @@ struct ResidentEvilRefGame: StaticLayout {
         }
         .class("moodboard")
 
+        Script(file: "/js/lightbox.js")
+
         if !game.modelPaths.isEmpty {
             let sources = game.modelPaths
                 .map { "\"\($0)\"" }
