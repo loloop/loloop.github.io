@@ -9,7 +9,7 @@ language: en
 
 During WWDC26, Apple published a [Community Recognition](https://developer.apple.com/community/recognition/) page celebrating people around the world who make the Apple developer community a better place — the folks who organize events, teach, mentor, and create spaces for others to grow. I was honored to be one of the names on it, for the work our community has done with CocoaHeads Brasil.
 
-Apple's page changes over time as new people are recognized, so I'm keeping this page as a small archive of the moment.
+Apple's page might change over time as new people are recognized, so I'm keeping this page as a small archive of the moment.
 
 ![My entry on Apple's Community Recognition page: photo, name, "Brazil", and a short bio about leading CocoaHeads Brasil.](apple-recognition/apple-page.png)
 

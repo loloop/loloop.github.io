@@ -8,7 +8,7 @@ date: 2026-06-08 00:00:00
 
 Durante a WWDC26, a Apple publicou uma página de [Reconhecimento da comunidade](https://developer.apple.com/community/recognition/) celebrando pessoas do mundo todo que tornam a comunidade de desenvolvimento Apple um lugar melhor — quem organiza eventos, ensina, mentora e cria espaços para os outros crescerem. Foi uma honra estar entre os nomes dessa lista, pelo trabalho que a nossa comunidade fez com o CocoaHeads Brasil.
 
-A página da Apple muda com o tempo, à medida que novas pessoas são reconhecidas, então guardo esta página como um pequeno registro desse momento.
+A página da Apple pode mudar com o tempo, à medida que novas pessoas são reconhecidas, então guardo esta página como um pequeno registro desse momento.
 
 ![Meu perfil na página de Reconhecimento da comunidade da Apple: foto, nome, "Brazil" e um texto curto sobre liderar o CocoaHeads Brasil.](apple-recognition/apple-page.png)
 
