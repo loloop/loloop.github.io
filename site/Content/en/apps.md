@@ -8,6 +8,17 @@ language: en
 
 <div id='apps'>
   <div class='app'>
+    <div class='left'>
+      <img src="/images/apps/metricslab.png" alt="MetricsLab app icon" />
+    </div>
+    <div class='right'>
+      <h2>MetricsLab</h2>
+      <p>A free native utility for iPhone and iPad developers, with 19 interactive SwiftUI and UIKit labs and live window geometry. Requires iOS or iPadOS 27.1.</p>
+      <p><a href="/metricslab/">Explore MetricsLab and get support</a></p>
+    </div>
+  </div>
+
+  <div class='app'>
     <div class='right'>
       <h2>DiffableUI</h2>
       <p>

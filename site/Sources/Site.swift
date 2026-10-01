@@ -70,6 +70,8 @@ struct ExampleSite: Site {
         Me(language: .portugueseBrazil),
         PortugueseHome(),
         EnglishHome(),
+        MetricsLabPage(),
+        MetricsLabPrivacyPage(),
         ResidentEvilRefIndex()
     ] + ResidentEvilGame.all.map { ResidentEvilRefGame(game: $0) }
     var useDefaultBootstrapURLs = BootstrapOptions.none
