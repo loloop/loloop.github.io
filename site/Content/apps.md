@@ -6,6 +6,17 @@ hidden: true
 
 <div id='apps'>
   <div class='app'>
+    <div class='left'>
+      <img src="/images/apps/metricslab.png" alt="Ícone do MetricsLab" />
+    </div>
+    <div class='right'>
+      <h2>MetricsLab</h2>
+      <p>Um utilitário nativo gratuito para quem desenvolve para iPhone e iPad, com 19 laboratórios interativos de SwiftUI e UIKit e geometria da janela em tempo real. Requer iOS ou iPadOS 27.1.</p>
+      <p><a href="/metricslab/">Conheça o MetricsLab e encontre suporte</a></p>
+    </div>
+  </div>
+
+  <div class='app'>
     <div class='right'>
       <h2>DiffableUI</h2>
       <p>

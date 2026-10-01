@@ -46,9 +46,9 @@ extension ContactInfo: CaseIterable {
                 url: "https://github.com/loloop"
             ),
             .init(
-                name: "bluesky",
-                completion: " @mauriciocardozo.me",
-                url: "https://bsky.app/profile/mauriciocardozo.me"
+                name: "twitter",
+                completion: " @cocoamauricio",
+                url: "https://x.com/cocoamauricio"
             ),
             .init(
                 name: "instagram",

@@ -9,9 +9,10 @@ let package = Package(
         .macOS(.v14)
     ],
     dependencies: [
-        .package(path: "Ignite"),
-        .package(path: "Splash"),
-        .package(url: "https://github.com/johnfairh/swift-sass.git", from: "3.1.0"),
+        .package(path: "../Ignite"),
+        .package(path: "../Splash"),
+        // Pinned to main for the Swift 6.4 fix; switch back to `from:` once 3.3.1+ is tagged.
+        .package(url: "https://github.com/johnfairh/swift-sass.git", revision: "f7eaef42bd2272b269b4ba815a375441879f06db"),
         .package(url: "https://github.com/johnsundell/ink.git", from: "0.1.0"),
     ],
     targets: [
