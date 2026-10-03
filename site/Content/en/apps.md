@@ -7,6 +7,7 @@ language: en
 ---
 
 <div id='apps'>
+  <!--
   <div class='app'>
     <div class='left'>
       <img src="/images/apps/metricslab.png" alt="MetricsLab app icon" />
@@ -17,6 +18,7 @@ language: en
       <p><a href="/metricslab/">Explore MetricsLab and get support</a></p>
     </div>
   </div>
+  -->
 
   <div class='app'>
     <div class='right'>

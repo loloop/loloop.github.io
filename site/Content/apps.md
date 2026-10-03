@@ -5,6 +5,7 @@ hidden: true
 ---
 
 <div id='apps'>
+  <!--
   <div class='app'>
     <div class='left'>
       <img src="/images/apps/metricslab.png" alt="Ícone do MetricsLab" />
@@ -15,6 +16,7 @@ hidden: true
       <p><a href="/metricslab/">Conheça o MetricsLab e encontre suporte</a></p>
     </div>
   </div>
+  -->
 
   <div class='app'>
     <div class='right'>
